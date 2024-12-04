@@ -1,5 +1,5 @@
+from ortools.sat.python.cp_model import CpModel
 
-from ortools.sat.python.cp_model import CpModel, IntVar
 from teams import TeamDatabase
 
 

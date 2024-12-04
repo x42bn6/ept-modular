@@ -118,7 +118,8 @@ class GroupStage(Stage, ABC):
                 top_n: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_top_{self.advancing_team_count}")
                 team_index: int = self.metadata.team_database.get_team_index(team)
                 model.Add(sum(self.indicators[team_index][0:self.advancing_team_count]) == 1).only_enforce_if(top_n)
-                model.Add(sum(self.indicators[team_index][0:self.advancing_team_count]) == 0).only_enforce_if(top_n.Not())
+                model.Add(sum(self.indicators[team_index][0:self.advancing_team_count]) == 0).only_enforce_if(
+                    top_n.Not())
                 model.Add(sum(self.next_stage.indicators[team_index]) == 1).only_enforce_if(top_n)
                 model.Add(sum(self.next_stage.indicators[team_index]) == 0).only_enforce_if(top_n.Not())
 
@@ -186,9 +187,11 @@ class PairGroupStage(Stage, ABC):
                 top_n: [BooleanVar] = model.new_bool_var(
                     f"{self.name}_{team.name}_top_{self.advancing_team_count_per_group}")
                 team_index: int = self.metadata.team_database.get_team_index(team)
-                model.Add(sum(self.indicators[team_index][0:self.advancing_team_count_per_group * 2]) == 1).only_enforce_if(
+                model.Add(
+                    sum(self.indicators[team_index][0:self.advancing_team_count_per_group * 2]) == 1).only_enforce_if(
                     top_n)
-                model.Add(sum(self.indicators[team_index][0:self.advancing_team_count_per_group * 2]) == 0).only_enforce_if(
+                model.Add(
+                    sum(self.indicators[team_index][0:self.advancing_team_count_per_group * 2]) == 0).only_enforce_if(
                     top_n.Not())
                 model.Add(sum(self.next_stage.indicators[team_index]) == 1).only_enforce_if(top_n)
                 model.Add(sum(self.next_stage.indicators[team_index]) == 0).only_enforce_if(top_n.Not())
@@ -205,4 +208,117 @@ class PairGroupStage(Stage, ABC):
             team_index = team_database.get_team_index(team)
             for p in range(self.advancing_team_count_per_group * 2, self.team_count):
                 model.Add(self.indicators[team_index][p] == tournament.indicators[team_index][p])
+        pass
+
+
+class SingleMatch(Stage, ABC):
+    def __init__(self, name: str, metadata: Metadata, teams: [Team] = None):
+        super().__init__(name, 2, metadata)
+        self.name = name
+        self.metadata = metadata
+        self.team_a = None
+        self.team_b = None
+
+        if teams is not None:
+            if len(teams) != 2:
+                raise ValueError(f"Only two teams (not {len(teams)}) expected")
+
+            self.team_a = teams[0]
+            self.team_b = teams[1]
+
+    def add_constraints(self):
+        if self.team_a is not None:
+            database: TeamDatabase = self.metadata.team_database
+            model: CpModel = self.metadata.model
+            model.Add(sum(self.indicators[database.get_team_index(self.team_a)]) == 1)
+            model.Add(sum(self.indicators[database.get_team_index(self.team_b)]) == 1)
+
+    def bind_winner(self, next_match: "SingleMatch"):
+        for team in self.metadata.team_database.get_all_teams():
+            model: CpModel = self.metadata.model
+            team_index: int = self.metadata.team_database.get_team_index(team)
+
+            is_in_this_match: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_is_in_this_match")
+            winner: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_winner")
+
+            model.Add(sum(self.indicators[team_index]) == 1).only_enforce_if(is_in_this_match)
+            model.Add(sum(self.indicators[team_index]) == 0).only_enforce_if(is_in_this_match.Not())
+
+            model.Add(self.indicators[team_index][0] == 1).only_enforce_if(winner)
+            model.Add(self.indicators[team_index][0] == 0).only_enforce_if(winner.Not())
+
+            is_in_this_match_and_advancing: [BooleanVar] = model.new_bool_var(
+                f"{self.name}_{team.name}_is_in_this_match_and_advancing")
+            model.AddBoolAnd([is_in_this_match, winner]).only_enforce_if(is_in_this_match_and_advancing)
+            model.AddBoolOr([is_in_this_match.Not(), winner.Not()]).only_enforce_if(
+                is_in_this_match_and_advancing.Not())
+
+            is_in_this_match_and_eliminated: [BooleanVar] = model.new_bool_var(
+                f"{self.name}_{team.name}_is_in_this_match_and_eliminated")
+            model.AddBoolAnd([is_in_this_match, winner.Not()]).only_enforce_if(is_in_this_match_and_eliminated)
+            model.AddBoolOr([is_in_this_match.Not(), winner]).only_enforce_if(
+                is_in_this_match_and_eliminated.Not())
+
+            model.Add(sum(next_match.indicators[team_index]) == 1).only_enforce_if(is_in_this_match_and_advancing)
+            model.Add(sum(next_match.indicators[team_index]) == 0).only_enforce_if(is_in_this_match_and_eliminated)
+
+    def bind_loser(self, next_match: "SingleMatch"):
+        for team in self.metadata.team_database.get_all_teams():
+            model: CpModel = self.metadata.model
+            team_index: int = self.metadata.team_database.get_team_index(team)
+
+            is_in_this_match: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_is_in_this_match")
+            loser: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_loser")
+
+            model.Add(sum(self.indicators[team_index]) == 1).only_enforce_if(is_in_this_match)
+            model.Add(sum(self.indicators[team_index]) == 0).only_enforce_if(is_in_this_match.Not())
+
+            model.Add(self.indicators[team_index][1] == 1).only_enforce_if(loser)
+            model.Add(self.indicators[team_index][1] == 0).only_enforce_if(loser.Not())
+
+            is_in_this_match_and_advancing: [BooleanVar] = model.new_bool_var(
+                f"{self.name}_{team.name}_is_in_this_match_and_advancing")
+            model.AddBoolAnd([is_in_this_match, loser]).only_enforce_if(is_in_this_match_and_advancing)
+            model.AddBoolOr([is_in_this_match.Not(), loser.Not()]).only_enforce_if(
+                is_in_this_match_and_advancing.Not())
+
+            is_in_this_match_and_eliminated: [BooleanVar] = model.new_bool_var(
+                f"{self.name}_{team.name}_is_in_this_match_and_eliminated")
+            model.AddBoolAnd([is_in_this_match, loser.Not()]).only_enforce_if(is_in_this_match_and_eliminated)
+            model.AddBoolOr([is_in_this_match.Not(), loser]).only_enforce_if(
+                is_in_this_match_and_eliminated.Not())
+
+            model.Add(sum(next_match.indicators[team_index]) == 1).only_enforce_if(is_in_this_match_and_advancing)
+            model.Add(sum(next_match.indicators[team_index]) == 0).only_enforce_if(is_in_this_match_and_eliminated)
+
+    def bind_qualification(self, first_stage: Stage):
+        for team in self.metadata.team_database.get_all_teams():
+            model: CpModel = self.metadata.model
+            team_index: int = self.metadata.team_database.get_team_index(team)
+
+            is_in_this_match: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_is_in_this_match")
+            winner: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_qualified")
+
+            model.Add(sum(self.indicators[team_index]) == 1).only_enforce_if(is_in_this_match)
+            model.Add(sum(self.indicators[team_index]) == 0).only_enforce_if(is_in_this_match.Not())
+
+            model.Add(self.indicators[team_index][0] == 1).only_enforce_if(winner)
+            model.Add(self.indicators[team_index][0] == 0).only_enforce_if(winner.Not())
+
+            is_in_this_match_and_advancing: [BooleanVar] = model.new_bool_var(
+                f"{self.name}_{team.name}_is_in_this_match_and_advancing")
+            model.AddBoolAnd([is_in_this_match, winner]).only_enforce_if(is_in_this_match_and_advancing)
+            model.AddBoolOr([is_in_this_match.Not(), winner.Not()]).only_enforce_if(
+                is_in_this_match_and_advancing.Not())
+
+            is_in_this_match_and_eliminated: [BooleanVar] = model.new_bool_var(
+                f"{self.name}_{team.name}_is_in_this_match_and_eliminated")
+            model.AddBoolAnd([is_in_this_match, winner.Not()]).only_enforce_if(is_in_this_match_and_eliminated)
+            model.AddBoolOr([is_in_this_match.Not(), winner]).only_enforce_if(
+                is_in_this_match_and_eliminated.Not())
+
+            model.Add(sum(first_stage.indicators[team_index]) == 1).only_enforce_if(is_in_this_match_and_advancing)
+            model.Add(sum(first_stage.indicators[team_index]) == 0).only_enforce_if(is_in_this_match_and_eliminated)
+
+    def bind_elimination(self, tournament: Tournament):
         pass

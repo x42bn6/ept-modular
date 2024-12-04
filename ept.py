@@ -49,6 +49,7 @@ class EptGroupStage(EptStage, ABC):
     def get_points(self) -> [IntVar]:
         pass
 
+
 class EptPairGroupStage(EptStage, ABC):
     def __init__(self,
                  stage: PairGroupStage,
@@ -64,7 +65,7 @@ class EptPairGroupStage(EptStage, ABC):
                                           for i in range(len(team_database.get_all_teams()))]
 
         points_extended = [self.points[floor(p / 2)] if floor(p / 2) < len(self.points) else 0 for p in
-                               range(self.stage.team_count)]
+                           range(self.stage.team_count)]
 
         for team in team_database.get_all_teams():
             team_index = team_database.get_team_index(team)
@@ -74,6 +75,7 @@ class EptPairGroupStage(EptStage, ABC):
 
     def get_points(self) -> [IntVar]:
         pass
+
 
 class EptTournament:
     def __init__(self,
