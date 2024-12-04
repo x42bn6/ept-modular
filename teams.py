@@ -31,3 +31,6 @@ class TeamDatabase:
 
     def get_all_teams(self) -> [Team]:
         return self.teams.values()
+
+    def get_team_by_index(self, index: int) -> Team:
+        return list(self.teams.values())[index]

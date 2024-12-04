@@ -4,7 +4,7 @@ from ortools.sat.python.cp_model import CpModel, IntVar, CpSolver
 
 from ept import EptGroupStage, EptTournament, EptPairGroupStage
 from metadata import Metadata
-from stage import Root, GroupStage, Tournament, PairGroupStage, SingleMatch
+from stage import Root, GroupStage, Tournament, PairGroupStage, SingleMatch, DoubleElimination_8U1Q
 from teams import Team, TeamDatabase
 
 
@@ -12,7 +12,8 @@ def main():
     # basic_two_group_stage()
     # pair_group_stage_into_single_group_stage()
     # single_match()
-    bracket_4u2l1d()
+    # bracket_4u2l1d()
+    dl_s24_na_qualifier()
 
 
 def basic_two_group_stage():
@@ -307,6 +308,69 @@ def bracket_4u2l1d():
                 print(f"Team {t.name} GS1 points: {solver.value(ept_group_stage.obtained_points[t_index])}")
                 print(f"Team {t.name} Tournament points: {solver.value(ept_tournament.obtained_points[t_index])}")
             print(max_objective_value)
+
+
+def dl_s24_na_qualifier():
+    teams: [Team] = [
+        Team("Nouns Esports"),
+        Team("difference team"),
+        Team("Fart Studios"),
+        Team("unknown"),
+        Team("Apex Genesis"),
+        Team("Mouses"),
+        Team("Shopify Rebellion"),
+        Team("GRIN Esports")
+    ]
+    team_database: TeamDatabase = TeamDatabase()
+    for team in teams:
+        team_database.add_team(team)
+
+    model: CpModel = CpModel()
+    metadata = Metadata(team_database, model)
+
+    qualifier: DoubleElimination_8U1Q = DoubleElimination_8U1Q("dl_s24_na", teams, metadata)
+    qualifier.ubqf_1.set_winner("Nouns Esports")
+    qualifier.ubqf_2.set_winner("Fart Studios")
+    qualifier.ubqf_3.set_winner("Apex Genesis")
+    qualifier.ubqf_4.set_winner("Shopify Rebellion")
+
+    qualifier.ubsf_1.set_winner("Nouns Esports")
+    qualifier.ubsf_2.set_winner("Shopify Rebellion")
+
+    qualifier.ubf.set_winner("Nouns Esports")
+
+    qualifier.lbr1_1.set_winner("unknown")
+    qualifier.lbr1_2.set_winner("GRIN Esports")
+
+    qualifier.lbr2_1.set_winner("Apex Genesis")
+    qualifier.lbr2_2.set_winner("GRIN Esports")
+
+    qualifier.lbsf.set_winner("Apex Genesis")
+
+    qualifier.lbf.set_winner("Shopify Rebellion")
+
+    qualifier.gf.set_winner("Nouns Esports")
+
+    solver = cp_model.CpSolver()
+    status = solver.Solve(model)
+    if status != cp_model.OPTIMAL:
+        print(f"Couldn't solve")
+        return
+
+    print_single_match(teams, qualifier.ubqf_1, solver, team_database)
+    print_single_match(teams, qualifier.ubqf_2, solver, team_database)
+    print_single_match(teams, qualifier.ubqf_3, solver, team_database)
+    print_single_match(teams, qualifier.ubqf_4, solver, team_database)
+    print_single_match(teams, qualifier.ubsf_1, solver, team_database)
+    print_single_match(teams, qualifier.ubsf_2, solver, team_database)
+    print_single_match(teams, qualifier.ubf, solver, team_database)
+    print_single_match(teams, qualifier.lbr1_1, solver, team_database)
+    print_single_match(teams, qualifier.lbr1_2, solver, team_database)
+    print_single_match(teams, qualifier.lbr2_1, solver, team_database)
+    print_single_match(teams, qualifier.lbr2_2, solver, team_database)
+    print_single_match(teams, qualifier.lbsf, solver, team_database)
+    print_single_match(teams, qualifier.lbf, solver, team_database)
+    print_single_match(teams, qualifier.gf, solver, team_database)
 
 
 def add_optimisation_constraints(model, team, team_database, teams, total_points, cutoff: int):

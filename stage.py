@@ -17,7 +17,9 @@ class Tournament:
         self.metadata = metadata
 
         self.indicators: [[BooleanVar]] = [
-            [self.metadata.model.new_bool_var(f'x_{self.name}_{i}_{j}') for j in range(self.starting_stage.team_count)]
+            [self.metadata.model.new_bool_var(
+                f'x_{self.name}_{self.metadata.team_database.get_team_by_index(i).name}_{j}') for j in
+             range(self.starting_stage.team_count)]
             for i in range(len(self.metadata.team_database.get_all_teams()))]
 
     def build(self):
@@ -44,7 +46,9 @@ class Stage(ABC):
         self.metadata: Metadata = metadata
 
         self.indicators: [[BooleanVar]] = [
-            [self.metadata.model.new_bool_var(f'x_{self.name}_{i}_{j}') for j in range(self.team_count)]
+            [self.metadata.model.new_bool_var(
+                f'x_{self.name}_{self.metadata.team_database.get_team_by_index(i).name}_{j}') for j in
+             range(self.team_count)]
             for i in range(len(self.metadata.team_database.get_all_teams()))]
         self.next_stage = None
 
@@ -260,7 +264,6 @@ class SingleMatch(Stage, ABC):
                 is_in_this_match_and_eliminated.Not())
 
             model.Add(sum(next_match.indicators[team_index]) == 1).only_enforce_if(is_in_this_match_and_advancing)
-            model.Add(sum(next_match.indicators[team_index]) == 0).only_enforce_if(is_in_this_match_and_eliminated)
 
     def bind_loser(self, next_match: "SingleMatch"):
         for team in self.metadata.team_database.get_all_teams():
@@ -289,7 +292,6 @@ class SingleMatch(Stage, ABC):
                 is_in_this_match_and_eliminated.Not())
 
             model.Add(sum(next_match.indicators[team_index]) == 1).only_enforce_if(is_in_this_match_and_advancing)
-            model.Add(sum(next_match.indicators[team_index]) == 0).only_enforce_if(is_in_this_match_and_eliminated)
 
     def bind_qualification(self, first_stage: Stage):
         for team in self.metadata.team_database.get_all_teams():
@@ -322,3 +324,83 @@ class SingleMatch(Stage, ABC):
 
     def bind_elimination(self, tournament: Tournament):
         pass
+
+    def set_winner(self, team_name: str):
+        metadata = self.metadata
+        metadata.model.Add(self.indicators[metadata.team_database.get_team_index_by_team_name(team_name)][0] == 1)
+
+
+# noinspection PyPep8Naming
+class DoubleElimination_8U1Q():
+    def __init__(self, name: str, teams: [Team], metadata: Metadata):
+        # Bracket
+        self.ubqf_1: SingleMatch = SingleMatch(f"{name}_ubqf_1", metadata, teams[0:2])
+        self.ubqf_2: SingleMatch = SingleMatch(f"{name}_ubqf_2", metadata, teams[2:4])
+        self.ubqf_3: SingleMatch = SingleMatch(f"{name}_ubqf_3", metadata, teams[4:6])
+        self.ubqf_4: SingleMatch = SingleMatch(f"{name}_ubqf_4", metadata, teams[6:8])
+
+        self.ubsf_1: SingleMatch = SingleMatch(f"{name}_ubsf_1", metadata)
+        self.ubsf_2: SingleMatch = SingleMatch(f"{name}_ubsf_2", metadata)
+
+        self.ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata)
+
+        self.lbr1_1: SingleMatch = SingleMatch(f"{name}_lbr1_1", metadata)
+        self.lbr1_2: SingleMatch = SingleMatch(f"{name}_lbr1_2", metadata)
+
+        self.lbr2_1: SingleMatch = SingleMatch(f"{name}_lbr2_1", metadata)
+        self.lbr2_2: SingleMatch = SingleMatch(f"{name}_lbr2_2", metadata)
+
+        self.lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata)
+
+        self.lbf: SingleMatch = SingleMatch(f"{name}_lbf", metadata)
+
+        self.gf: SingleMatch = SingleMatch(f"{name}_gf", metadata)
+
+        self.ubqf_1.bind_winner(self.ubsf_1)
+        self.ubqf_1.bind_loser(self.lbr1_1)
+        self.ubqf_2.bind_winner(self.ubsf_1)
+        self.ubqf_2.bind_loser(self.lbr1_1)
+        self.ubqf_3.bind_winner(self.ubsf_2)
+        self.ubqf_3.bind_loser(self.lbr1_2)
+        self.ubqf_4.bind_winner(self.ubsf_2)
+        self.ubqf_4.bind_loser(self.lbr1_2)
+
+        self.ubsf_1.bind_winner(self.ubf)
+        self.ubsf_1.bind_loser(self.lbr2_2)
+        self.ubsf_2.bind_winner(self.ubf)
+        self.ubsf_2.bind_loser(self.lbr2_1)
+
+        self.ubf.bind_winner(self.gf)
+        self.ubf.bind_loser(self.lbf)
+
+        self.lbr1_1.bind_winner(self.lbr2_1)
+        self.lbr1_2.bind_winner(self.lbr2_2)
+
+        self.lbr2_1.bind_winner(self.lbsf)
+        self.lbr2_2.bind_winner(self.lbsf)
+
+        self.lbsf.bind_winner(self.lbf)
+
+        self.lbf.bind_winner(self.gf)
+
+        self.ubqf_1.build()
+        self.ubqf_2.build()
+        self.ubqf_3.build()
+        self.ubqf_4.build()
+
+        self.ubsf_1.build()
+        self.ubsf_2.build()
+
+        self.ubf.build()
+
+        self.lbr1_1.build()
+        self.lbr1_2.build()
+
+        self.lbr2_1.build()
+        self.lbr2_2.build()
+
+        self.lbsf.build()
+
+        self.lbf.build()
+
+        self.gf.build()
