@@ -4,7 +4,7 @@ from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
 from ept import EptGroupStage, EptPairGroupStage, EptTournament
 from metadata import Metadata
-from stage import GroupStage, PairGroupStage, DoubleElimination_2U2L1D, Tournament, SingleMatch
+from stage import GroupStage, PairGroupStage, Tournament, SingleMatch, DoubleElimination_2U2L1D
 from teams import Team, Region, TeamDatabase
 
 
@@ -38,11 +38,8 @@ def main():
 
         dl_s24_gs1: PairGroupStage = PairGroupStage("dl_s24_gs1", 8, 4, metadata)
         dl_s24_gs2: GroupStage = GroupStage("dl_s24_gs2", 8, 4, metadata)
-        dl_s24_playoff_temp: GroupStage = GroupStage("dl_s24_playoff_temp", 4, 0, metadata)
-        dl_s24_playoff: DoubleElimination_2U2L1D = DoubleElimination_2U2L1D("dl_s24_playoff",
-                                                                            team_database.get_teams_by_names(
-                                                                                "BetBoom Team", "Team Spirit",
-                                                                                "PARIVISION", "Team Falcons"), metadata)
+        #dl_s24_playoff_temp: GroupStage = GroupStage("dl_s24_playoff_temp", 4, 0, metadata)
+        dl_s24_playoff: DoubleElimination_2U2L1D = DoubleElimination_2U2L1D("dl_s24_playoff", team_database.get_teams_by_names("BetBoom Team", "Team Spirit","PARIVISION", "Team Falcons"), metadata)
         dl_s24: Tournament = Tournament("dl_s24", dl_s24_gs1, metadata)
 
         dl_s24_gs1.group_a = team_database.get_teams_by_names("PARIVISION", "Team Liquid", "Xtreme Gaming",
@@ -53,12 +50,13 @@ def main():
                                                               "Palianytsia")
 
         dl_s24_gs1.bind_forward(dl_s24_gs2)
-        dl_s24_gs2.bind_forward(dl_s24_playoff_temp)
+        #dl_s24_gs2.bind_forward(dl_s24_playoff_temp)
+        dl_s24_gs2.bind_forward(dl_s24_playoff)
 
         dl_s24_gs1.build()
         dl_s24_gs2.build()
-        dl_s24_playoff_temp.build()
-        #dl_s24_playoff.build()
+        #dl_s24_playoff_temp.build()
+        dl_s24_playoff.build()
         dl_s24.build()
 
         ept_dl_s24_gs1 = EptPairGroupStage(dl_s24_gs1, [300, 150, 75])
@@ -91,10 +89,10 @@ def main():
 
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
-            print_single_match(teams, dl_s24_playoff.ubf, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.lbsf, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.lbf, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.gf, solver, team_database)
+            # print_single_match(teams, dl_s24_playoff.ubf, solver, team_database)
+            # print_single_match(teams, dl_s24_playoff.lbsf, solver, team_database)
+            # print_single_match(teams, dl_s24_playoff.lbf, solver, team_database)
+            # print_single_match(teams, dl_s24_playoff.gf, solver, team_database)
 
             for t in teams:
                 t_index = team_database.get_team_index(t)

@@ -25,10 +25,18 @@ class Tournament:
     def build(self):
         # One placement per team
         model: CpModel = self.metadata.model
+
+        # One team per place
         # This will not work if, say, two teams are invited to a later stage
+        team_database = self.metadata.team_database
+        all_teams = team_database.get_all_teams()
         for placement in range(self.starting_stage.team_count):
             model.Add(sum(self.indicators[i][placement] for i in range(
-                len(self.metadata.team_database.get_all_teams()))) == 1)
+                len(all_teams))) == 1)
+
+        # One place per team
+        for team in all_teams:
+            model.Add(sum(self.indicators[team_database.get_team_index(team)]) == 1)
 
         next_stage: Stage = self.starting_stage
         while next_stage is not None:
