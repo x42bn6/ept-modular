@@ -6,6 +6,7 @@ from ept import EptGroupStage, EptPairGroupStage, EptTournament
 from metadata import Metadata
 from stage import GroupStage, PairGroupStage, Tournament, SingleMatch, DoubleElimination_2U2L1D
 from teams import Team, Region, TeamDatabase
+from utilities import print_indicators
 
 
 def main():
@@ -103,6 +104,10 @@ def main():
                     f"Team {t.name} DreamLeague Season 24 GS2 points: {solver.value(ept_dl_s24_gs2.obtained_points[t_index])}")
                 print(
                     f"Team {t.name} DreamLeague Season 24 overall points: {solver.value(ept_dl_s24.obtained_points[t_index])}")
+                print_indicators(dl_s24_gs1.indicators, solver, team_database)
+                print_indicators(dl_s24_gs2.indicators, solver, team_database)
+                print_indicators(dl_s24_playoff.indicators, solver, team_database)
+                print_indicators(dl_s24.indicators, solver, team_database)
             print(max_objective_value)
 
 
