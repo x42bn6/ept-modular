@@ -331,8 +331,10 @@ class SingleMatch(Stage, ABC):
 
 
 # noinspection PyPep8Naming
-class DoubleElimination_8U1Q():
+class DoubleElimination_8U1Q(Stage, ABC):
     def __init__(self, name: str, teams: [Team], metadata: Metadata):
+        super().__init__(name, 8, metadata)
+
         # Bracket
         self.ubqf_1: SingleMatch = SingleMatch(f"{name}_ubqf_1", metadata, teams[0:2])
         self.ubqf_2: SingleMatch = SingleMatch(f"{name}_ubqf_2", metadata, teams[2:4])
@@ -404,3 +406,35 @@ class DoubleElimination_8U1Q():
         self.lbf.build()
 
         self.gf.build()
+
+# noinspection PyPep8Naming
+class DoubleElimination_2U2L1D(Stage, ABC):
+    def __init__(self, name: str, teams: [Team], metadata: Metadata):
+        super().__init__(name, 4, metadata)
+
+        # Bracket
+        self.ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata, teams[0:2])
+        self.lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata, teams[2:4])
+        self.lbf: SingleMatch = SingleMatch(f"{name}_lbf", metadata)
+        self.gf: SingleMatch = SingleMatch(f"{name}_gf", metadata)
+
+        self.ubf.bind_winner(self.gf)
+        self.ubf.bind_loser(self.lbf)
+
+        self.lbsf.bind_winner(self.lbf)
+
+        self.lbf.bind_winner(self.gf)
+
+    def add_constraints(self):
+        pass
+
+    def bind_elimination(self, tournament: Tournament):
+        model: CpModel = self.metadata.model
+        team_database: TeamDatabase = self.metadata.team_database
+
+        for team in team_database.get_all_teams():
+            team_index: int = team_database.get_team_index(team)
+            model.Add(self.gf.indicators[team_index][0] == tournament.indicators[team_index][0])
+            model.Add(self.gf.indicators[team_index][1] == tournament.indicators[team_index][1])
+            model.Add(self.lbf.indicators[team_index][1] == tournament.indicators[team_index][2])
+            model.Add(self.lbsf.indicators[team_index][1] == tournament.indicators[team_index][3])

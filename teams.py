@@ -1,7 +1,21 @@
+from enum import Enum
+
+
+class Region(Enum):
+    NA = 1,
+    SA = 2,
+    WEU = 3,
+    EEU = 4,
+    MESWA = 5,
+    CN = 6,
+    SEA = 7,
+    GLOBAL = 999
+
 class Team:
-    def __init__(self, name: str = None):
+    def __init__(self, name: str = None, region: Region = Region.GLOBAL):
         self.name = name
         self.ept_relevant = False
+        self.region = region
 
     def make_relevant(self):
         self.ept_relevant = True
