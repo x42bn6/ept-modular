@@ -80,7 +80,7 @@ class Stage(ABC):
 
         for team_constraint in self.team_constraints:
             model.Add(sum(self.indicators[self.metadata.team_database.get_team_index(team_constraint.team)][i]
-                          for i in range(team_constraint.upper, team_constraint.lower + 1)) == 1)
+                          for i in range(team_constraint.lower, team_constraint.upper + 1)) == 1)
 
         model.Add(sum(self.indicators[self.metadata.team_database.get_team_index(team)][i]
                       for team in self.team_guaranteed_playoff_lb_or_eliminated for i in [0, 1]) <= 1)
@@ -103,7 +103,7 @@ class Stage(ABC):
 
     def team_can_finish_between(self, team_name: str, best: int, worst: int):
         team: Team = self.metadata.team_database.get_team_by_name(team_name)
-        self.team_constraints.append(TeamConstraint(team, worst - 1, best - 1))
+        self.team_constraints.append(TeamConstraint(team, best - 1, worst - 1))
 
     def guaranteed_playoff_lb_or_eliminated(self, *team_names: str):
         self.team_guaranteed_playoff_lb_or_eliminated = self.metadata.team_database.get_teams_by_names(*team_names)
