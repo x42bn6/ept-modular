@@ -1,10 +1,17 @@
 from abc import ABC, abstractmethod
 
 from ortools.constraint_solver.pywrapcp import BooleanVar
-from ortools.sat.python.cp_model import CpModel
+from ortools.sat.python.cp_model import CpModel, IntVar
 
 from metadata import Metadata
 from teams import Team, TeamDatabase
+
+
+class TeamConstraint:
+    def __init__(self, team: Team, lower: int, upper: int):
+        self.team = team
+        self.lower = lower
+        self.upper = upper
 
 
 class Tournament:
@@ -19,7 +26,7 @@ class Tournament:
         self.indicators: [[BooleanVar]] = [
             [self.metadata.model.new_bool_var(
                 f'x_{self.name}_{self.metadata.team_database.get_team_by_index(i).name}_{j}') for j in
-             range(self.starting_stage.team_count)]
+                range(self.starting_stage.team_count)]
             for i in range(len(self.metadata.team_database.get_all_teams()))]
 
     def build(self):
@@ -56,9 +63,12 @@ class Stage(ABC):
         self.indicators: [[BooleanVar]] = [
             [self.metadata.model.new_bool_var(
                 f'x_{self.name}_{self.metadata.team_database.get_team_by_index(i).name}_{j}') for j in
-             range(self.team_count)]
+                range(self.team_count)]
             for i in range(len(self.metadata.team_database.get_all_teams()))]
+
         self.next_stage = None
+        self.team_constraints: [TeamConstraint] = []
+        self.team_guaranteed_playoff_lb_or_eliminated: [Team] = []
 
     def build(self):
         # One placement per team
@@ -67,6 +77,13 @@ class Stage(ABC):
             model.Add(
                 sum(self.indicators[i][placement] for i in
                     range(len(self.metadata.team_database.get_all_teams()))) == 1)
+
+        for team_constraint in self.team_constraints:
+            model.Add(sum(self.indicators[self.metadata.team_database.get_team_index(team_constraint.team)][i]
+                          for i in range(team_constraint.upper, team_constraint.lower + 1)) == 1)
+
+        model.Add(sum(self.indicators[self.metadata.team_database.get_team_index(team)][i]
+                      for team in self.team_guaranteed_playoff_lb_or_eliminated for i in [0, 1]) <= 1)
 
         self.add_constraints()
 
@@ -83,6 +100,13 @@ class Stage(ABC):
     def bind_elimination(self,
                          tournament: Tournament):
         pass
+
+    def team_can_finish_between(self, team_name: str, best: int, worst: int):
+        team: Team = self.metadata.team_database.get_team_by_name(team_name)
+        self.team_constraints.append(TeamConstraint(team, worst - 1, best - 1))
+
+    def guaranteed_playoff_lb_or_eliminated(self, *team_names: str):
+        self.team_guaranteed_playoff_lb_or_eliminated = self.metadata.team_database.get_teams_by_names(*team_names)
 
 
 class Root(Stage, ABC):
@@ -127,7 +151,7 @@ class GroupStage(Stage, ABC):
         # They will place *somewhere* in the next Stage
         if self.next_stage is not None:
             for team in self.metadata.team_database.get_all_teams():
-                top_n: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_top_{self.advancing_team_count}")
+                top_n: IntVar = model.new_bool_var(f"{self.name}_{team.name}_top_{self.advancing_team_count}")
                 team_index: int = self.metadata.team_database.get_team_index(team)
                 model.Add(sum(self.indicators[team_index][0:self.advancing_team_count]) == 1).only_enforce_if(top_n)
                 model.Add(sum(self.indicators[team_index][0:self.advancing_team_count]) == 0).only_enforce_if(
@@ -307,7 +331,7 @@ class SingleMatch(Stage, ABC):
             team_index: int = self.metadata.team_database.get_team_index(team)
 
             is_in_this_match: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_is_in_this_match")
-            winner: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_qualified")
+            winner: [BooleanVar] = model.new_bool_var(f"{self.name}_{team.name}_winner")
 
             model.Add(sum(self.indicators[team_index]) == 1).only_enforce_if(is_in_this_match)
             model.Add(sum(self.indicators[team_index]) == 0).only_enforce_if(is_in_this_match.Not())
@@ -415,14 +439,15 @@ class DoubleElimination_8U1Q(Stage, ABC):
 
         self.gf.build()
 
+
 # noinspection PyPep8Naming
 class DoubleElimination_2U2L1D(Stage, ABC):
-    def __init__(self, name: str, teams: [Team], metadata: Metadata):
+    def __init__(self, name: str, metadata: Metadata):
         super().__init__(name, 4, metadata)
 
         # Bracket
-        self.ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata, teams[0:2])
-        self.lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata, teams[2:4])
+        self.ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata)
+        self.lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata)
         self.lbf: SingleMatch = SingleMatch(f"{name}_lbf", metadata)
         self.gf: SingleMatch = SingleMatch(f"{name}_gf", metadata)
 
@@ -433,8 +458,23 @@ class DoubleElimination_2U2L1D(Stage, ABC):
 
         self.lbf.bind_winner(self.gf)
 
+        self.ubf.build()
+        self.lbsf.build()
+        self.lbf.build()
+        self.gf.build()
+
     def add_constraints(self):
         pass
+
+    def bind_backward(self, previous_stage: "Stage"):
+        team_database = self.metadata.team_database
+        model = self.metadata.model
+
+        for team in team_database.get_all_teams():
+            team_index: int = team_database.get_team_index(team)
+
+            model.Add(sum(previous_stage.indicators[team_index][0:2]) == sum(self.ubf.indicators[team_index][0:2]))
+            model.Add(sum(previous_stage.indicators[team_index][2:4]) == sum(self.lbsf.indicators[team_index][0:2]))
 
     def bind_elimination(self, tournament: Tournament):
         model: CpModel = self.metadata.model

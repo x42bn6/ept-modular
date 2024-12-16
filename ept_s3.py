@@ -39,8 +39,7 @@ def main():
 
         dl_s24_gs1: PairGroupStage = PairGroupStage("dl_s24_gs1", 8, 4, metadata)
         dl_s24_gs2: GroupStage = GroupStage("dl_s24_gs2", 8, 4, metadata)
-        #dl_s24_playoff_temp: GroupStage = GroupStage("dl_s24_playoff_temp", 4, 0, metadata)
-        dl_s24_playoff: DoubleElimination_2U2L1D = DoubleElimination_2U2L1D("dl_s24_playoff", team_database.get_teams_by_names("BetBoom Team", "Team Spirit","PARIVISION", "Team Falcons"), metadata)
+        dl_s24_playoff: DoubleElimination_2U2L1D = DoubleElimination_2U2L1D("dl_s24_playoff", metadata)
         dl_s24: Tournament = Tournament("dl_s24", dl_s24_gs1, metadata)
 
         dl_s24_gs1.group_a = team_database.get_teams_by_names("PARIVISION", "Team Liquid", "Xtreme Gaming",
@@ -51,12 +50,11 @@ def main():
                                                               "Palianytsia")
 
         dl_s24_gs1.bind_forward(dl_s24_gs2)
-        #dl_s24_gs2.bind_forward(dl_s24_playoff_temp)
+        dl_s24_playoff.bind_backward(dl_s24_gs2)
         dl_s24_gs2.bind_forward(dl_s24_playoff)
 
         dl_s24_gs1.build()
         dl_s24_gs2.build()
-        #dl_s24_playoff_temp.build()
         dl_s24_playoff.build()
         dl_s24.build()
 
@@ -88,12 +86,25 @@ def main():
             print(f"Team {team.name} probably cannot finish in top 8")
             continue
 
+        print("GS1 indicators")
+        print_indicators(dl_s24_gs1.indicators, solver, team_database)
+
+        print("GS2 indicators")
+        print_indicators(dl_s24_gs2.indicators, solver, team_database)
+
+        print("Playoff indicators")
+        print_indicators(dl_s24_playoff.indicators, solver, team_database)
+        print_single_match(teams, dl_s24_playoff.ubf, solver, team_database)
+        print_single_match(teams, dl_s24_playoff.lbsf, solver, team_database)
+        print_single_match(teams, dl_s24_playoff.lbf, solver, team_database)
+        print_single_match(teams, dl_s24_playoff.gf, solver, team_database)
+        print()
+
+        print("Tournament indicators")
+        print_indicators(dl_s24.indicators, solver, team_database)
+
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
-            # print_single_match(teams, dl_s24_playoff.ubf, solver, team_database)
-            # print_single_match(teams, dl_s24_playoff.lbsf, solver, team_database)
-            # print_single_match(teams, dl_s24_playoff.lbf, solver, team_database)
-            # print_single_match(teams, dl_s24_playoff.gf, solver, team_database)
 
             for t in teams:
                 t_index = team_database.get_team_index(t)
@@ -104,11 +115,8 @@ def main():
                     f"Team {t.name} DreamLeague Season 24 GS2 points: {solver.value(ept_dl_s24_gs2.obtained_points[t_index])}")
                 print(
                     f"Team {t.name} DreamLeague Season 24 overall points: {solver.value(ept_dl_s24.obtained_points[t_index])}")
-                print_indicators(dl_s24_gs1.indicators, solver, team_database)
-                print_indicators(dl_s24_gs2.indicators, solver, team_database)
-                print_indicators(dl_s24_playoff.indicators, solver, team_database)
-                print_indicators(dl_s24.indicators, solver, team_database)
-            print(max_objective_value)
+
+        print(f"Maximum objective value: {max_objective_value}")
 
 
 def add_optimisation_constraints(model, team, team_database, teams, total_points, cutoff: int):
@@ -131,8 +139,8 @@ def add_optimisation_constraints(model, team, team_database, teams, total_points
 
 
 def print_single_match(teams: [Team], match: SingleMatch, solver: CpSolver, team_database: TeamDatabase):
-    winner: Team = None
-    loser: Team = None
+    winner: Team | None = None
+    loser: Team | None = None
     for team in teams:
         team_index: int = team_database.get_team_index(team)
         if solver.values(match.indicators[team_index]).iloc[0] == 1 and \
@@ -146,7 +154,9 @@ def print_single_match(teams: [Team], match: SingleMatch, solver: CpSolver, team
             continue
 
     if winner is None or loser is None:
-        print(f"{match.name} has no winner {winner} or loser {loser}")
+        winner_name = winner.name if winner is not None else "None"
+        loser_name = loser.name if loser is not None else "None"
+        print(f"{match.name} has no winner {winner_name} or loser {loser_name}")
     else:
         print(f"{match.name}: {winner.name} beat {loser.name}")
 
