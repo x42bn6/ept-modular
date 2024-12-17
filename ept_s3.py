@@ -2,6 +2,7 @@ from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
+from display import Display
 from ept import EptGroupStage, EptPairGroupStage, EptTournament
 from metadata import Metadata
 from stage import GroupStage, PairGroupStage, Tournament, SingleMatch, DoubleElimination_2U2L1D
@@ -56,8 +57,11 @@ def main():
 
         ept_dl_s24_gs1 = EptPairGroupStage(dl_s24_gs1, [300, 150, 75])
         ept_dl_s24_gs2 = EptGroupStage(dl_s24_gs2, [300])
+        ept_dl_s24_gs1.bind_next_ept_stage(ept_dl_s24_gs2)
         ept_dl_s24 = EptTournament(dl_s24,
-                                   [3000, 2500, 2000, 1600, 1200, 1000, 600, 400, 250, 250, 125, 125, 70, 70, 30, 30])
+                                   ept_dl_s24_gs1,
+                                   [3000, 2500, 2000, 1600, 1200, 1000, 600, 400, 250, 250, 125, 125, 70, 70, 30, 30],
+                                   metadata)
 
         dl_s24_gs1.team_can_finish_between("PARIVISION", 1, 2)
         dl_s24_gs1.team_can_finish_between("Team Liquid", 3, 4)
@@ -122,22 +126,8 @@ def main():
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
 
-            print("GS1 indicators")
-            print_indicators(dl_s24_gs1.indicators, solver, team_database)
-
-            print("GS2 indicators")
-            print_indicators(dl_s24_gs2.indicators, solver, team_database)
-
-            print("Playoff indicators")
-            print_indicators(dl_s24_playoff.indicators, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.ubf, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.lbsf, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.lbf, solver, team_database)
-            print_single_match(teams, dl_s24_playoff.gf, solver, team_database)
-            print()
-
-            print("Tournament indicators")
-            print_indicators(dl_s24.indicators, solver, team_database)
+            display: Display = Display([ept_dl_s24], metadata)
+            display.print(solver)
 
             for t in teams:
                 t_index = team_database.get_team_index(t)
