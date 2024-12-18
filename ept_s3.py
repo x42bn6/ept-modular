@@ -115,7 +115,8 @@ def main():
             if (t_index := team_database.get_team_index(t)) is not None
         ]
 
-        add_optimisation_constraints(model, team, team_database, teams, total_points, 8)
+        cutoff = 8
+        add_optimisation_constraints(model, team, team_database, teams, total_points, cutoff)
 
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
@@ -127,7 +128,7 @@ def main():
             max_objective_value = solver.objective_value
 
             display: Display = Display([ept_dl_s24], metadata)
-            display.print(solver)
+            display.print(team, cutoff, max_objective_value, solver)
 
             for t in teams:
                 t_index = team_database.get_team_index(t)

@@ -50,6 +50,14 @@ class Tournament:
             next_stage.bind_elimination(self)
             next_stage = next_stage.next_stage
 
+    def stage_count(self) -> int:
+        stages: int = 0
+        next_stage: Stage = self.starting_stage
+        while next_stage is not None:
+            stages += 1
+            next_stage = next_stage.next_stage
+        return stages
+
 
 class Stage(ABC):
     def __init__(self,
