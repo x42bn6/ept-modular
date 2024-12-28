@@ -111,11 +111,19 @@ class EptTournament(HasDisplayPhase, ABC):
                  tournament: Tournament,
                  first_ept_stage: EptStage,
                  points: [int],
+                 liquipedia_display_name: str,
+                 liquipedia_link: str,
+                 liquipedia_league_icon: str,
+                 liquipedia_edate: str,
                  metadata: Metadata):
         super().__init__()
         self.tournament = tournament
         self.first_ept_stage = first_ept_stage
         self.points = points
+        self.liquipedia_display_name = liquipedia_display_name
+        self.liquipedia_link = liquipedia_link
+        self.liquipedia_league_icon = liquipedia_league_icon
+        self.liquipedia_edate = liquipedia_edate
         self.metadata = metadata
         self.obtained_points: [IntVar] = []
         self.build()

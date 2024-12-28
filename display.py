@@ -3,7 +3,7 @@ from typing import Dict
 import pyperclip
 from ortools.sat.python.cp_model import CpSolver
 
-from display_phases import HasDisplayPhase, DisplayPhase
+from display_phases import HasDisplayPhase, DisplayPhase, Placement
 from ept import EptTournament
 from metadata import Metadata
 from stage import Tournament
@@ -34,7 +34,7 @@ class Display:
             all_display_phases.extend(tournament_or_transfer_window.to_display_phases(solver))
             if isinstance(tournament_or_transfer_window, EptTournament):
                 ept_tournament: EptTournament = tournament_or_transfer_window
-                output += f"! colspan=\"{ept_tournament.tournament.stage_count()}\" style=\"min-width:50px\" | icon\n"
+                output += f"! colspan=\"{ept_tournament.tournament.stage_count()}\" style=\"min-width:50px\" | {{{{LeagueIconSmall{ept_tournament.liquipedia_league_icon}|name={ept_tournament.liquipedia_display_name}|link={ept_tournament.liquipedia_link}|edate={ept_tournament.liquipedia_edate}}}}}\n"
             else:
                 output += "! rowspan=\"2\" | <span title=\"Transfer window\">&hArr;</span>\n"
 
@@ -57,7 +57,13 @@ class Display:
 
         sorted_total_points: Dict[Team, int] = dict(sorted(total_points.items(), key=lambda item: item[1], reverse=True))
 
-        def formatted_points(place: int, pts: int | None) -> str:
+        def formatted_points(p: Placement) -> str:
+            return formatted_points_inner(p.place, p.points)
+
+        def formatted_points_inner(place: int | None, pts: int | None) -> str:
+            if pts is None or pts == 0:
+                return f"{pts}"
+
             if place is None:
                 return f"{pts}"
 
@@ -71,10 +77,11 @@ class Display:
             output += "|-\n"
             output += f"| {(i + 1)}\n"
             output += f"|style=\"text-align: left;\"| {{{{Team|{team.name}}}}}\n"
-            output += f"| {total_points}\n"
+            output += f"| {formatted_points_inner(i + 1, total_points)}\n"
             team_index: int = self.metadata.team_database.get_team_index(team)
             for display_phase in all_display_phases:
-                output += f"| {display_phase.get_placement_for_team(team).points}\n"
+                placement_for_team: Placement = display_phase.get_placement_for_team(team)
+                output += f"| {formatted_points(placement_for_team)}\n"
 
             output += "|-\n"
             i += 1

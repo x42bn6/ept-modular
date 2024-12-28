@@ -61,6 +61,10 @@ def main():
         ept_dl_s24 = EptTournament(dl_s24,
                                    ept_dl_s24_gs1,
                                    [3000, 2500, 2000, 1600, 1200, 1000, 600, 400, 250, 250, 125, 125, 70, 70, 30, 30],
+                                   "DreamLeague Season 24",
+                                   "DreamLeague/Season 24",
+                                   "/dreamleague",
+                                   "2024-11-10",
                                    metadata)
 
         dl_s24_gs1.team_can_finish_between("PARIVISION", 1, 2)
