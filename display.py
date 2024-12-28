@@ -77,7 +77,7 @@ class Display:
             output += "|-\n"
             output += f"| {(i + 1)}\n"
             output += f"|style=\"text-align: left;\"| {{{{Team|{team.name}}}}}\n"
-            output += f"| {formatted_points_inner(i + 1, total_points)}\n"
+            output += f"| {formatted_points_inner(i, total_points)}\n"
             team_index: int = self.metadata.team_database.get_team_index(team)
             for display_phase in all_display_phases:
                 placement_for_team: Placement = display_phase.get_placement_for_team(team)
