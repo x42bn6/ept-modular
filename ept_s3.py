@@ -77,6 +77,9 @@ def main():
 
         ept_dl_s25, ept_dl_s25_gs1, ept_dl_s25_gs2 = DreamLeagueSeason25(metadata).build()
 
+        dl_s25_to_esl_one_ral_2025: TransferWindow = TransferWindow("dl_s25_to_esl_one_ral_2025", team_database)
+        dl_s25_to_esl_one_ral_2025.add_change("Palianytsia", -21)
+
         print(f"Now optimising for {team.name}")
 
         # Optimise
@@ -90,7 +93,8 @@ def main():
             esl_one_bkk_2024_to_dl_s25.get_change(t_index) +
             ept_dl_s25_gs1.obtained_points[t_index] +
             ept_dl_s25_gs2.obtained_points[t_index] +
-            ept_dl_s25.obtained_points[t_index]
+            ept_dl_s25.obtained_points[t_index] +
+            dl_s25_to_esl_one_ral_2025.get_change(t_index)
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]
@@ -112,7 +116,8 @@ def main():
                 dl_s24_to_esl_one_bkk_2024,
                 ept_esl_one_bkk_2024,
                 esl_one_bkk_2024_to_dl_s25,
-                ept_dl_s25
+                ept_dl_s25,
+                dl_s25_to_esl_one_ral_2025
             ], metadata)
             display.print(team, cutoff, max_objective_value, solver)
 
@@ -129,6 +134,12 @@ def main():
                     f"Team {t.name} ESL One Bangkok 2024 GS points: {solver.value(ept_esl_one_bkk_2024_gs.obtained_points[t_index])}")
                 print(
                     f"Team {t.name} ESL One Bangkok 2024 overall points: {solver.value(ept_esl_one_bkk_2024.obtained_points[t_index])}")
+                print(
+                    f"Team {t.name} DreamLeague Season 25 GS1 points: {solver.value(ept_dl_s25_gs1.obtained_points[t_index])}")
+                print(
+                    f"Team {t.name} DreamLeague Season 25 GS2 points: {solver.value(ept_dl_s25_gs2.obtained_points[t_index])}")
+                print(
+                    f"Team {t.name} DreamLeague Season 25 overall points: {solver.value(ept_dl_s25.obtained_points[t_index])}")
 
         print(f"Maximum objective value: {max_objective_value}")
 
