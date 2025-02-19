@@ -102,9 +102,9 @@ class Display:
         if stage_count == 1:
             output += "! {{Abbr|Fin|Final position}}\n"
         elif stage_count == 2:
-            output += "! {{Abbr|Fin|Final position}} || GS\n"
+            output += "! GS || {{Abbr|Fin|Final position}}\n"
         elif stage_count == 3:
-            output += "! {{Abbr|Fin|Final position}} || GS1 || GS2\n"
+            output += "! GS1 || GS2 || {{Abbr|Fin|Final position}}\n"
         else:
             raise Exception(
                 f"Unknown number of points scoring phases {stage_count}")
