@@ -43,7 +43,7 @@ class Tournament:
 
         # One place per team
         for team in all_teams:
-            model.Add(sum(self.indicators[team_database.get_team_index(team)]) == 1)
+            model.Add(sum(self.indicators[team_database.get_team_index(team)]) <= 1)
 
         next_stage: Stage = self.starting_stage
         while next_stage is not None:
@@ -494,3 +494,97 @@ class DoubleElimination_2U2L1D(Stage, ABC):
             model.Add(self.gf.indicators[team_index][1] == tournament.indicators[team_index][1])
             model.Add(self.lbf.indicators[team_index][1] == tournament.indicators[team_index][2])
             model.Add(self.lbsf.indicators[team_index][1] == tournament.indicators[team_index][3])
+
+
+# noinspection PyPep8Naming
+class DoubleElimination_4U4L2DSL1D(Stage, ABC):
+    def __init__(self, name: str, previous_stage_lbr1_1_positions: [int], metadata: Metadata):
+        super().__init__(name, 8, metadata)
+
+        # For some reason, this is not A5 vs. B6 and B5 vs. A6, but can be A5 vs. B5 (ESL One Bangkok 2024)
+        # This field defines what LBR1 series 1 (in Liquipedia terms) positions should be.
+        # A3=4, B3=5, A4=6, B6=7
+        self.previous_stage_lbr1_1_positions = previous_stage_lbr1_1_positions
+
+        # Bracket
+        self.ubsf_1: SingleMatch = SingleMatch(f"{name}_ubsf_1", metadata)
+        self.ubsf_2: SingleMatch = SingleMatch(f"{name}_ubsf_2", metadata)
+        self.ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata)
+        self.gf: SingleMatch = SingleMatch(f"{name}_gf", metadata)
+
+        self.lbr1_1: SingleMatch = SingleMatch(f"{name}_lbr1_1", metadata)
+        self.lbr1_2: SingleMatch = SingleMatch(f"{name}_lbr1_2", metadata)
+        self.lbqf_1: SingleMatch = SingleMatch(f"{name}_lbqf_1", metadata)
+        self.lbqf_2: SingleMatch = SingleMatch(f"{name}_lbqf_2", metadata)
+        self.lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata)
+        self.lbf: SingleMatch = SingleMatch(f"{name}_lbf", metadata)
+
+        self.ubsf_1.bind_winner(self.ubf)
+        self.ubsf_1.bind_loser(self.lbqf_1)
+        self.ubsf_2.bind_winner(self.ubf)
+        self.ubsf_2.bind_loser(self.lbqf_2)
+
+        self.ubf.bind_winner(self.gf)
+        self.ubf.bind_loser(self.lbf)
+
+        self.lbr1_1.bind_winner(self.lbqf_1)
+        self.lbr1_2.bind_winner(self.lbqf_2)
+
+        self.lbqf_1.bind_winner(self.lbsf)
+        self.lbqf_2.bind_winner(self.lbsf)
+
+        self.lbsf.bind_winner(self.lbf)
+
+        self.lbf.bind_winner(self.gf)
+
+        self.ubsf_1.build()
+        self.ubsf_2.build()
+        self.ubf.build()
+        self.lbr1_1.build()
+        self.lbr1_2.build()
+        self.lbqf_1.build()
+        self.lbqf_2.build()
+        self.lbsf.build()
+        self.lbf.build()
+        self.gf.build()
+
+    def add_constraints(self):
+        pass
+
+    def bind_backward(self, previous_stage: "Stage"):
+        team_database = self.metadata.team_database
+        model = self.metadata.model
+
+        for team in team_database.get_all_teams():
+            team_index: int = team_database.get_team_index(team)
+
+            model.Add(previous_stage.indicators[team_index][0] + previous_stage.indicators[team_index][3] == sum(
+                self.ubsf_1.indicators[team_index][0:2]))
+            model.Add(previous_stage.indicators[team_index][1] + previous_stage.indicators[team_index][2] == sum(
+                self.ubsf_2.indicators[team_index][0:2]))
+
+            lbr1_2_matchups = list({4, 5, 6, 7} - set(self.previous_stage_lbr1_1_positions))
+            lbr1_1_sum = 0
+            for lbr1_1_prev in self.previous_stage_lbr1_1_positions:
+                lbr1_1_sum = lbr1_1_sum + previous_stage.indicators[team_index][lbr1_1_prev]
+            model.Add(lbr1_1_sum == sum(self.lbr1_1.indicators[team_index][0:2]))
+
+            lbr1_2_sum = 0
+            for lbr1_2_prev in lbr1_2_matchups:
+                lbr1_2_sum = lbr1_2_sum + previous_stage.indicators[team_index][lbr1_2_prev]
+            model.Add(lbr1_2_sum == sum(self.lbr1_2.indicators[team_index][0:2]))
+
+    def bind_elimination(self, tournament: Tournament):
+        model: CpModel = self.metadata.model
+        team_database: TeamDatabase = self.metadata.team_database
+
+        for team in team_database.get_all_teams():
+            team_index: int = team_database.get_team_index(team)
+            model.Add(self.gf.indicators[team_index][0] == tournament.indicators[team_index][0])
+            model.Add(self.gf.indicators[team_index][1] == tournament.indicators[team_index][1])
+            model.Add(self.lbf.indicators[team_index][1] == tournament.indicators[team_index][2])
+            model.Add(self.lbsf.indicators[team_index][1] == tournament.indicators[team_index][3])
+            model.Add(self.lbqf_1.indicators[team_index][1] == tournament.indicators[team_index][4])
+            model.Add(self.lbqf_2.indicators[team_index][1] == tournament.indicators[team_index][5])
+            model.Add(self.lbr1_1.indicators[team_index][1] == tournament.indicators[team_index][6])
+            model.Add(self.lbr1_2.indicators[team_index][1] == tournament.indicators[team_index][7])

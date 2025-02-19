@@ -2,10 +2,12 @@ from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, IntVar, CpSolver
 
+import utilities
 from ept import EptGroupStage, EptTournament, EptPairGroupStage
 from metadata import Metadata
 from stage import Root, GroupStage, Tournament, PairGroupStage, SingleMatch, DoubleElimination_8U1Q
-from teams import Team, TeamDatabase
+from teams import Team, TeamDatabase, Region
+from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024
 
 
 def main():
@@ -13,7 +15,9 @@ def main():
     # pair_group_stage_into_single_group_stage()
     # single_match()
     # bracket_4u2l1d()
-    dl_s24_na_qualifier()
+    # dl_s24_na_qualifier()
+    # esl_one_bkk_2024()
+    bracket_4U4L2DSL1D()
 
 
 def basic_two_group_stage():
@@ -371,6 +375,193 @@ def dl_s24_na_qualifier():
     print_single_match(teams, qualifier.lbsf, solver, team_database)
     print_single_match(teams, qualifier.lbf, solver, team_database)
     print_single_match(teams, qualifier.gf, solver, team_database)
+
+
+def esl_one_bkk_2024():
+    teams: [Team] = [
+        Team("Team Liquid", Region.WEU),
+        Team("Gaimin Gladiators", Region.WEU),
+        Team("Tundra Esports", Region.WEU),
+        Team("AVULUS", Region.WEU),
+        Team("Palianytsia", Region.WEU),
+
+        Team("BetBoom Team", Region.EEU),
+        Team("PARIVISION", Region.EEU),
+        Team("Team Spirit", Region.EEU),
+        Team("Natus Vincere", Region.EEU),
+
+        Team("Team Falcons", Region.MESWA),
+        Team("Nigma Galaxy", Region.MESWA),
+
+        Team("Nouns Esports", Region.NA),
+        Team("Shopify Rebellion", Region.NA),
+
+        Team("HEROIC", Region.SA),
+        Team("Team Waska", Region.SA),
+        Team("beastcoast", Region.SA),
+
+        Team("Xtreme Gaming", Region.CN),
+        Team("Azure Ray", Region.CN),
+        Team("Gaozu", Region.CN),
+
+        Team("Talon Esports", Region.SEA),
+        Team("BOOM Esports", Region.SEA),
+    ]
+    team_database: TeamDatabase = TeamDatabase()
+    for team in teams:
+        team_database.add_team(team)
+
+    max_objective_value = -1
+    for team in team_database.get_all_teams():
+        model: CpModel = CpModel()
+        metadata: [Metadata] = Metadata(team_database, model)
+
+        ept_esl_one_bkk, ept_esl_one_bkk_2024_gs = EslOneBangkok2024(metadata).build()
+
+        print(f"Now optimising for {team.name}")
+
+        # Optimise
+        total_points = [
+            ept_esl_one_bkk_2024_gs.obtained_points[t_index]
+            for t in teams
+            if (t_index := team_database.get_team_index(t)) is not None
+        ]
+
+        cutoff = 1
+        add_optimisation_constraints(model, team, team_database, teams, total_points, cutoff)
+
+        solver = cp_model.CpSolver()
+        status = solver.Solve(model)
+        if status != cp_model.OPTIMAL:
+            print(f"Team {team.name} probably cannot finish in top 8")
+            continue
+
+        if solver.objective_value > max_objective_value:
+            max_objective_value = solver.objective_value
+            utilities.print_indicators(ept_esl_one_bkk_2024_gs.stage.indicators, solver, team_database)
+
+        print(f"Maximum objective value: {max_objective_value}")
+
+
+def bracket_4U4L2DSL1D():
+    teams: [Team] = [
+        Team("Team Liquid", Region.WEU),
+        Team("Gaimin Gladiators", Region.WEU),
+        Team("Tundra Esports", Region.WEU),
+        Team("AVULUS", Region.WEU),
+        Team("Palianytsia", Region.WEU),
+
+        Team("BetBoom Team", Region.EEU),
+        Team("PARIVISION", Region.EEU),
+        Team("Team Spirit", Region.EEU),
+        Team("Natus Vincere", Region.EEU),
+
+        Team("Team Falcons", Region.MESWA),
+        Team("Nigma Galaxy", Region.MESWA),
+
+        Team("Nouns Esports", Region.NA),
+        Team("Shopify Rebellion", Region.NA),
+
+        Team("HEROIC", Region.SA),
+        Team("Team Waska", Region.SA),
+        Team("beastcoast", Region.SA),
+
+        Team("Xtreme Gaming", Region.CN),
+        Team("Azure Ray", Region.CN),
+        Team("Gaozu", Region.CN),
+
+        Team("Talon Esports", Region.SEA),
+        Team("BOOM Esports", Region.SEA),
+    ]
+    team_database: TeamDatabase = TeamDatabase()
+    for team in teams:
+        team_database.add_team(team)
+
+    max_objective_value = -1
+    for team in [team_database.get_team_by_name("Team Liquid")]:
+        model: CpModel = CpModel()
+        metadata: [Metadata] = Metadata(team_database, model)
+        name: str = "bracket"
+
+        ubsf_1: SingleMatch = SingleMatch(f"{name}_ubsf_1", metadata,
+                                          team_database.get_teams_by_names("Team Falcons", "BetBoom Team"))
+        ubsf_2: SingleMatch = SingleMatch(f"{name}_ubsf_2", metadata,
+                                          team_database.get_teams_by_names("PARIVISION", "AVULUS"))
+        ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata)
+        gf: SingleMatch = SingleMatch(f"{name}_gf", metadata)
+
+        lbr1_1: SingleMatch = SingleMatch(f"{name}_lbr1_1", metadata,
+                                          team_database.get_teams_by_names("Shopify Rebellion", "Team Liquid"))
+        lbr1_2: SingleMatch = SingleMatch(f"{name}_lbr1_2", metadata,
+                                          team_database.get_teams_by_names("Team Spirit", "Nigma Galaxy"))
+        lbqf_1: SingleMatch = SingleMatch(f"{name}_lbqf_1", metadata)
+        lbqf_2: SingleMatch = SingleMatch(f"{name}_lbqf_2", metadata)
+        lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata)
+        lbf: SingleMatch = SingleMatch(f"{name}_lbf", metadata)
+
+        ubsf_1.bind_winner(ubf)
+        ubsf_1.bind_loser(lbqf_1)
+        ubsf_2.bind_winner(ubf)
+        ubsf_2.bind_loser(lbqf_2)
+
+        ubf.bind_winner(gf)
+        ubf.bind_loser(lbf)
+
+        lbr1_1.bind_winner(lbqf_1)
+        lbr1_2.bind_winner(lbqf_2)
+
+        lbqf_1.bind_winner(lbsf)
+        lbqf_2.bind_winner(lbsf)
+
+        lbsf.bind_winner(lbf)
+
+        lbf.bind_winner(gf)
+
+        ubsf_1.build()
+        ubsf_2.build()
+        ubf.build()
+        gf.build()
+        lbr1_1.build()
+        lbr1_2.build()
+        lbqf_1.build()
+        lbqf_2.build()
+        lbsf.build()
+        lbf.build()
+
+        ubsf_1.set_winner("BetBoom Team")
+        ubsf_2.set_winner("PARIVISION")
+        ubf.set_winner("PARIVISION")
+        lbr1_1.set_winner("Team Liquid")
+        lbr1_2.set_winner("Team Spirit")
+        lbqf_1.set_winner("Team Liquid")
+        lbqf_2.set_winner("Team Spirit")
+        lbsf.set_winner("Team Liquid")
+        lbf.set_winner("Team Liquid")
+        gf.set_winner("PARIVISION")
+
+        print(f"Now optimising for {team.name}")
+
+        solver = cp_model.CpSolver()
+        status = solver.Solve(model)
+        if status != cp_model.OPTIMAL:
+            print(f"Team {team.name} probably cannot finish in top 8")
+            continue
+
+        print_single_match(teams, ubsf_1, solver, team_database)
+        print_single_match(teams, ubsf_2, solver, team_database)
+        print_single_match(teams, ubf, solver, team_database)
+        print_single_match(teams, lbr1_1, solver, team_database)
+        print_single_match(teams, lbr1_2, solver, team_database)
+        print_single_match(teams, lbqf_1, solver, team_database)
+        print_single_match(teams, lbqf_2, solver, team_database)
+        print_single_match(teams, lbsf, solver, team_database)
+        print_single_match(teams, lbf, solver, team_database)
+        print_single_match(teams, gf, solver, team_database)
+
+        if solver.objective_value > max_objective_value:
+            max_objective_value = solver.objective_value
+
+        print(f"Maximum objective value: {max_objective_value}")
 
 
 def add_optimisation_constraints(model, team, team_database, teams, total_points, cutoff: int):

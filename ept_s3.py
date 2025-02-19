@@ -3,31 +3,42 @@ from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
 from display import Display
-from ept import EptGroupStage, EptPairGroupStage, EptTournament
 from metadata import Metadata
-from stage import GroupStage, PairGroupStage, Tournament, SingleMatch, DoubleElimination_2U2L1D
+from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
-from utilities import print_indicators
+from tournaments.dreamleague_season_24 import DreamLeagueSeason24
+from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024
 
 
 def main():
     teams: [Team] = [
         Team("Team Liquid", Region.WEU),
         Team("Gaimin Gladiators", Region.WEU),
-        Team("Team Falcons", Region.MESWA),
-        Team("Xtreme Gaming", Region.CN),
-        Team("BetBoom Team", Region.EEU),
         Team("Tundra Esports", Region.WEU),
         Team("AVULUS", Region.WEU),
         Team("Palianytsia", Region.WEU),
+
+        Team("BetBoom Team", Region.EEU),
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
+        Team("Natus Vincere", Region.EEU),
+
+        Team("Team Falcons", Region.MESWA),
         Team("Nigma Galaxy", Region.MESWA),
-        Team("Azure Ray", Region.CN),
-        Team("Talon Esports", Region.SEA),
+
         Team("Nouns Esports", Region.NA),
+        Team("Shopify Rebellion", Region.NA),
+
         Team("HEROIC", Region.SA),
-        Team("Team Waska", Region.SA)
+        Team("Team Waska", Region.SA),
+        Team("beastcoast", Region.SA),
+
+        Team("Xtreme Gaming", Region.CN),
+        Team("Azure Ray", Region.CN),
+        Team("Gaozu", Region.CN),
+
+        Team("Talon Esports", Region.SEA),
+        Team("BOOM Esports", Region.SEA),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
@@ -38,75 +49,8 @@ def main():
         model: CpModel = CpModel()
         metadata: [Metadata] = Metadata(team_database, model)
 
-        dl_s24_gs1: PairGroupStage = PairGroupStage("dl_s24_gs1", 8, 4, metadata)
-        dl_s24_gs2: GroupStage = GroupStage("dl_s24_gs2", 8, 4, metadata)
-        dl_s24_playoff: DoubleElimination_2U2L1D = DoubleElimination_2U2L1D("dl_s24_playoff", metadata)
-        dl_s24: Tournament = Tournament("dl_s24", dl_s24_gs1, metadata)
-
-        dl_s24_gs1.group_a = team_database.get_teams_by_names("PARIVISION", "Team Liquid", "Xtreme Gaming",
-                                                              "BetBoom Team", "Gaimin Gladiators",
-                                                              "AVULUS", "Nigma Galaxy", "Nouns Esports")
-        dl_s24_gs1.group_b = team_database.get_teams_by_names("Team Falcons", "Team Waska", "Tundra Esports",
-                                                              "Team Spirit", "Talon Esports", "Azure Ray", "HEROIC",
-                                                              "Palianytsia")
-
-        dl_s24_gs1.bind_forward(dl_s24_gs2)
-        dl_s24_playoff.bind_backward(dl_s24_gs2)
-        dl_s24_gs2.bind_forward(dl_s24_playoff)
-
-
-        ept_dl_s24_gs1 = EptPairGroupStage(dl_s24_gs1, [300, 150, 75])
-        ept_dl_s24_gs2 = EptGroupStage(dl_s24_gs2, [300])
-        ept_dl_s24_gs1.bind_next_ept_stage(ept_dl_s24_gs2)
-        ept_dl_s24 = EptTournament(dl_s24,
-                                   ept_dl_s24_gs1,
-                                   [3000, 2500, 2000, 1600, 1200, 1000, 600, 400, 250, 250, 125, 125, 70, 70, 30, 30],
-                                   "DreamLeague Season 24",
-                                   "DreamLeague/Season 24",
-                                   "/dreamleague",
-                                   "2024-11-10",
-                                   metadata)
-
-        dl_s24_gs1.team_can_finish_between("PARIVISION", 1, 2)
-        dl_s24_gs1.team_can_finish_between("Team Liquid", 3, 4)
-        dl_s24_gs1.team_can_finish_between("Xtreme Gaming", 5, 6)
-        dl_s24_gs1.team_can_finish_between("BetBoom Team", 7, 8)
-        dl_s24_gs1.team_can_finish_between("Gaimin Gladiators", 9, 10)
-        dl_s24_gs1.team_can_finish_between("AVULUS", 11, 12)
-        dl_s24_gs1.team_can_finish_between("Nigma Galaxy", 13, 14)
-        dl_s24_gs1.team_can_finish_between("Nouns Esports", 15, 16)
-
-        dl_s24_gs1.team_can_finish_between("Team Falcons", 1, 2)
-        dl_s24_gs1.team_can_finish_between("Team Waska", 3, 4)
-        dl_s24_gs1.team_can_finish_between("Tundra Esports", 5, 6)
-        dl_s24_gs1.team_can_finish_between("Team Spirit", 7, 8)
-        dl_s24_gs1.team_can_finish_between("Talon Esports", 9, 10)
-        dl_s24_gs1.team_can_finish_between("Azure Ray", 11, 12)
-        dl_s24_gs1.team_can_finish_between("HEROIC", 13, 14)
-        dl_s24_gs1.team_can_finish_between("Palianytsia", 15, 16)
-
-        dl_s24_gs2.team_can_finish_between("BetBoom Team", 1, 1)
-        dl_s24_gs2.team_can_finish_between("Team Spirit", 2, 2)
-        dl_s24_gs2.team_can_finish_between("PARIVISION", 3, 3)
-        dl_s24_gs2.team_can_finish_between("Team Falcons", 4, 4)
-        dl_s24_gs2.team_can_finish_between("Tundra Esports", 5, 5)
-        dl_s24_gs2.team_can_finish_between("Team Liquid", 6, 6)
-        dl_s24_gs2.team_can_finish_between("Xtreme Gaming", 7, 7)
-        dl_s24_gs2.team_can_finish_between("Team Waska", 8, 8)
-
-        dl_s24_playoff.ubf.set_winner("BetBoom Team")
-        dl_s24_playoff.lbsf.set_winner("Team Falcons")
-        dl_s24_playoff.lbf.set_winner("Team Falcons")
-        dl_s24_playoff.gf.set_winner("Team Falcons")
-
-        dl_s24_gs1.build()
-        dl_s24_gs2.build()
-        dl_s24_playoff.build()
-        dl_s24.build()
-
-        ept_dl_s24_gs1.build()
-        ept_dl_s24_gs2.build()
-        ept_dl_s24.build()
+        ept_dl_s24, ept_dl_s24_gs1, ept_dl_s24_gs2 = DreamLeagueSeason24(metadata).build()
+        ept_esl_one_bkk, ept_esl_one_bkk_2024_gs = EslOneBangkok2024(metadata).build()
 
         print(f"Now optimising for {team.name}")
 
@@ -114,7 +58,9 @@ def main():
         total_points = [
             ept_dl_s24_gs1.obtained_points[t_index] +
             ept_dl_s24_gs2.obtained_points[t_index] +
-            ept_dl_s24.obtained_points[t_index]
+            ept_dl_s24.obtained_points[t_index] +
+            ept_esl_one_bkk_2024_gs.obtained_points[t_index] +
+            ept_esl_one_bkk.obtained_points[t_index]
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]
@@ -131,7 +77,7 @@ def main():
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
 
-            display: Display = Display([ept_dl_s24], metadata)
+            display: Display = Display([ept_dl_s24, ept_esl_one_bkk], metadata)
             display.print(team, cutoff, max_objective_value, solver)
 
             for t in teams:
@@ -143,6 +89,10 @@ def main():
                     f"Team {t.name} DreamLeague Season 24 GS2 points: {solver.value(ept_dl_s24_gs2.obtained_points[t_index])}")
                 print(
                     f"Team {t.name} DreamLeague Season 24 overall points: {solver.value(ept_dl_s24.obtained_points[t_index])}")
+                print(
+                    f"Team {t.name} ESL One Bangkok 2024 GS points: {solver.value(ept_esl_one_bkk_2024_gs.obtained_points[t_index])}")
+                print(
+                    f"Team {t.name} ESL One Bangkok 2024 overall points: {solver.value(ept_esl_one_bkk.obtained_points[t_index])}")
 
         print(f"Maximum objective value: {max_objective_value}")
 
