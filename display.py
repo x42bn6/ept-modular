@@ -6,8 +6,8 @@ from ortools.sat.python.cp_model import CpSolver
 from display_phases import HasDisplayPhase, DisplayPhase, Placement
 from ept import EptTournament
 from metadata import Metadata
-from stage import Tournament
 from teams import Team
+
 
 class DisplayRow:
     def __init__(self, team: Team, total_points: int):
@@ -78,18 +78,12 @@ class Display:
             output += f"| {(i + 1)}\n"
             output += f"|style=\"text-align: left;\"| {{{{Team|{team.name}}}}}\n"
             output += f"| {formatted_points_inner(i, total_points)}\n"
-            team_index: int = self.metadata.team_database.get_team_index(team)
             for display_phase in all_display_phases:
                 placement_for_team: Placement = display_phase.get_placement_for_team(team)
                 output += f"| {formatted_points(placement_for_team)}\n"
 
             output += "|-\n"
             i += 1
-            #print(f"{team.name} -- {total_points}", end="")
-            for display_phase in all_display_phases:
-                phase_placement = display_phase.get_placement_for_team(team)
-                #print(f"-- {display_phase.name}={phase_placement}", end="")
-            #print()
 
         output += "|}"
         pyperclip.copy(output)
