@@ -7,6 +7,7 @@ from metadata import Metadata
 from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_24 import DreamLeagueSeason24
+from tournaments.dreamleague_season_25 import DreamLeagueSeason25
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024
 from transfer_window import TransferWindow
 
@@ -23,9 +24,11 @@ def main():
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
+        Team("9Pandas", Region.EEU),
 
         Team("Team Falcons", Region.MESWA),
         Team("Nigma Galaxy", Region.MESWA),
+        Team("Chimera Esports", Region.MESWA),
 
         Team("Nouns Esports", Region.NA),
         Team("Atlantic City", Region.NA),
@@ -38,9 +41,11 @@ def main():
         Team("Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN),
         Team("Gaozu", Region.CN),
+        Team("Yakult Brothers", Region.CN),
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
+        Team("Moodeng Warriors", Region.SEA),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
@@ -70,6 +75,8 @@ def main():
         esl_one_bkk_2024_to_dl_s25.add_change("Team Waska", -550)
         esl_one_bkk_2024_to_dl_s25.add_change("Atlantic City", -30)
 
+        ept_dl_s25, ept_dl_s25_gs1, ept_dl_s25_gs2 = DreamLeagueSeason25(metadata).build()
+
         print(f"Now optimising for {team.name}")
 
         # Optimise
@@ -80,12 +87,15 @@ def main():
             dl_s24_to_esl_one_bkk_2024.get_change(t_index) +
             ept_esl_one_bkk_2024_gs.obtained_points[t_index] +
             ept_esl_one_bkk_2024.obtained_points[t_index] +
-            esl_one_bkk_2024_to_dl_s25.get_change(t_index)
+            esl_one_bkk_2024_to_dl_s25.get_change(t_index) +
+            ept_dl_s25_gs1.obtained_points[t_index] +
+            ept_dl_s25_gs2.obtained_points[t_index] +
+            ept_dl_s25.obtained_points[t_index]
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]
 
-        cutoff = 8
+        cutoff = 4
         add_optimisation_constraints(model, team, team_database, teams, total_points, cutoff)
 
         solver = cp_model.CpSolver()
@@ -97,7 +107,13 @@ def main():
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
 
-            display: Display = Display([ept_dl_s24, dl_s24_to_esl_one_bkk_2024, ept_esl_one_bkk_2024, esl_one_bkk_2024_to_dl_s25], metadata)
+            display: Display = Display([
+                ept_dl_s24,
+                dl_s24_to_esl_one_bkk_2024,
+                ept_esl_one_bkk_2024,
+                esl_one_bkk_2024_to_dl_s25,
+                ept_dl_s25
+            ], metadata)
             display.print(team, cutoff, max_objective_value, solver)
 
             for t in teams:
