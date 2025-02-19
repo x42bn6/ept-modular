@@ -3,7 +3,7 @@ from typing import Dict
 import pyperclip
 from ortools.sat.python.cp_model import CpSolver
 
-from display_phases import HasDisplayPhase, DisplayPhase, Placement
+from display_phases import HasDisplayPhase, DisplayPhase, Placement, DisplayPhaseType
 from ept import EptTournament
 from metadata import Metadata
 from teams import Team
@@ -57,7 +57,10 @@ class Display:
 
         sorted_total_points: Dict[Team, int] = dict(sorted(total_points.items(), key=lambda item: item[1], reverse=True))
 
-        def formatted_points(p: Placement) -> str:
+        def formatted_points(p: Placement | None) -> str:
+            if p is None:
+                return ""
+
             return formatted_points_inner(p.place, p.points)
 
         def formatted_points_inner(place: int | None, pts: int | None) -> str:
@@ -80,7 +83,12 @@ class Display:
             output += f"| {formatted_points_inner(i, total_points)}\n"
             for display_phase in all_display_phases:
                 placement_for_team: Placement = display_phase.get_placement_for_team(team)
-                output += f"| {formatted_points(placement_for_team)}\n"
+                if placement_for_team is None:
+                    output += f"| \n"
+                elif display_phase.display_phase_type == DisplayPhaseType.TOURNAMENT:
+                    output += f"| {formatted_points(placement_for_team)}\n"
+                else:
+                    output += f"| {placement_for_team.points}\n"
 
             output += "|-\n"
             i += 1

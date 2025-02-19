@@ -19,8 +19,16 @@ class TransferWindow(HasDisplayPhase, ABC):
     def get_changes(self):
         return self.changes
 
+    def get_change(self, team_index: int) -> int:
+        if not team_index in self.changes:
+            return 0
+        return self.changes[team_index]
+
     def to_display_phases(self, solver: CpSolver) -> [DisplayPhase]:
         display_phase: DisplayPhase = DisplayPhase(self.name, len(self.team_database.get_all_teams()), DisplayPhaseType.TRANSFER_WINDOW)
-        for team, delta in self.changes.items():
-            display_phase.add_placement(team, None, delta)
+        # TODO: Need to find a way to make Placement work without place
+        i: int = 0
+        for team_index, delta in self.changes.items():
+            display_phase.add_placement(self.team_database.get_team_by_index(team_index), i, delta)
+            i = i + 1
         return [display_phase]

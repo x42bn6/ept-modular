@@ -8,6 +8,7 @@ from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_24 import DreamLeagueSeason24
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024
+from transfer_window import TransferWindow
 
 
 def main():
@@ -27,6 +28,7 @@ def main():
         Team("Nigma Galaxy", Region.MESWA),
 
         Team("Nouns Esports", Region.NA),
+        Team("Atlantic City", Region.NA),
         Team("Shopify Rebellion", Region.NA),
 
         Team("HEROIC", Region.SA),
@@ -50,7 +52,14 @@ def main():
         metadata: [Metadata] = Metadata(team_database, model)
 
         ept_dl_s24, ept_dl_s24_gs1, ept_dl_s24_gs2 = DreamLeagueSeason24(metadata).build()
-        ept_esl_one_bkk, ept_esl_one_bkk_2024_gs = EslOneBangkok2024(metadata).build()
+
+        dl_s24_to_esl_one_bkk_2024: TransferWindow = TransferWindow("dl_s24_to_esl_one_bkk_2024", team_database)
+        dl_s24_to_esl_one_bkk_2024.add_change("Xtreme Gaming", -675)
+        dl_s24_to_esl_one_bkk_2024.add_change("Nouns Esports", -30)
+        dl_s24_to_esl_one_bkk_2024.add_change("Atlantic City", 30)
+        dl_s24_to_esl_one_bkk_2024.add_change("Azure Ray", -125)
+
+        ept_esl_one_bkk_2024, ept_esl_one_bkk_2024_gs = EslOneBangkok2024(metadata).build()
 
         print(f"Now optimising for {team.name}")
 
@@ -59,8 +68,9 @@ def main():
             ept_dl_s24_gs1.obtained_points[t_index] +
             ept_dl_s24_gs2.obtained_points[t_index] +
             ept_dl_s24.obtained_points[t_index] +
+            dl_s24_to_esl_one_bkk_2024.get_change(t_index) +
             ept_esl_one_bkk_2024_gs.obtained_points[t_index] +
-            ept_esl_one_bkk.obtained_points[t_index]
+            ept_esl_one_bkk_2024.obtained_points[t_index]
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]
@@ -77,7 +87,7 @@ def main():
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
 
-            display: Display = Display([ept_dl_s24, ept_esl_one_bkk], metadata)
+            display: Display = Display([ept_dl_s24, dl_s24_to_esl_one_bkk_2024, ept_esl_one_bkk_2024], metadata)
             display.print(team, cutoff, max_objective_value, solver)
 
             for t in teams:
@@ -92,7 +102,7 @@ def main():
                 print(
                     f"Team {t.name} ESL One Bangkok 2024 GS points: {solver.value(ept_esl_one_bkk_2024_gs.obtained_points[t_index])}")
                 print(
-                    f"Team {t.name} ESL One Bangkok 2024 overall points: {solver.value(ept_esl_one_bkk.obtained_points[t_index])}")
+                    f"Team {t.name} ESL One Bangkok 2024 overall points: {solver.value(ept_esl_one_bkk_2024.obtained_points[t_index])}")
 
         print(f"Maximum objective value: {max_objective_value}")
 
