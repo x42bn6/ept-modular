@@ -61,6 +61,15 @@ def main():
 
         ept_esl_one_bkk_2024, ept_esl_one_bkk_2024_gs = EslOneBangkok2024(metadata).build()
 
+        esl_one_bkk_2024_to_dl_s25: TransferWindow = TransferWindow("esl_one_bkk_2024_to_dl_s25", team_database)
+        esl_one_bkk_2024_to_dl_s25.add_change("Team Spirit", -1320)
+        esl_one_bkk_2024_to_dl_s25.add_change("Tundra Esports", -382)
+        esl_one_bkk_2024_to_dl_s25.add_change("HEROIC", -21)
+        esl_one_bkk_2024_to_dl_s25.add_change("Gaozu", -126)
+        esl_one_bkk_2024_to_dl_s25.add_change("Palianytsia", -9)
+        esl_one_bkk_2024_to_dl_s25.add_change("Team Waska", -550)
+        esl_one_bkk_2024_to_dl_s25.add_change("Atlantic City", -30)
+
         print(f"Now optimising for {team.name}")
 
         # Optimise
@@ -70,7 +79,8 @@ def main():
             ept_dl_s24.obtained_points[t_index] +
             dl_s24_to_esl_one_bkk_2024.get_change(t_index) +
             ept_esl_one_bkk_2024_gs.obtained_points[t_index] +
-            ept_esl_one_bkk_2024.obtained_points[t_index]
+            ept_esl_one_bkk_2024.obtained_points[t_index] +
+            esl_one_bkk_2024_to_dl_s25.get_change(t_index)
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]
@@ -87,7 +97,7 @@ def main():
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
 
-            display: Display = Display([ept_dl_s24, dl_s24_to_esl_one_bkk_2024, ept_esl_one_bkk_2024], metadata)
+            display: Display = Display([ept_dl_s24, dl_s24_to_esl_one_bkk_2024, ept_esl_one_bkk_2024, esl_one_bkk_2024_to_dl_s25], metadata)
             display.print(team, cutoff, max_objective_value, solver)
 
             for t in teams:
