@@ -498,12 +498,14 @@ class DoubleElimination_2U2L1D(Stage, ABC):
 
 # noinspection PyPep8Naming
 class DoubleElimination_4U4L2DSL1D(Stage, ABC):
-    def __init__(self, name: str, previous_stage_lbr1_1_positions: [int], metadata: Metadata):
+    def __init__(self, name: str, metadata: Metadata, previous_stage_lbr1_1_positions=None):
         super().__init__(name, 8, metadata)
 
         # For some reason, this is not A5 vs. B6 and B5 vs. A6, but can be A5 vs. B5 (ESL One Bangkok 2024)
         # This field defines what LBR1 series 1 (in Liquipedia terms) positions should be.
         # A3=4, B3=5, A4=6, B6=7
+        if previous_stage_lbr1_1_positions is None:
+            previous_stage_lbr1_1_positions = [4, 7]
         self.previous_stage_lbr1_1_positions = previous_stage_lbr1_1_positions
 
         # Bracket

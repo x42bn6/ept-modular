@@ -15,7 +15,7 @@ class EslOneBangkok2024:
 
         esl_one_bkk_2024_gs: PairGroupStage = PairGroupStage("esl_one_bkk_2024_gs", 6, 4, metadata)
         esl_one_bkk_2024_playoff: DoubleElimination_4U4L2DSL1D = DoubleElimination_4U4L2DSL1D(
-            "esl_one_bkk_2024_playoff", [6, 7], metadata)
+            "esl_one_bkk_2024_playoff", metadata, previous_stage_lbr1_1_positions=[6, 7])
         esl_one_bkk_2024: Tournament = Tournament("esl_one_bkk_2024", esl_one_bkk_2024_gs, metadata)
 
         esl_one_bkk_2024_gs.group_a = team_database.get_teams_by_names("Team Falcons", "AVULUS", "Team Spirit",
