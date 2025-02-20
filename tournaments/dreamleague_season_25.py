@@ -49,9 +49,9 @@ class DreamLeagueSeason25:
         dl_s25_gs1.team_can_finish_between("Team Spirit", 1, 2)
         dl_s25_gs1.team_can_finish_between("Chimera Esports", 3, 4)
         dl_s25_gs1.team_can_finish_between("PARIVISION", 5, 6)
-        dl_s25_gs1.team_can_finish_between("Gaimin Gladiators", 7, 12)
-        dl_s25_gs1.team_can_finish_between("Team Liquid", 7, 12)
-        dl_s25_gs1.team_can_finish_between("Yakult Brothers", 7, 12)
+        dl_s25_gs1.team_can_finish_between("Team Liquid", 7, 8)
+        dl_s25_gs1.team_can_finish_between("Yakult Brothers", 9, 10)
+        dl_s25_gs1.team_can_finish_between("Gaimin Gladiators", 11, 12)
         dl_s25_gs1.team_can_finish_between("BOOM Esports", 13, 14)
         dl_s25_gs1.team_can_finish_between("AVULUS", 15, 16)
 
