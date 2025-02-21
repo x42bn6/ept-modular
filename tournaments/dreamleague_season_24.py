@@ -73,4 +73,7 @@ class DreamLeagueSeason24:
         ept_dl_s24_gs1.build()
         ept_dl_s24_gs2.build()
         ept_dl_s24.build()
+
+        ept_dl_s24.mark_complete()
+
         return ept_dl_s24, ept_dl_s24_gs1, ept_dl_s24_gs2

@@ -22,6 +22,7 @@ class Tournament:
         self.name = name
         self.starting_stage = starting_stage
         self.metadata = metadata
+        self.is_team_list_complete = False
 
         self.indicators: [[BooleanVar]] = [
             [self.metadata.model.new_bool_var(
@@ -57,6 +58,12 @@ class Tournament:
             stages += 1
             next_stage = next_stage.next_stage
         return stages
+
+    def mark_participating_teams_complete(self):
+        self.is_team_list_complete = True
+
+    def is_team_participating(self, team: Team) -> bool:
+        return self.starting_stage.is_team_participating(team)
 
 
 class Stage(ABC):
@@ -109,6 +116,10 @@ class Stage(ABC):
                          tournament: Tournament):
         pass
 
+    @abstractmethod
+    def is_team_participating(self, team: Team) -> bool:
+        pass
+
     def team_can_finish_between(self, team_name: str, best: int, worst: int):
         team: Team = self.metadata.team_database.get_team_by_name(team_name)
         self.team_constraints.append(TeamConstraint(team, best - 1, worst - 1))
@@ -138,6 +149,9 @@ class Root(Stage, ABC):
 
     def bind_elimination(self, tournament: Tournament):
         raise Exception("Root is not intended to be a final position")
+
+    def is_team_participating(self, team: Team) -> bool:
+        return team in self.teams
 
 
 class GroupStage(Stage, ABC):
@@ -179,6 +193,10 @@ class GroupStage(Stage, ABC):
             for p in range(self.advancing_team_count, self.team_count):
                 model.Add(self.indicators[team_index][p] == tournament.indicators[team_index][p])
         pass
+
+    def is_team_participating(self, team: Team) -> bool:
+        # TODO: This is unaware of the teams taking part, because it's never used as a root.  Need to find a way to do this
+        return True
 
 
 class PairGroupStage(Stage, ABC):
@@ -253,6 +271,9 @@ class PairGroupStage(Stage, ABC):
             for p in range(self.advancing_team_count_per_group * 2, self.team_count):
                 model.Add(self.indicators[team_index][p] == tournament.indicators[team_index][p])
         pass
+
+    def is_team_participating(self, team: Team) -> bool:
+        return team in self.group_a or team in self.group_b
 
 
 class SingleMatch(Stage, ABC):
@@ -365,6 +386,9 @@ class SingleMatch(Stage, ABC):
     def bind_elimination(self, tournament: Tournament):
         pass
 
+    def is_team_participating(self, team: Team) -> bool:
+        return team == self.team_a or team == self.team_b
+
     def set_winner(self, team_name: str):
         metadata = self.metadata
         metadata.model.Add(self.indicators[metadata.team_database.get_team_index_by_team_name(team_name)][0] == 1)
@@ -374,6 +398,8 @@ class SingleMatch(Stage, ABC):
 class DoubleElimination_8U1Q(Stage, ABC):
     def __init__(self, name: str, teams: [Team], metadata: Metadata):
         super().__init__(name, 8, metadata)
+
+        self.teams = teams
 
         # Bracket
         self.ubqf_1: SingleMatch = SingleMatch(f"{name}_ubqf_1", metadata, teams[0:2])
@@ -447,6 +473,9 @@ class DoubleElimination_8U1Q(Stage, ABC):
 
         self.gf.build()
 
+    def is_team_participating(self, team: Team) -> bool:
+        return team in self.teams
+
 
 # noinspection PyPep8Naming
 class DoubleElimination_2U2L1D(Stage, ABC):
@@ -494,6 +523,10 @@ class DoubleElimination_2U2L1D(Stage, ABC):
             model.Add(self.gf.indicators[team_index][1] == tournament.indicators[team_index][1])
             model.Add(self.lbf.indicators[team_index][1] == tournament.indicators[team_index][2])
             model.Add(self.lbsf.indicators[team_index][1] == tournament.indicators[team_index][3])
+
+    def is_team_participating(self, team: Team) -> bool:
+        # TODO: Is not used as root, so teams are unknown
+        return True
 
 
 # noinspection PyPep8Naming
@@ -590,3 +623,7 @@ class DoubleElimination_4U4L2DSL1D(Stage, ABC):
             model.Add(self.lbqf_2.indicators[team_index][1] == tournament.indicators[team_index][5])
             model.Add(self.lbr1_1.indicators[team_index][1] == tournament.indicators[team_index][6])
             model.Add(self.lbr1_2.indicators[team_index][1] == tournament.indicators[team_index][7])
+
+    def is_team_participating(self, team: Team) -> bool:
+        # TODO: is not used as root, so teams are unknown
+        return True

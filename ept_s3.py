@@ -3,6 +3,7 @@ from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
 from display import Display
+from ept import EptTournament
 from metadata import Metadata
 from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
@@ -105,7 +106,7 @@ def main():
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
         if status != cp_model.OPTIMAL:
-            print(f"Team {team.name} probably cannot finish in top 8")
+            print(f"Team {team.name} probably cannot finish in top f{cutoff}")
             continue
 
         if solver.objective_value > max_objective_value:

@@ -126,6 +126,7 @@ class EptTournament(HasDisplayPhase, ABC):
         self.liquipedia_edate = liquipedia_edate
         self.metadata = metadata
         self.obtained_points: [IntVar] = []
+        self.is_complete = False
         self.build()
 
     def build(self):
@@ -167,3 +168,21 @@ class EptTournament(HasDisplayPhase, ABC):
         display_phases.append(tournament_display_phase)
 
         return display_phases
+
+    def mark_complete(self):
+        self.is_complete = True
+
+    def get_maximum_points_for_team(self, team: Team) -> int:
+        if self.is_complete:
+            return 0
+
+        if not self.tournament.is_team_participating(team):
+            return 0
+
+        max_points: int = self.points[0]
+        next_ept_stage: EptStage = self.first_ept_stage
+        while next_ept_stage is not None:
+            max_points += next_ept_stage.points[0]
+            next_ept_stage = next_ept_stage.next_ept_stage
+
+        return max_points
