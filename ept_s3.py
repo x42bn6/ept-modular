@@ -106,7 +106,7 @@ def main():
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
         if status != cp_model.OPTIMAL:
-            print(f"Team {team.name} probably cannot finish in top f{cutoff}")
+            print(f"Team {team.name} probably cannot finish in position {cutoff}")
             continue
 
         if solver.objective_value > max_objective_value:

@@ -68,6 +68,4 @@ class EslOneBangkok2024:
         ept_esl_one_bkk_2024_gs.build()
         ept_esl_one_bkk_2024.build()
 
-        ept_esl_one_bkk_2024.mark_complete()
-
         return ept_esl_one_bkk_2024, ept_esl_one_bkk_2024_gs

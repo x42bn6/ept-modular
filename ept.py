@@ -106,7 +106,30 @@ class EptPairGroupStage(EptStage, ABC):
         pass
 
 
-class EptTournament(HasDisplayPhase, ABC):
+class EptTournamentBase(HasDisplayPhase, ABC):
+    def __init__(self,
+                 tournament: Tournament,
+                 points: [int],
+                 metadata: Metadata):
+        super().__init__()
+        self.tournament = tournament
+        self.points = points
+        self.metadata = metadata
+
+    @abstractmethod
+    def to_display_phases(self, solver: CpSolver) -> [DisplayPhase]:
+        pass
+
+    @abstractmethod
+    def is_complete(self) -> bool:
+        pass
+
+    @abstractmethod
+    def get_maximum_points_for_team(self, team: Team) -> int | None:
+        pass
+
+
+class EptTournament(EptTournamentBase, HasDisplayPhase, ABC):
     def __init__(self,
                  tournament: Tournament,
                  first_ept_stage: EptStage,
@@ -116,7 +139,7 @@ class EptTournament(HasDisplayPhase, ABC):
                  liquipedia_league_icon: str,
                  liquipedia_edate: str,
                  metadata: Metadata):
-        super().__init__()
+        super().__init__(tournament, points, metadata)
         self.tournament = tournament
         self.first_ept_stage = first_ept_stage
         self.points = points
@@ -126,11 +149,10 @@ class EptTournament(HasDisplayPhase, ABC):
         self.liquipedia_edate = liquipedia_edate
         self.metadata = metadata
         self.obtained_points: [IntVar] = []
-        self.is_complete = False
         self.build()
 
     def build(self):
-        metadata: Metadata = self.tournament.metadata
+        metadata: Metadata = self.metadata
         team_database = metadata.team_database
         self.obtained_points: [IntVar] = [metadata.model.new_int_var(0, 99999, f'd_{self.tournament.name}_{i}')
                                           for i in range(len(team_database.get_all_teams()))]
@@ -159,7 +181,8 @@ class EptTournament(HasDisplayPhase, ABC):
                 point_map[points] = [team]
 
         sorted_point_map: Dict[int, array[Team]] = dict(sorted(point_map.items(), reverse=True))
-        tournament_display_phase: DisplayPhase = DisplayPhase(self.tournament.name, len(self.points), DisplayPhaseType.TOURNAMENT)
+        tournament_display_phase: DisplayPhase = DisplayPhase(self.tournament.name, len(self.points),
+                                                              DisplayPhaseType.TOURNAMENT)
         placement = 0
         for points, team_array in sorted_point_map.items():
             for team in team_array:
@@ -169,13 +192,10 @@ class EptTournament(HasDisplayPhase, ABC):
 
         return display_phases
 
-    def mark_complete(self):
-        self.is_complete = True
+    def is_complete(self) -> bool:
+        return False
 
-    def get_maximum_points_for_team(self, team: Team) -> int:
-        if self.is_complete:
-            return 0
-
+    def get_maximum_points_for_team(self, team: Team) -> int | None:
         if not self.tournament.is_team_participating(team):
             return 0
 
