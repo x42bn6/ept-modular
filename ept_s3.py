@@ -150,7 +150,7 @@ def add_optimisation_constraints(model, team, team_database, teams, total_points
     ranks: [IntVar] = {team: model.NewIntVar(1, len(teams), f'ranks_{team}') for team in team_count_range}
     aux: [[BooleanVar]] = {(i, j): model.NewBoolVar(f'aux_{i}_{j}') for i in team_count_range for j in
                            team_count_range}
-    big_m: int = 10000
+    big_m: int = 20000
     for i in team_count_range:
         for j in team_count_range:
             if i == j:
