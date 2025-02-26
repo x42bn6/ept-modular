@@ -60,9 +60,9 @@ class DreamLeagueSeason25:
         dl_s25_gs2.team_can_finish_between("Tundra Esports", 2, 7)
         dl_s25_gs2.team_can_finish_between("Team Falcons", 2, 7)
         dl_s25_gs2.team_can_finish_between("Team Spirit", 2, 7)
-        dl_s25_gs2.team_can_finish_between("BetBoom Team", 2, 8)
+        dl_s25_gs2.team_can_finish_between("BetBoom Team", 4, 8)
         dl_s25_gs2.team_can_finish_between("Team Liquid", 4, 8)
-        dl_s25_gs2.team_can_finish_between("HEROIC", 5, 8)
+        dl_s25_gs2.team_can_finish_between("HEROIC", 6, 8)
 
         dl_s25_gs1.build()
         dl_s25_gs2.build()
