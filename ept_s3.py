@@ -137,7 +137,7 @@ def main():
             print(f"Objective value: {min_cutoff}")
 
     print(
-        f"Got cutoff value as {min_cutoff} for team {[team.name for team in min_cutoff_teams]} with corresponding teams missing out with {max_cutoff_plus_one} for teams {[team.name for team in max_objective_value_teams]}")
+        f"Got cutoff value as {min_cutoff} for team {[team.name for team in min_cutoff_teams]} with corresponding teams {[team.name for team in max_objective_value_teams]} missing out with {max_cutoff_plus_one}")
 
 
 def calculate_theoretical_maximum_for_team(phases, team, team_database):
