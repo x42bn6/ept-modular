@@ -202,7 +202,7 @@ class EptTournamentBase(HasDisplayPhase, ABC):
         pass
 
     @abstractmethod
-    def get_maximum_points_for_team(self, team: Team) -> int | None:
+    def get_maximum_points_for_team(self, team: Team) -> int:
         pass
 
     @abstractmethod
@@ -290,7 +290,7 @@ class EptTournament(EptTournamentBase, HasDisplayPhase, ABC):
     def is_complete(self) -> bool:
         return False
 
-    def get_maximum_points_for_team(self, team: Team) -> int | None:
+    def get_maximum_points_for_team(self, team: Team) -> int:
         if not self.tournament.is_team_participating(team):
             return 0
 
@@ -368,8 +368,17 @@ class SolvedEptTournament(EptTournamentBase, HasDisplayPhase, ABC):
     def is_complete(self) -> bool:
         return True
 
-    def get_maximum_points_for_team(self, team: Team) -> int | None:
-        pass
+    def get_maximum_points_for_team(self, team: Team) -> int:
+        if not team in self.positions:
+            return 0
+
+        max_points: int = self.points[self.positions[team]]
+        next_ept_stage: EptStageBase = self.first_ept_stage
+        while next_ept_stage is not None:
+            max_points += next_ept_stage.get_obtained_points(self.team_database.get_team_index(team))
+            next_ept_stage = next_ept_stage.next_ept_stage
+
+        return max_points
 
     def get_obtained_points(self, team_index: int):
         team: Team = self.team_database.get_team_by_index(team_index)

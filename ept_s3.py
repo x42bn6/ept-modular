@@ -3,6 +3,7 @@ from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
 from display import Display
+from display_phases import HasDisplayPhase
 from ept import EptTournament, EptTournamentBase, EptStageBase
 from metadata import Metadata
 from stage import SingleMatch
@@ -83,7 +84,7 @@ def main():
 
         print(f"Now optimising for {team.name}")
 
-        phases = [
+        phases: [HasDisplayPhase] = [
             ept_dl_s24,
             dl_s24_to_esl_one_bkk_2024,
             ept_esl_one_bkk_2024,
@@ -91,6 +92,17 @@ def main():
             ept_dl_s25,
             dl_s25_to_esl_one_ral_2025
         ]
+
+        # Calculate theoretical maximum.  If this is less than teh current maximum, don't bother solving
+        max_possible_points_for_team: int = 0
+        for phase in phases:
+            if isinstance(phase, EptTournamentBase):
+                max_possible_points_for_team += phase.get_maximum_points_for_team(team)
+            elif isinstance(phase, TransferWindow):
+                max_possible_points_for_team += phase.get_change(team_database.get_team_index(team))
+        if max_objective_value > max_possible_points_for_team:
+            print(f"Team {team.name}'s maximum points ({max_possible_points_for_team}) is less than objective value ({max_objective_value}).  Skipping")
+            continue
 
         # Optimise
         total_points = [
