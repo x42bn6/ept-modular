@@ -3,11 +3,11 @@ from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
 from display import Display
-from ept import EptTournament
+from ept import EptTournament, EptTournamentBase, EptStageBase
 from metadata import Metadata
 from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
-from tournaments.dreamleague_season_24 import DreamLeagueSeason24
+from tournaments.dreamleague_season_24 import DreamLeagueSeason24, DreamLeagueSeason24Solved
 from tournaments.dreamleague_season_25 import DreamLeagueSeason25
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024
 from transfer_window import TransferWindow
@@ -57,7 +57,7 @@ def main():
         model: CpModel = CpModel()
         metadata: [Metadata] = Metadata(team_database, model)
 
-        ept_dl_s24, ept_dl_s24_gs1, ept_dl_s24_gs2 = DreamLeagueSeason24(metadata).build()
+        ept_dl_s24, ept_dl_s24_gs1, ept_dl_s24_gs2 = DreamLeagueSeason24Solved(metadata).build()
 
         dl_s24_to_esl_one_bkk_2024: TransferWindow = TransferWindow("dl_s24_to_esl_one_bkk_2024", team_database)
         dl_s24_to_esl_one_bkk_2024.add_change("Xtreme Gaming", -675)
@@ -83,18 +83,27 @@ def main():
 
         print(f"Now optimising for {team.name}")
 
+        phases = [
+            ept_dl_s24,
+            dl_s24_to_esl_one_bkk_2024,
+            ept_esl_one_bkk_2024,
+            esl_one_bkk_2024_to_dl_s25,
+            ept_dl_s25,
+            dl_s25_to_esl_one_ral_2025
+        ]
+
         # Optimise
         total_points = [
-            ept_dl_s24_gs1.obtained_points[t_index] +
-            ept_dl_s24_gs2.obtained_points[t_index] +
-            ept_dl_s24.obtained_points[t_index] +
+            ept_dl_s24_gs1.get_obtained_points(t_index) +
+            ept_dl_s24_gs2.get_obtained_points(t_index) +
+            ept_dl_s24.get_obtained_points(t_index) +
             dl_s24_to_esl_one_bkk_2024.get_change(t_index) +
-            ept_esl_one_bkk_2024_gs.obtained_points[t_index] +
-            ept_esl_one_bkk_2024.obtained_points[t_index] +
+            ept_esl_one_bkk_2024_gs.get_obtained_points(t_index) +
+            ept_esl_one_bkk_2024.get_obtained_points(t_index) +
             esl_one_bkk_2024_to_dl_s25.get_change(t_index) +
-            ept_dl_s25_gs1.obtained_points[t_index] +
-            ept_dl_s25_gs2.obtained_points[t_index] +
-            ept_dl_s25.obtained_points[t_index] +
+            ept_dl_s25_gs1.get_obtained_points(t_index) +
+            ept_dl_s25_gs2.get_obtained_points(t_index) +
+            ept_dl_s25.get_obtained_points(t_index) +
             dl_s25_to_esl_one_ral_2025.get_change(t_index)
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
@@ -112,35 +121,28 @@ def main():
         if solver.objective_value > max_objective_value:
             max_objective_value = solver.objective_value
 
-            display: Display = Display([
-                ept_dl_s24,
-                dl_s24_to_esl_one_bkk_2024,
-                ept_esl_one_bkk_2024,
-                esl_one_bkk_2024_to_dl_s25,
-                ept_dl_s25,
-                dl_s25_to_esl_one_ral_2025
-            ], metadata)
+            display: Display = Display(phases, metadata)
             display.print(team, cutoff, max_objective_value, solver)
 
             for t in teams:
                 t_index = team_database.get_team_index(t)
                 print(f"Team {t.name} points: {solver.value(total_points[t_index])}")
                 print(
-                    f"Team {t.name} DreamLeague Season 24 GS1 points: {solver.value(ept_dl_s24_gs1.obtained_points[t_index])}")
+                    f"Team {t.name} DreamLeague Season 24 GS1 points: {solver.value(ept_dl_s24_gs1.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} DreamLeague Season 24 GS2 points: {solver.value(ept_dl_s24_gs2.obtained_points[t_index])}")
+                    f"Team {t.name} DreamLeague Season 24 GS2 points: {solver.value(ept_dl_s24_gs2.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} DreamLeague Season 24 overall points: {solver.value(ept_dl_s24.obtained_points[t_index])}")
+                    f"Team {t.name} DreamLeague Season 24 overall points: {solver.value(ept_dl_s24.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} ESL One Bangkok 2024 GS points: {solver.value(ept_esl_one_bkk_2024_gs.obtained_points[t_index])}")
+                    f"Team {t.name} ESL One Bangkok 2024 GS points: {solver.value(ept_esl_one_bkk_2024_gs.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} ESL One Bangkok 2024 overall points: {solver.value(ept_esl_one_bkk_2024.obtained_points[t_index])}")
+                    f"Team {t.name} ESL One Bangkok 2024 overall points: {solver.value(ept_esl_one_bkk_2024.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} DreamLeague Season 25 GS1 points: {solver.value(ept_dl_s25_gs1.obtained_points[t_index])}")
+                    f"Team {t.name} DreamLeague Season 25 GS1 points: {solver.value(ept_dl_s25_gs1.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} DreamLeague Season 25 GS2 points: {solver.value(ept_dl_s25_gs2.obtained_points[t_index])}")
+                    f"Team {t.name} DreamLeague Season 25 GS2 points: {solver.value(ept_dl_s25_gs2.get_obtained_points(t_index))}")
                 print(
-                    f"Team {t.name} DreamLeague Season 25 overall points: {solver.value(ept_dl_s25.obtained_points[t_index])}")
+                    f"Team {t.name} DreamLeague Season 25 overall points: {solver.value(ept_dl_s25.get_obtained_points(t_index))}")
 
         print(f"Maximum objective value: {max_objective_value}")
 

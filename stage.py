@@ -81,7 +81,7 @@ class Stage(ABC):
                 range(self.team_count)]
             for i in range(len(self.metadata.team_database.get_all_teams()))]
 
-        self.next_stage = None
+        self.next_stage: Stage | None = None
         self.team_constraints: [TeamConstraint] = []
         self.team_guaranteed_playoff_lb_or_eliminated: [Team] = []
 

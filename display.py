@@ -4,7 +4,7 @@ import pyperclip
 from ortools.sat.python.cp_model import CpSolver
 
 from display_phases import HasDisplayPhase, DisplayPhase, Placement, DisplayPhaseType
-from ept import EptTournament
+from ept import EptTournament, EptTournamentBase
 from metadata import Metadata
 from teams import Team
 
@@ -32,17 +32,17 @@ class Display:
         all_display_phases: [DisplayPhase] = []
         for tournament_or_transfer_window in self.tournaments_or_transfer_windows:
             all_display_phases.extend(tournament_or_transfer_window.to_display_phases(solver))
-            if isinstance(tournament_or_transfer_window, EptTournament):
-                ept_tournament: EptTournament = tournament_or_transfer_window
-                output += f"! colspan=\"{ept_tournament.tournament.stage_count()}\" style=\"min-width:50px\" | {{{{LeagueIconSmall{ept_tournament.liquipedia_league_icon}|name={ept_tournament.liquipedia_display_name}|link={ept_tournament.liquipedia_link}|edate={ept_tournament.liquipedia_edate}}}}}\n"
+            if isinstance(tournament_or_transfer_window, EptTournamentBase):
+                ept_tournament: EptTournamentBase = tournament_or_transfer_window
+                output += f"! colspan=\"{ept_tournament.get_stage_count()}\" style=\"min-width:50px\" | {{{{LeagueIconSmall{ept_tournament.liquipedia_league_icon}|name={ept_tournament.liquipedia_display_name}|link={ept_tournament.liquipedia_link}|edate={ept_tournament.liquipedia_edate}}}}}\n"
             else:
                 output += "! rowspan=\"2\" | <span title=\"Transfer window\">&hArr;</span>\n"
 
         output += "|-\n"
         output += f"! '''{(round(max_points) + 1)}'''\n"
         for tournament_or_transfer_window in self.tournaments_or_transfer_windows:
-            if isinstance(tournament_or_transfer_window, EptTournament):
-                ept_tournament: EptTournament = tournament_or_transfer_window
+            if isinstance(tournament_or_transfer_window, EptTournamentBase):
+                ept_tournament: EptTournamentBase = tournament_or_transfer_window
                 output = self.display_phases_header(output, ept_tournament)
         output += "|-\n"
 
@@ -99,8 +99,8 @@ class Display:
         print()
 
     @staticmethod
-    def display_phases_header(output, tournament: EptTournament):
-        stage_count = tournament.tournament.stage_count()
+    def display_phases_header(output, tournament: EptTournamentBase):
+        stage_count = tournament.get_stage_count()
         if stage_count == 1:
             output += "! {{Abbr|Fin|Final position}}\n"
         elif stage_count == 2:

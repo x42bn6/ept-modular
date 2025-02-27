@@ -1,4 +1,7 @@
-from ept import EptPairGroupStage, EptGroupStage, EptTournament
+from typing import Tuple
+
+from ept import EptPairGroupStage, EptGroupStage, EptTournament, SolvedEptStage, SolvedEptTournament, EptStageBase, \
+    EptTournamentBase
 from metadata import Metadata
 from stage import PairGroupStage, GroupStage, DoubleElimination_2U2L1D, Tournament
 from teams import TeamDatabase
@@ -9,7 +12,7 @@ class DreamLeagueSeason24:
         self.metadata = metadata
         self.team_database = metadata.team_database
 
-    def build(self):
+    def build(self) -> Tuple[EptTournamentBase, EptStageBase, EptStageBase]:
         metadata: Metadata = self.metadata
         team_database: TeamDatabase = self.team_database
 
@@ -75,3 +78,71 @@ class DreamLeagueSeason24:
         ept_dl_s24.build()
 
         return ept_dl_s24, ept_dl_s24_gs1, ept_dl_s24_gs2
+
+
+class DreamLeagueSeason24Solved:
+    def __init__(self, metadata: Metadata):
+        self.metadata = metadata
+        self.team_database = metadata.team_database
+
+    def build(self) -> Tuple[EptTournamentBase, EptStageBase, EptStageBase]:
+        metadata: Metadata = self.metadata
+
+        dl_s24_gs1: SolvedEptStage = SolvedEptStage("dl_s24_gs2", 16, [300, 300, 150, 150, 75, 75], metadata)
+        dl_s24_gs2: SolvedEptStage = SolvedEptStage("dl_s24_gs2", 8, [300], metadata)
+        dl_s24_gs1.bind_next_ept_stage(dl_s24_gs2)
+        dl_s24: SolvedEptTournament = SolvedEptTournament("dl_s24",
+                                                          dl_s24_gs1,
+                                                          [3000, 2500, 2000, 1600, 1200, 1000, 600, 400, 250, 250, 125,
+                                                           125, 70, 70, 30, 30],
+                                                          "DreamLeague Season 24",
+                                                          "DreamLeague/Season 24",
+                                                          "/dreamleague",
+                                                          "2024-11-10",
+                                                          metadata)
+
+        dl_s24_gs1.set_position("PARIVISION", 1)
+        dl_s24_gs1.set_position("Team Liquid", 3)
+        dl_s24_gs1.set_position("Xtreme Gaming", 5)
+        dl_s24_gs1.set_position("BetBoom Team", 7)
+        dl_s24_gs1.set_position("Gaimin Gladiators", 9)
+        dl_s24_gs1.set_position("AVULUS", 11)
+        dl_s24_gs1.set_position("Nigma Galaxy", 13)
+        dl_s24_gs1.set_position("Nouns Esports", 15)
+
+        dl_s24_gs1.set_position("Team Falcons", 2)
+        dl_s24_gs1.set_position("Team Waska", 4)
+        dl_s24_gs1.set_position("Tundra Esports", 6)
+        dl_s24_gs1.set_position("Team Spirit", 8)
+        dl_s24_gs1.set_position("Talon Esports", 10)
+        dl_s24_gs1.set_position("Azure Ray", 12)
+        dl_s24_gs1.set_position("HEROIC", 14)
+        dl_s24_gs1.set_position("Palianytsia", 16)
+
+        dl_s24_gs2.set_position("BetBoom Team", 1)
+        dl_s24_gs2.set_position("Team Spirit", 2)
+        dl_s24_gs2.set_position("PARIVISION", 3)
+        dl_s24_gs2.set_position("Team Falcons", 4)
+        dl_s24_gs2.set_position("Tundra Esports", 5)
+        dl_s24_gs2.set_position("Team Liquid", 6)
+        dl_s24_gs2.set_position("Xtreme Gaming", 7)
+        dl_s24_gs2.set_position("Team Waska", 8)
+
+        dl_s24.set_position("Team Falcons", 1)
+        dl_s24.set_position("BetBoom Team", 2)
+        dl_s24.set_position("Team Spirit", 3)
+        dl_s24.set_position("PARIVISION", 4)
+        dl_s24.set_position("Tundra Esports", 5)
+        dl_s24.set_position("Team Liquid", 6)
+        dl_s24.set_position("Xtreme Gaming", 7)
+        dl_s24.set_position("Team Waska", 8)
+        dl_s24.set_position("Gaimin Gladiators", 9)
+        dl_s24.set_position("Talon Esports", 10)
+        dl_s24.set_position("AVULUS", 11)
+        dl_s24.set_position("Azure Ray", 12)
+        dl_s24.set_position("Nigma Galaxy", 13)
+        dl_s24.set_position("HEROIC", 14)
+        dl_s24.set_position("Nouns Esports", 15)
+        dl_s24.set_position("Palianytsia", 16)
+
+        return dl_s24, dl_s24_gs1, dl_s24_gs2
