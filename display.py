@@ -22,7 +22,7 @@ class Display:
     def print(self, team_to_optimise: Team, top_n: int, max_points: float, solver: CpSolver):
         output: str = ""
         output += "==What does the threshold scenario look like?==\n"
-        output += f"This is the following scenario where {{{{Team|{team_to_optimise.name}}}}} fail to finish in the <u>top {top_n}</u> with {round(max_points)} points.\n"
+        output += f"This is the following scenario where {{{{Team|{team_to_optimise.name}}}}} become the cutoff for the <u>top {top_n}</u> with {round(max_points)} points.\n"
         output += '{| class="wikitable" style="font-size:85%; text-align: center;"\n'
         output += "! rowspan=\"2\" style=\"min-width:40px\" | '''Place'''\n"
         output += "! rowspan=\"2\" style=\"min-width:200px\" | '''Team'''\n"
@@ -39,7 +39,7 @@ class Display:
                 output += "! rowspan=\"2\" | <span title=\"Transfer window\">&hArr;</span>\n"
 
         output += "|-\n"
-        output += f"! '''{(round(max_points) + 1)}'''\n"
+        output += f"! '''{(round(max_points))}'''\n"
         for tournament_or_transfer_window in self.tournaments_or_transfer_windows:
             if isinstance(tournament_or_transfer_window, EptTournamentBase):
                 ept_tournament: EptTournamentBase = tournament_or_transfer_window
