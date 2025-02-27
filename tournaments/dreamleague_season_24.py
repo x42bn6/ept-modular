@@ -83,7 +83,6 @@ class DreamLeagueSeason24:
 class DreamLeagueSeason24Solved:
     def __init__(self, metadata: Metadata):
         self.metadata = metadata
-        self.team_database = metadata.team_database
 
     def build(self) -> Tuple[EptTournamentBase, EptStageBase, EptStageBase]:
         metadata: Metadata = self.metadata

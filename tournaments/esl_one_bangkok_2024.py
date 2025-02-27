@@ -1,4 +1,6 @@
-from ept import EptPairGroupStage, EptTournament
+from typing import Tuple
+
+from ept import EptPairGroupStage, EptTournament, SolvedEptStage, SolvedEptTournament, EptStageBase, EptTournamentBase
 from metadata import Metadata
 from stage import PairGroupStage, DoubleElimination_4U4L2DSL1D, Tournament
 from teams import TeamDatabase
@@ -9,7 +11,7 @@ class EslOneBangkok2024:
         self.metadata = metadata
         self.team_database = metadata.team_database
 
-    def build(self):
+    def build(self) -> Tuple[EptTournamentBase, EptStageBase]:
         metadata: Metadata = self.metadata
         team_database: TeamDatabase = self.team_database
 
@@ -30,12 +32,12 @@ class EslOneBangkok2024:
 
         ept_esl_one_bkk_2024_gs = EptPairGroupStage(esl_one_bkk_2024_gs, [480])
         ept_esl_one_bkk_2024 = EptTournament(esl_one_bkk_2024, ept_esl_one_bkk_2024_gs,
-                                        [4800, 3600, 3000, 2400, 1680, 1680, 780, 780, 420, 420, 210, 210],
-                                        "ESL One Bangkok 2024",
-                                        "ESL One/Bangkok/2024",
-                                        "/esl_one",
-                                        "2024-12-15",
-                                        metadata)
+                                             [4800, 3600, 3000, 2400, 1680, 1680, 780, 780, 420, 420, 210, 210],
+                                             "ESL One Bangkok 2024",
+                                             "ESL One/Bangkok/2024",
+                                             "/esl_one",
+                                             "2024-12-15",
+                                             metadata)
 
         esl_one_bkk_2024_gs.team_can_finish_between("Team Falcons", 1, 2)
         esl_one_bkk_2024_gs.team_can_finish_between("AVULUS", 3, 4)
@@ -69,3 +71,50 @@ class EslOneBangkok2024:
         ept_esl_one_bkk_2024.build()
 
         return ept_esl_one_bkk_2024, ept_esl_one_bkk_2024_gs
+
+
+class EslOneBangkok2024Solved:
+    def __init__(self, metadata: Metadata):
+        self.metadata = metadata
+
+    def build(self) -> Tuple[EptTournamentBase, EptStageBase]:
+        metadata: Metadata = self.metadata
+
+        esl_one_bkk_2024_gs: SolvedEptStage = SolvedEptStage("esl_one_bkk_2024_gs", 12, [480], metadata)
+        esl_one_bkk_2024: SolvedEptTournament = SolvedEptTournament("esl_one_bkk_2024", esl_one_bkk_2024_gs,
+                                                                    [4800, 3600, 3000, 2400, 1680, 1680, 780, 780, 420,
+                                                                     420, 210, 210],
+                                                                    "ESL One Bangkok 2024",
+                                                                    "ESL One/Bangkok/2024",
+                                                                    "/esl_one",
+                                                                    "2024-12-15",
+                                                                    metadata)
+
+        esl_one_bkk_2024_gs.set_position("Team Falcons", 1)
+        esl_one_bkk_2024_gs.set_position("AVULUS", 3)
+        esl_one_bkk_2024_gs.set_position("Team Spirit", 5)
+        esl_one_bkk_2024_gs.set_position("Shopify Rebellion", 7)
+        esl_one_bkk_2024_gs.set_position("BOOM Esports", 9)
+        esl_one_bkk_2024_gs.set_position("Natus Vincere", 11)
+
+        esl_one_bkk_2024_gs.set_position("PARIVISION", 2)
+        esl_one_bkk_2024_gs.set_position("BetBoom Team", 4)
+        esl_one_bkk_2024_gs.set_position("Nigma Galaxy", 6)
+        esl_one_bkk_2024_gs.set_position("Team Liquid", 8)
+        esl_one_bkk_2024_gs.set_position("Gaozu", 10)
+        esl_one_bkk_2024_gs.set_position("beastcoast", 12)
+
+        esl_one_bkk_2024.set_position("PARIVISION", 1)
+        esl_one_bkk_2024.set_position("Team Liquid", 2)
+        esl_one_bkk_2024.set_position("BetBoom Team", 3)
+        esl_one_bkk_2024.set_position("Team Spirit", 4)
+        esl_one_bkk_2024.set_position("Team Falcons", 5)
+        esl_one_bkk_2024.set_position("AVULUS", 6)
+        esl_one_bkk_2024.set_position("Shopify Rebellion", 7)
+        esl_one_bkk_2024.set_position("Nigma Galaxy", 8)
+        esl_one_bkk_2024.set_position("BOOM Esports", 9)
+        esl_one_bkk_2024.set_position("Gaozu", 10)
+        esl_one_bkk_2024.set_position("Natus Vincere", 11)
+        esl_one_bkk_2024.set_position("beastcoast", 12)
+
+        return esl_one_bkk_2024, esl_one_bkk_2024_gs

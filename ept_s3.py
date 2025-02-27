@@ -9,7 +9,7 @@ from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_24 import DreamLeagueSeason24, DreamLeagueSeason24Solved
 from tournaments.dreamleague_season_25 import DreamLeagueSeason25
-from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024
+from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024, EslOneBangkok2024Solved
 from transfer_window import TransferWindow
 
 
@@ -65,7 +65,7 @@ def main():
         dl_s24_to_esl_one_bkk_2024.add_change("Atlantic City", 30)
         dl_s24_to_esl_one_bkk_2024.add_change("Azure Ray", -125)
 
-        ept_esl_one_bkk_2024, ept_esl_one_bkk_2024_gs = EslOneBangkok2024(metadata).build()
+        ept_esl_one_bkk_2024, ept_esl_one_bkk_2024_gs = EslOneBangkok2024Solved(metadata).build()
 
         esl_one_bkk_2024_to_dl_s25: TransferWindow = TransferWindow("esl_one_bkk_2024_to_dl_s25", team_database)
         esl_one_bkk_2024_to_dl_s25.add_change("Team Spirit", -1320)
