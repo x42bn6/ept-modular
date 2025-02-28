@@ -1,4 +1,6 @@
-from ept import EptPairGroupStage, EptGroupStage, EptTournament
+from typing import Tuple
+
+from ept import EptPairGroupStage, EptGroupStage, EptTournament, EptStageBase, EptTournamentBase
 from metadata import Metadata
 from stage import PairGroupStage, GroupStage, DoubleElimination_2U2L1D, Tournament
 from teams import TeamDatabase
@@ -9,7 +11,7 @@ class DreamLeagueSeason25:
         self.metadata = metadata
         self.team_database = metadata.team_database
 
-    def build(self):
+    def build(self) -> Tuple[EptTournamentBase, EptStageBase, EptStageBase]:
         metadata: Metadata = self.metadata
         team_database: TeamDatabase = self.team_database
 

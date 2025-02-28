@@ -8,14 +8,15 @@ class Region(Enum):
     EEU = 4,
     MESWA = 5,
     CN = 6,
-    SEA = 7,
-    GLOBAL = 999
+    SEA = 7
 
 class Team:
-    def __init__(self, name: str = None, region: Region = Region.GLOBAL):
+    def __init__(self, name: str, region: Region, is_pseudo_team: bool = False, is_alive: bool = True):
         self.name = name
         self.ept_relevant = False
         self.region = region
+        self.is_pseudo_team = is_pseudo_team
+        self.is_alive = is_alive
 
     def make_relevant(self):
         self.ept_relevant = True
@@ -48,3 +49,6 @@ class TeamDatabase:
 
     def get_team_by_index(self, index: int) -> Team:
         return list(self.teams.values())[index]
+
+    def get_teams_by_region(self, region: Region) -> [Team]:
+        return list(team for team in self.teams.values() if team.region == region)

@@ -74,6 +74,7 @@ class Stage(ABC):
         self.name = name
         self.team_count: int = team_count
         self.metadata: Metadata = metadata
+        self.participating_teams_if_group_unknown = None
 
         self.indicators: [[BooleanVar]] = [
             [self.metadata.model.new_bool_var(
@@ -127,6 +128,8 @@ class Stage(ABC):
     def guaranteed_playoff_lb_or_eliminated(self, *team_names: str):
         self.team_guaranteed_playoff_lb_or_eliminated = self.metadata.team_database.get_teams_by_names(*team_names)
 
+    def set_participating_teams(self, teams: [Team]):
+        self.participating_teams_if_group_unknown = teams
 
 class Root(Stage, ABC):
     def __init__(self,
@@ -215,32 +218,28 @@ class PairGroupStage(Stage, ABC):
         self.advancing_team_count_per_group = advancing_team_count_per_group
         self.group_a = group_a
         self.group_b = group_b
-        self.participating_teams_if_group_unknown = None
 
     def add_constraints(self):
-        # If we don't know groups, don't bother
-        if self.group_a is None:
-            return
-
         team_database: TeamDatabase = self.metadata.team_database
         model: CpModel = self.metadata.model
 
         # By convention, assume A is odd, B is even
         # A finishes 1st, 3rd, 5th, etc.
-        for team in self.group_a:
-            team_index = team_database.get_team_index(team)
-            row_sum = 0
-            for placement in range(0, self.team_count, 2):
-                row_sum += self.indicators[team_index][placement]
-            model.Add(row_sum == 1)
+        if self.group_a is not None:
+            for team in self.group_a:
+                team_index = team_database.get_team_index(team)
+                row_sum = 0
+                for placement in range(0, self.team_count, 2):
+                    row_sum += self.indicators[team_index][placement]
+                model.Add(row_sum == 1)
 
-        # B finishes 2nd, 4th, 6th, etc.
-        for team in self.group_b:
-            team_index = team_database.get_team_index(team)
-            row_sum = 0
-            for placement in range(1, self.team_count, 2):
-                row_sum += self.indicators[team_index][placement]
-            model.Add(row_sum == 1)
+            # B finishes 2nd, 4th, 6th, etc.
+            for team in self.group_b:
+                team_index = team_database.get_team_index(team)
+                row_sum = 0
+                for placement in range(1, self.team_count, 2):
+                    row_sum += self.indicators[team_index][placement]
+                model.Add(row_sum == 1)
 
         # Top N teams make it through to the next Stage
         # They will place *somewhere* in the next Stage
@@ -273,18 +272,17 @@ class PairGroupStage(Stage, ABC):
                 model.Add(self.indicators[team_index][p] == tournament.indicators[team_index][p])
         pass
 
-    def set_participating_teams(self, teams: [Team]):
-        self.participating_teams_if_group_unknown = teams
-
     def is_team_participating(self, team: Team) -> bool:
         # This is weird but it is called by the optimiser to see if a team can actually meet the threshold or not
         # If we do not know concrete groups, it is better to say "yes" so the optimiser is forced to go through it
-        if self.group_a is None:
-            if self.participating_teams_if_group_unknown is not None:
-                return team in self.participating_teams_if_group_unknown
-            return True
+        if self.group_a is not None:
+            if team in self.group_a or team in self.group_b:
+                return True
 
-        return team in self.group_a or team in self.group_b
+        if self.participating_teams_if_group_unknown is not None:
+            return team in self.participating_teams_if_group_unknown
+
+        return True
 
 
 class SingleMatch(Stage, ABC):

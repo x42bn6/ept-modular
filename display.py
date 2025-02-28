@@ -79,7 +79,12 @@ class Display:
         for team, total_points in sorted_total_points.items():
             output += "|-\n"
             output += f"| {(i + 1)}\n"
-            output += f"|style=\"text-align: left;\"| {{{{Team|{team.name}}}}}\n"
+            output += f"|style=\"text-align: left;\"| "
+            if team.is_pseudo_team:
+                output += team.name
+            else:
+                output += f"{{{{Team|{team.name}}}}}"
+            output += "\n"
             output += f"| {formatted_points_inner(i, total_points)}\n"
             for display_phase in all_display_phases:
                 placement_for_team: Placement = display_phase.get_placement_for_team(team)

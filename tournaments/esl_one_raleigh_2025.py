@@ -23,7 +23,7 @@ class EslOneRaleigh2025:
         participating_teams: [Team] = team_database.get_teams_by_names("PARIVISION", "BetBoom Team", "Team Falcons", "Team Liquid",
                                                  "Tundra Esports", "AVULUS", "Team Spirit", "Nigma Galaxy",
                                                  "Team Tidebound", "Talon Esports", "Shopify Rebellion", "HEROIC")
-        esl_one_ral_2025_invited_teams = Root("esl_one_ral_root", 12, metadata, participating_teams)
+        esl_one_ral_2025_invited_teams: Root = Root("esl_one_ral_2025_root", 12, metadata, participating_teams)
         esl_one_ral_2025_invited_teams.bind_forward(esl_one_ral_2025_gs)
         esl_one_ral_2025_gs.set_participating_teams(participating_teams)
 

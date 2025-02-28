@@ -25,7 +25,7 @@ def main():
         Team("Gaimin Gladiators", Region.WEU),
         Team("Tundra Esports", Region.WEU),
         Team("AVULUS", Region.WEU),
-        Team("Palianytsia", Region.WEU),
+        Team("Palianytsia", Region.WEU, is_alive=False),
 
         Team("BetBoom Team", Region.EEU),
         Team("PARIVISION", Region.EEU),
@@ -37,16 +37,16 @@ def main():
         Team("Nigma Galaxy", Region.MESWA),
         Team("Chimera Esports", Region.MESWA),
 
-        Team("Nouns Esports", Region.NA),
-        Team("Atlantic City", Region.NA),
+        Team("Nouns Esports", Region.NA, is_alive=False),
+        Team("Atlantic City", Region.NA, is_alive=False),
         Team("Shopify Rebellion", Region.NA),
 
         Team("HEROIC", Region.SA),
-        Team("Team Waska", Region.SA),
+        Team("Team Waska", Region.SA, is_alive=False),
         Team("beastcoast", Region.SA),
 
         Team("Xtreme Gaming", Region.CN),
-        Team("Azure Ray", Region.CN),
+        Team("Azure Ray", Region.CN, is_alive=False),
         Team("Gaozu", Region.CN),
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
