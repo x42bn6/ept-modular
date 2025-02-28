@@ -89,16 +89,21 @@ class Stage(ABC):
     def build(self):
         # One placement per team
         model: CpModel = self.metadata.model
+        team_database = self.metadata.team_database
         for placement in range(self.team_count):
             model.Add(
                 sum(self.indicators[i][placement] for i in
-                    range(len(self.metadata.team_database.get_all_teams()))) == 1)
+                    range(len(team_database.get_all_teams()))) == 1)
+
+        # Zero or one team per placement
+        for team in team_database.get_all_teams():
+            model.Add(sum(self.indicators[team_database.get_team_index(team)]) <= 1)
 
         for team_constraint in self.team_constraints:
-            model.Add(sum(self.indicators[self.metadata.team_database.get_team_index(team_constraint.team)][i]
+            model.Add(sum(self.indicators[team_database.get_team_index(team_constraint.team)][i]
                           for i in range(team_constraint.lower, team_constraint.upper + 1)) == 1)
 
-        model.Add(sum(self.indicators[self.metadata.team_database.get_team_index(team)][i]
+        model.Add(sum(self.indicators[team_database.get_team_index(team)][i]
                       for team in self.team_guaranteed_playoff_lb_or_eliminated for i in [0, 1]) <= 1)
 
         self.add_constraints()

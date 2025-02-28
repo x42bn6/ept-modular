@@ -1,4 +1,5 @@
 import sys
+import time
 
 from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
@@ -20,6 +21,8 @@ BIG_M = 50000
 
 
 def main():
+    start_time = get_epoch_time_seconds()
+
     teams: [Team] = [
         Team("Team Liquid", Region.WEU),
         Team("Gaimin Gladiators", Region.WEU),
@@ -114,6 +117,13 @@ def main():
 
     print(
         f"Got cutoff value as {min_cutoff} for team {[team.name for team in min_cutoff_teams]} with corresponding teams {[team.name for team in max_objective_value_teams]} missing out with {max_cutoff_plus_one}")
+
+    end_time = get_epoch_time_seconds()
+    print(f"Completed in {end_time - start_time}s")
+
+
+def get_epoch_time_seconds():
+    return round(time.time())
 
 
 def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams):
