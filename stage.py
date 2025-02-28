@@ -276,8 +276,7 @@ class PairGroupStage(Stage, ABC):
         # This is weird but it is called by the optimiser to see if a team can actually meet the threshold or not
         # If we do not know concrete groups, it is better to say "yes" so the optimiser is forced to go through it
         if self.group_a is not None:
-            if team in self.group_a or team in self.group_b:
-                return True
+            return team in self.group_a or team in self.group_b
 
         if self.participating_teams_if_group_unknown is not None:
             return team in self.participating_teams_if_group_unknown
