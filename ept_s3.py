@@ -13,7 +13,10 @@ from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_24 import DreamLeagueSeason24Solved
 from tournaments.dreamleague_season_25 import DreamLeagueSeason25
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024Solved
+from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025
 from transfer_window import TransferWindow
+
+BIG_M = 50000
 
 
 def main():
@@ -46,6 +49,7 @@ def main():
         Team("Azure Ray", Region.CN),
         Team("Gaozu", Region.CN),
         Team("Yakult Brothers", Region.CN),
+        Team("Team Tidebound", Region.CN),
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
@@ -59,38 +63,10 @@ def main():
     max_objective_value_teams: [Team] = []
     min_cutoff = sys.maxsize
     max_cutoff_plus_one = -1
-    cutoff = 4
-    for team in team_database.get_all_teams():
-        model: CpModel = CpModel()
-        metadata: [Metadata] = Metadata(team_database, model)
-
-        full_ept = FullEpt(metadata)
-        phases: [HasDisplayPhase] = full_ept.get_display_phases()
-
-        print(f"Now optimising for {team.name}")
-        max_possible_points_for_team = calculate_theoretical_maximum_for_team(phases, team, team_database)
-        if max_cutoff_plus_one > max_possible_points_for_team:
-            print(
-                f"Team {team.name}'s maximum points ({max_possible_points_for_team}) is less than objective value ({max_cutoff_plus_one}).  Skipping")
-            continue
-
-        # Optimise
-        total_points = full_ept.get_total_points(team_database, teams)
-        maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cutoff)
-
-        solver = cp_model.CpSolver()
-        status = solver.Solve(model)
-        if status != cp_model.OPTIMAL:
-            print(f"Team {team.name} probably cannot finish in position {cutoff}")
-            continue
-
-        # I really don't like doing this, but there is a stupid scenario where one is something like 999.999 and one is 1000.0001
-        new_objective_value = round(solver.objective_value)
-        if new_objective_value > max_cutoff_plus_one:
-            max_objective_value_teams = [team]
-            max_cutoff_plus_one = new_objective_value
-        elif new_objective_value == max_cutoff_plus_one:
-            max_objective_value_teams.append(team)
+    cutoff = 8
+    max_cutoff_plus_one, max_objective_value_teams = optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one,
+                                                                                       max_objective_value_teams,
+                                                                                       team_database, teams)
 
     print(
         f"Found maximum cutoff plus one value as {max_cutoff_plus_one} for teams {[team.name for team in max_objective_value_teams]}.  Now minimising cutoff")
@@ -140,6 +116,46 @@ def main():
         f"Got cutoff value as {min_cutoff} for team {[team.name for team in min_cutoff_teams]} with corresponding teams {[team.name for team in max_objective_value_teams]} missing out with {max_cutoff_plus_one}")
 
 
+def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams):
+    for team in team_database.get_all_teams():
+        model: CpModel = CpModel()
+        metadata: [Metadata] = Metadata(team_database, model)
+
+        full_ept = FullEpt(metadata)
+        phases: [HasDisplayPhase] = full_ept.get_display_phases()
+
+        print(f"Now optimising for {team.name}")
+        max_possible_points_for_team = calculate_theoretical_maximum_for_team(phases, team, team_database)
+        if max_cutoff_plus_one > max_possible_points_for_team:
+            print(
+                f"Team {team.name}'s maximum points ({max_possible_points_for_team}) is less than objective value ({max_cutoff_plus_one}).  Skipping")
+            continue
+
+        # Optimise
+        total_points = full_ept.get_total_points(team_database, teams)
+        maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cutoff)
+
+        solver = cp_model.CpSolver()
+        status = solver.Solve(model)
+        if status != cp_model.OPTIMAL:
+            print(f"Team {team.name} probably cannot finish in position {cutoff}")
+            continue
+
+        # I really don't like doing this, but there is a stupid scenario where one is something like 999.999 and one is 1000.0001
+        new_objective_value = round(solver.objective_value)
+        if new_objective_value > max_cutoff_plus_one:
+            max_objective_value_teams = [team]
+            max_cutoff_plus_one = new_objective_value
+        elif new_objective_value == max_cutoff_plus_one:
+            max_objective_value_teams.append(team)
+        else:
+            continue
+
+        print(f"Maximum objective value: {max_cutoff_plus_one}")
+
+    return max_cutoff_plus_one, max_objective_value_teams
+
+
 def calculate_theoretical_maximum_for_team(phases, team, team_database):
     # Calculate theoretical maximum.  If this is less than the current maximum, don't bother solving
     max_possible_points_for_team: int = 0
@@ -156,14 +172,13 @@ def maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cu
     ranks: [IntVar] = {team: model.NewIntVar(1, len(teams), f'ranks_{team}') for team in team_count_range}
     aux: [[BooleanVar]] = {(i, j): model.NewBoolVar(f'aux_{i}_{j}') for i in team_count_range for j in
                            team_count_range}
-    big_m: int = 20000
     for i in team_count_range:
         for j in team_count_range:
             if i == j:
                 model.Add(aux[(i, j)] == 1)
             else:
-                model.Add(total_points[i] - total_points[j] <= (1 - aux[(i, j)]) * big_m)
-                model.Add(total_points[j] - total_points[i] <= aux[(i, j)] * big_m)
+                model.Add(total_points[i] - total_points[j] <= (1 - aux[(i, j)]) * BIG_M)
+                model.Add(total_points[j] - total_points[i] <= aux[(i, j)] * BIG_M)
         ranks[i] = sum(aux[(i, j)] for j in team_count_range)
     team_index: int = team_database.get_team_index(team)
     model.Add(ranks[team_index] > cutoff)
@@ -176,18 +191,18 @@ def minimise_cutoff(model, team, team_database, teams, total_points, cutoff: int
     ranks: [IntVar] = {team: model.NewIntVar(1, len(teams), f'ranks_{team}') for team in team_count_range}
     aux: [[BooleanVar]] = {(i, j): model.NewBoolVar(f'aux_{i}_{j}') for i in team_count_range for j in
                            team_count_range}
-    big_m: int = 20000
     for i in team_count_range:
         for j in team_count_range:
             if i == j:
                 model.Add(aux[(i, j)] == 1)
             else:
-                model.Add(total_points[i] - total_points[j] <= (1 - aux[(i, j)]) * big_m)
-                model.Add(total_points[j] - total_points[i] <= aux[(i, j)] * big_m)
+                model.Add(total_points[i] - total_points[j] <= (1 - aux[(i, j)]) * BIG_M)
+                model.Add(total_points[j] - total_points[i] <= aux[(i, j)] * BIG_M)
         ranks[i] = sum(aux[(i, j)] for j in team_count_range)
     team_index: int = team_database.get_team_index(team)
     cutoff_team_index: int = team_database.get_team_index(cutoff_team)
     model.Add(total_points[cutoff_team_index] == cutoff_points)
+    model.Add(ranks[cutoff_team_index] == cutoff + 1)
     model.Add(ranks[team_index] == cutoff)
     model.Minimize(total_points[team_index])
 
@@ -243,6 +258,8 @@ class FullEpt:
         dl_s25_to_esl_one_ral_2025: TransferWindow = TransferWindow("dl_s25_to_esl_one_ral_2025", team_database)
         dl_s25_to_esl_one_ral_2025.add_change("Palianytsia", -21)
 
+        ept_esl_one_ral_2025, ept_esl_one_ral_2025_gs = EslOneRaleigh2025(metadata).build()
+
         self.ept_dl_s24 = ept_dl_s24
         self.ept_dl_s24_gs1 = ept_dl_s24_gs1
         self.ept_dl_s24_gs2 = ept_dl_s24_gs2
@@ -260,6 +277,9 @@ class FullEpt:
 
         self.dl_s25_to_esl_one_ral_2025 = dl_s25_to_esl_one_ral_2025
 
+        self.ept_esl_one_ral_2025 = ept_esl_one_ral_2025
+        self.ept_esl_one_ral_2025_gs = ept_esl_one_ral_2025_gs
+
     def get_display_phases(self) -> [HasDisplayPhase]:
         return [
             self.ept_dl_s24,
@@ -267,7 +287,8 @@ class FullEpt:
             self.ept_esl_one_bkk_2024,
             self.esl_one_bkk_2024_to_dl_s25,
             self.ept_dl_s25,
-            self.dl_s25_to_esl_one_ral_2025
+            self.dl_s25_to_esl_one_ral_2025,
+            self.ept_esl_one_ral_2025
         ]
 
     def get_total_points(self, team_database: TeamDatabase, teams: [Team]):
@@ -282,7 +303,9 @@ class FullEpt:
             self.ept_dl_s25_gs1.get_obtained_points(t_index) +
             self.ept_dl_s25_gs2.get_obtained_points(t_index) +
             self.ept_dl_s25.get_obtained_points(t_index) +
-            self.dl_s25_to_esl_one_ral_2025.get_change(t_index)
+            self.dl_s25_to_esl_one_ral_2025.get_change(t_index) +
+            self.ept_esl_one_ral_2025_gs.get_obtained_points(t_index) +
+            self.ept_esl_one_ral_2025.get_obtained_points(t_index)
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]

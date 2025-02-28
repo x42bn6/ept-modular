@@ -215,6 +215,7 @@ class PairGroupStage(Stage, ABC):
         self.advancing_team_count_per_group = advancing_team_count_per_group
         self.group_a = group_a
         self.group_b = group_b
+        self.participating_teams_if_group_unknown = None
 
     def add_constraints(self):
         # If we don't know groups, don't bother
@@ -272,7 +273,17 @@ class PairGroupStage(Stage, ABC):
                 model.Add(self.indicators[team_index][p] == tournament.indicators[team_index][p])
         pass
 
+    def set_participating_teams(self, teams: [Team]):
+        self.participating_teams_if_group_unknown = teams
+
     def is_team_participating(self, team: Team) -> bool:
+        # This is weird but it is called by the optimiser to see if a team can actually meet the threshold or not
+        # If we do not know concrete groups, it is better to say "yes" so the optimiser is forced to go through it
+        if self.group_a is None:
+            if self.participating_teams_if_group_unknown is not None:
+                return team in self.participating_teams_if_group_unknown
+            return True
+
         return team in self.group_a or team in self.group_b
 
 
