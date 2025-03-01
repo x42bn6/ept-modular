@@ -63,6 +63,7 @@ class Display:
 
             return formatted_points_inner(p.place, p.points)
 
+
         def formatted_points_inner(place: int | None, pts: int | None) -> str:
             if pts is None or pts == 0:
                 return f"{pts}"
@@ -77,9 +78,15 @@ class Display:
 
         i = 0
         for team, total_points in sorted_total_points.items():
+            bg: str = "class=\""
+            if i < top_n:
+                bg += "bg-up"
+            else:
+                bg += "bg-down"
+            bg += "\""
             output += "|-\n"
-            output += f"| {(i + 1)}\n"
-            output += f"|style=\"text-align: left;\"| "
+            output += f"|{bg}| {(i + 1)}\n"
+            output += f"|{bg} style=\"text-align: left;\"| "
             if team.is_pseudo_team:
                 output += team.name
             else:
