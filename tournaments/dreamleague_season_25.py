@@ -66,6 +66,8 @@ class DreamLeagueSeason25:
         dl_s25_gs2.team_can_finish_between("Team Liquid", 7, 7)
         dl_s25_gs2.team_can_finish_between("HEROIC", 8, 8)
 
+        dl_s25_playoff.lbsf.set_winner("Team Spirit")
+
         dl_s25_gs1.build()
         dl_s25_gs2.build()
         dl_s25_playoff.build()

@@ -56,6 +56,7 @@ class DreamLeagueSeason24:
         dl_s24_gs1.team_can_finish_between("Azure Ray", 11, 12)
         dl_s24_gs1.team_can_finish_between("HEROIC", 13, 14)
         dl_s24_gs1.team_can_finish_between("Palianytsia", 15, 16)
+
         dl_s24_gs2.team_can_finish_between("BetBoom Team", 1, 1)
         dl_s24_gs2.team_can_finish_between("Team Spirit", 2, 2)
         dl_s24_gs2.team_can_finish_between("PARIVISION", 3, 3)
@@ -64,6 +65,7 @@ class DreamLeagueSeason24:
         dl_s24_gs2.team_can_finish_between("Team Liquid", 6, 6)
         dl_s24_gs2.team_can_finish_between("Xtreme Gaming", 7, 7)
         dl_s24_gs2.team_can_finish_between("Team Waska", 8, 8)
+
         dl_s24_playoff.ubf.set_winner("BetBoom Team")
         dl_s24_playoff.lbsf.set_winner("Team Falcons")
         dl_s24_playoff.lbf.set_winner("Team Falcons")
