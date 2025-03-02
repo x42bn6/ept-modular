@@ -125,7 +125,7 @@ def main():
                 min_cutoff_teams.append(team)
             else:
                 print(
-                    f"Minimum objective value for {team.name} ({solver.objective_value}) is not greater than current minimum {min_cutoff}")
+                    f"Minimum objective value for {team.name} ({solver.objective_value}) is not less than current minimum {min_cutoff}")
                 continue
 
             display: Display = Display(phases, metadata)
