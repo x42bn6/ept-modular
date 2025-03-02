@@ -134,7 +134,10 @@ class Stage(ABC):
         self.team_guaranteed_playoff_lb_or_eliminated = self.metadata.team_database.get_teams_by_names(*team_names)
 
     def set_participating_teams(self, teams: [Team]):
+        if len(teams) != self.team_count:
+            raise ValueError(f"Participating team count {len(teams)} must equal team count {self.team_count}")
         self.participating_teams_if_group_unknown = teams
+
 
 class Root(Stage, ABC):
     def __init__(self,
@@ -157,6 +160,35 @@ class Root(Stage, ABC):
 
     def bind_elimination(self, tournament: Tournament):
         raise Exception("Root is not intended to be a final position")
+
+    def is_team_participating(self, team: Team) -> bool:
+        return team in self.teams
+
+
+class RootUnknownAdvances(Stage, ABC):
+    def __init__(self,
+                 name: str,
+                 teams: [Team],
+                 min_teams: int,
+                 max_teams: int,
+                 metadata: Metadata):
+        super().__init__(name, len(teams), metadata)
+        self.teams = teams
+        self.min_teams = min_teams
+        self.max_teams = max_teams
+
+    def add_constraints(self):
+        model: CpModel = self.metadata.model
+
+        team_sum: [IntVar] = 0
+        for team in self.teams:
+            team_sum += sum(self.next_stage.indicators[self.metadata.team_database.get_team_index(team)])
+
+        model.Add(team_sum >= self.min_teams)
+        model.Add(team_sum <= self.max_teams)
+
+    def bind_elimination(self, tournament: Tournament):
+        raise Exception("RootUnknownAdvances is not intended to be a final position")
 
     def is_team_participating(self, team: Team) -> bool:
         return team in self.teams

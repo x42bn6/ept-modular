@@ -5,6 +5,7 @@ from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
+from constants import MAX_TEAMS_PER_REGION, BIG_M
 from display import Display
 from display_phases import HasDisplayPhase
 from ept import EptTournamentBase
@@ -13,11 +14,10 @@ from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_24 import DreamLeagueSeason24Solved
 from tournaments.dreamleague_season_25 import DreamLeagueSeason25
+from tournaments.dreamleague_season_26 import DreamLeagueSeason26
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024Solved
 from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025
 from transfer_window import TransferWindow
-
-BIG_M = 50000
 
 
 def main():
@@ -62,6 +62,10 @@ def main():
     for team in teams:
         team_database.add_team(team)
 
+    for region in Region:
+        for i in range(0, MAX_TEAMS_PER_REGION):
+            team_database.add_team(Team(f"{region.name} team {i + 1}", region, is_pseudo_team=True))
+
     min_cutoff_teams: [Team] = []
     max_objective_value_teams: [Team] = []
     min_cutoff = sys.maxsize
@@ -73,7 +77,18 @@ def main():
 
     print(
         f"Found maximum cutoff plus one value as {max_cutoff_plus_one} for teams {[team.name for team in max_objective_value_teams]}.  Now minimising cutoff")
+    # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
+    regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
+        if not team.is_alive:
+            continue
+
+        if team.is_pseudo_team:
+            if team.region in regions_with_pseudo_teams_solved:
+                continue
+            else:
+                regions_with_pseudo_teams_solved.append(team.region)
+
         for max_objective_value_team in max_objective_value_teams:
             if team == max_objective_value_team:
                 continue
@@ -98,7 +113,7 @@ def main():
             solver = cp_model.CpSolver()
             status = solver.Solve(model)
             if status != cp_model.OPTIMAL:
-                # print(f"Team {team.name} probably cannot finish in position {cutoff}")
+                print(f"Team {team.name} probably cannot finish in position {cutoff}")
                 continue
 
             # I really don't like doing this, but there is a stupid scenario where one is something like 999.999 and one is 1000.0001
@@ -109,6 +124,8 @@ def main():
             elif new_objective_value == min_cutoff:
                 min_cutoff_teams.append(team)
             else:
+                print(
+                    f"Minimum objective value for {team.name} ({solver.objective_value}) is not greater than current minimum {min_cutoff}")
                 continue
 
             display: Display = Display(phases, metadata)
@@ -127,7 +144,18 @@ def get_epoch_time_seconds():
 
 
 def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams):
+    # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
+    regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
+        if not team.is_alive:
+            continue
+
+        if team.is_pseudo_team:
+            if team.region in regions_with_pseudo_teams_solved:
+                continue
+            else:
+                regions_with_pseudo_teams_solved.append(team.region)
+
         model: CpModel = CpModel()
         metadata: [Metadata] = Metadata(team_database, model)
 
@@ -159,6 +187,8 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
         elif new_objective_value == max_cutoff_plus_one:
             max_objective_value_teams.append(team)
         else:
+            print(
+                f"Maximum objective value for {team.name} ({solver.objective_value}) is not greater than current maximum {max_cutoff_plus_one}")
             continue
 
         print(f"Maximum objective value: {max_cutoff_plus_one}")
@@ -270,6 +300,10 @@ class FullEpt:
 
         ept_esl_one_ral_2025, ept_esl_one_ral_2025_gs = EslOneRaleigh2025(metadata).build()
 
+        esl_one_ral_2025_to_dl_s26: TransferWindow = TransferWindow("esl_one_ral_2025_to_dl_s26", team_database)
+
+        ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
+
         self.ept_dl_s24 = ept_dl_s24
         self.ept_dl_s24_gs1 = ept_dl_s24_gs1
         self.ept_dl_s24_gs2 = ept_dl_s24_gs2
@@ -290,6 +324,12 @@ class FullEpt:
         self.ept_esl_one_ral_2025 = ept_esl_one_ral_2025
         self.ept_esl_one_ral_2025_gs = ept_esl_one_ral_2025_gs
 
+        self.esl_one_ral_2025_to_dl_s26 = esl_one_ral_2025_to_dl_s26
+
+        self.ept_dl_s26 = ept_dl_s26
+        self.ept_dl_s26_gs1 = ept_dl_s26_gs1
+        self.ept_dl_s26_gs2 = ept_dl_s26_gs2
+
     def get_display_phases(self) -> [HasDisplayPhase]:
         return [
             self.ept_dl_s24,
@@ -298,7 +338,9 @@ class FullEpt:
             self.esl_one_bkk_2024_to_dl_s25,
             self.ept_dl_s25,
             self.dl_s25_to_esl_one_ral_2025,
-            self.ept_esl_one_ral_2025
+            self.ept_esl_one_ral_2025,
+            self.esl_one_ral_2025_to_dl_s26,
+            self.ept_dl_s26
         ]
 
     def get_total_points(self, team_database: TeamDatabase, teams: [Team]):
@@ -315,7 +357,11 @@ class FullEpt:
             self.ept_dl_s25.get_obtained_points(t_index) +
             self.dl_s25_to_esl_one_ral_2025.get_change(t_index) +
             self.ept_esl_one_ral_2025_gs.get_obtained_points(t_index) +
-            self.ept_esl_one_ral_2025.get_obtained_points(t_index)
+            self.ept_esl_one_ral_2025.get_obtained_points(t_index) +
+            self.esl_one_ral_2025_to_dl_s26.get_change(t_index) +
+            self.ept_dl_s26_gs1.get_obtained_points(t_index) +
+            self.ept_dl_s26_gs2.get_obtained_points(t_index) +
+            self.ept_dl_s26.get_obtained_points(t_index)
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
         ]
