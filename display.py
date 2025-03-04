@@ -4,7 +4,7 @@ import pyperclip
 from ortools.sat.python.cp_model import CpSolver
 
 from display_phases import HasDisplayPhase, DisplayPhase, Placement, DisplayPhaseType
-from ept import EptTournament, EptTournamentBase
+from ept import EptTournamentBase
 from metadata import Metadata
 from teams import Team
 
@@ -22,6 +22,12 @@ class Display:
     def print(self, team_to_optimise: Team, top_n: int, max_points: float, solver: CpSolver):
         output: str = ""
         output += "==What does the threshold scenario look like?==\n"
+        output += """{{ambox
+|image=Warning.png
+|class=ambox-red
+|text=This is an '''unofficial''' calculation on what the threshold is to '''guarantee''' qualification to the Esports World Cup 2025.  ESL ultimately controls these points, rankings and invites, not Liquipedia.  '''It is also constantly in a draft status''', as it is not a simple optimisation model.
+}}
+"""
         output += f"This is the following scenario where {{{{Team|{team_to_optimise.name}}}}} become the cutoff for the <u>top {top_n}</u> with {round(max_points)} points.\n"
         output += '{| class="wikitable" style="font-size:85%; text-align: center;"\n'
         output += "! rowspan=\"2\" style=\"min-width:40px\" | '''Place'''\n"

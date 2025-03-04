@@ -89,7 +89,7 @@ class DreamLeagueSeason24Solved:
     def build(self) -> Tuple[EptTournamentBase, EptStageBase, EptStageBase]:
         metadata: Metadata = self.metadata
 
-        dl_s24_gs1: SolvedEptStage = SolvedEptStage("dl_s24_gs2", 16, [300, 300, 150, 150, 75, 75], metadata)
+        dl_s24_gs1: SolvedEptStage = SolvedEptStage("dl_s24_gs1", 16, [300, 300, 150, 150, 75, 75], metadata)
         dl_s24_gs2: SolvedEptStage = SolvedEptStage("dl_s24_gs2", 8, [300], metadata)
         dl_s24_gs1.bind_next_ept_stage(dl_s24_gs2)
         dl_s24: SolvedEptTournament = SolvedEptTournament("dl_s24",

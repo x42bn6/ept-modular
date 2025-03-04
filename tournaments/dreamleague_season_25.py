@@ -1,6 +1,7 @@
 from typing import Tuple
 
-from ept import EptPairGroupStage, EptGroupStage, EptTournament, EptStageBase, EptTournamentBase
+from ept import EptPairGroupStage, EptGroupStage, EptTournament, EptStageBase, EptTournamentBase, SolvedEptStage, \
+    SolvedEptTournament
 from metadata import Metadata
 from stage import PairGroupStage, GroupStage, DoubleElimination_2U2L1D, Tournament
 from teams import TeamDatabase
@@ -68,6 +69,8 @@ class DreamLeagueSeason25:
 
         dl_s25_playoff.lbsf.set_winner("Team Spirit")
         dl_s25_playoff.ubf.set_winner("Tundra Esports")
+        dl_s25_playoff.lbf.set_winner("Team Spirit")
+        dl_s25_playoff.gf.set_winner("Team Spirit")
 
         dl_s25_gs1.build()
         dl_s25_gs2.build()
@@ -78,3 +81,70 @@ class DreamLeagueSeason25:
         ept_dl_s25.build()
 
         return ept_dl_s25, ept_dl_s25_gs1, ept_dl_s25_gs2
+
+
+class DreamLeagueSeason25Solved:
+    def __init__(self, metadata: Metadata):
+        self.metadata = metadata
+
+    def build(self) -> Tuple[EptTournamentBase, EptStageBase, EptStageBase]:
+        metadata: Metadata = self.metadata
+
+        dl_s25_gs1: SolvedEptStage = SolvedEptStage("dl_s25_gs1", 16, [420, 420, 210, 210, 105, 105], metadata)
+        dl_s25_gs2: SolvedEptStage = SolvedEptStage("dl_s25_gs2", 8, [420], metadata)
+        dl_s25_gs1.bind_next_ept_stage(dl_s25_gs2)
+        dl_s25: SolvedEptTournament = SolvedEptTournament("dl_s25",
+                                                          dl_s25_gs1,
+                                                          [4200, 3500, 2800, 2240, 1680, 1400, 840, 560, 350, 350, 175,
+                                                           175, 98, 98, 42, 42],
+                                                          "DreamLeague Season 25",
+                                                          "DreamLeague/Season 25",
+                                                          "/dreamleague",
+                                                          "2025-03-02",
+                                                          metadata)
+
+        dl_s25_gs1.set_position("Tundra Esports", 1)
+        dl_s25_gs1.set_position("BetBoom Team", 3)
+        dl_s25_gs1.set_position("Team Falcons", 5)
+        dl_s25_gs1.set_position("HEROIC", 7)
+        dl_s25_gs1.set_position("Shopify Rebellion", 9)
+        dl_s25_gs1.set_position("Moodeng Warriors", 11)
+        dl_s25_gs1.set_position("Xtreme Gaming", 13)
+        dl_s25_gs1.set_position("9Pandas", 15)
+
+        dl_s25_gs1.set_position("Team Spirit", 2)
+        dl_s25_gs1.set_position("Chimera Esports", 4)
+        dl_s25_gs1.set_position("PARIVISION", 6)
+        dl_s25_gs1.set_position("Team Liquid", 8)
+        dl_s25_gs1.set_position("Yakult Brothers", 10)
+        dl_s25_gs1.set_position("Gaimin Gladiators", 12)
+        dl_s25_gs1.set_position("BOOM Esports", 14)
+        dl_s25_gs1.set_position("AVULUS", 16)
+
+        dl_s25_gs2.set_position("PARIVISION", 1)
+        dl_s25_gs2.set_position("Tundra Esports", 2)
+        dl_s25_gs2.set_position("Team Spirit", 3)
+        dl_s25_gs2.set_position("Chimera Esports", 4)
+        dl_s25_gs2.set_position("Team Falcons", 5)
+        dl_s25_gs2.set_position("BetBoom Team", 6)
+        dl_s25_gs2.set_position("Team Liquid", 7)
+        dl_s25_gs2.set_position("HEROIC", 8)
+
+        dl_s25.set_position("Team Spirit", 1)
+        dl_s25.set_position("Tundra Esports", 2)
+        dl_s25.set_position("PARIVISION", 3)
+        dl_s25.set_position("Chimera Esports", 4)
+        dl_s25.set_position("Team Falcons", 5)
+        dl_s25.set_position("BetBoom Team", 6)
+        dl_s25.set_position("Team Liquid", 7)
+        dl_s25.set_position("HEROIC", 8)
+        dl_s25.set_position("Shopify Rebellion", 9)
+        dl_s25.set_position("Yakult Brothers", 10)
+        dl_s25.set_position("Moodeng Warriors", 11)
+        dl_s25.set_position("Gaimin Gladiators", 12)
+        dl_s25.set_position("Xtreme Gaming", 13)
+        dl_s25.set_position("BOOM Esports", 14)
+        dl_s25.set_position("9Pandas", 15)
+        dl_s25.set_position("AVULUS", 16)
+
+        return dl_s25, dl_s25_gs1, dl_s25_gs2

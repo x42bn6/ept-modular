@@ -13,7 +13,7 @@ from metadata import Metadata
 from stage import SingleMatch
 from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_24 import DreamLeagueSeason24Solved
-from tournaments.dreamleague_season_25 import DreamLeagueSeason25
+from tournaments.dreamleague_season_25 import DreamLeagueSeason25Solved
 from tournaments.dreamleague_season_26 import DreamLeagueSeason26
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024Solved
 from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025
@@ -34,7 +34,8 @@ def main():
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
-        Team("9Pandas", Region.EEU),
+        Team("ex-9Pandas", Region.EEU),
+        Team("9Pandas", Region.EEU, is_alive=False),
 
         Team("Team Falcons", Region.MESWA),
         Team("Nigma Galaxy", Region.MESWA),
@@ -49,8 +50,9 @@ def main():
         Team("beastcoast", Region.SA),
 
         Team("Xtreme Gaming", Region.CN),
+        Team("ex-Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN, is_alive=False),
-        Team("Gaozu", Region.CN),
+        Team("Gaozu", Region.CN, is_alive=False),
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
 
@@ -293,7 +295,7 @@ class FullEpt:
         esl_one_bkk_2024_to_dl_s25.add_change("Team Waska", -550)
         esl_one_bkk_2024_to_dl_s25.add_change("Atlantic City", -30)
 
-        ept_dl_s25, ept_dl_s25_gs1, ept_dl_s25_gs2 = DreamLeagueSeason25(metadata).build()
+        ept_dl_s25, ept_dl_s25_gs1, ept_dl_s25_gs2 = DreamLeagueSeason25Solved(metadata).build()
 
         dl_s25_to_esl_one_ral_2025: TransferWindow = TransferWindow("dl_s25_to_esl_one_ral_2025", team_database)
         dl_s25_to_esl_one_ral_2025.add_change("Palianytsia", -21)
@@ -301,6 +303,11 @@ class FullEpt:
         ept_esl_one_ral_2025, ept_esl_one_ral_2025_gs = EslOneRaleigh2025(metadata).build()
 
         esl_one_ral_2025_to_dl_s26: TransferWindow = TransferWindow("esl_one_ral_2025_to_dl_s26", team_database)
+        esl_one_ral_2025_to_dl_s26.add_change("Xtreme Gaming", -98)
+        esl_one_ral_2025_to_dl_s26.add_change("ex-Xtreme Gaming", 98)
+        esl_one_ral_2025_to_dl_s26.add_change("9Pandas", -42)
+        esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 42)
+        esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 
