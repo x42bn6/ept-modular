@@ -112,7 +112,11 @@ class Display:
             i += 1
 
         output += "|}"
-        pyperclip.copy(output)
+        # noinspection PyBroadException
+        try:
+            pyperclip.copy(output)
+        except Exception:
+            pass
         print(output)
         print()
 

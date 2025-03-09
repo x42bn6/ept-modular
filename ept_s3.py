@@ -60,22 +60,24 @@ def main():
         Team("BOOM Esports", Region.SEA),
         Team("Moodeng Warriors", Region.SEA),
     ]
+    for region in Region:
+        for i in range(0, MAX_TEAMS_PER_REGION):
+            teams.append(Team(f"{region.name} team {i + 1}", region, is_pseudo_team=True))
+
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
         team_database.add_team(team)
-
-    for region in Region:
-        for i in range(0, MAX_TEAMS_PER_REGION):
-            team_database.add_team(Team(f"{region.name} team {i + 1}", region, is_pseudo_team=True))
 
     min_cutoff_teams: [Team] = []
     max_objective_value_teams: [Team] = []
     min_cutoff = sys.maxsize
     max_cutoff_plus_one = -1
     cutoff = 8
-    max_cutoff_plus_one, max_objective_value_teams = optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one,
+    max_cutoff_plus_one, max_objective_value_teams = optimise_maximise_cutoff_plus_one(cutoff,
+                                                                                       max_cutoff_plus_one,
                                                                                        max_objective_value_teams,
-                                                                                       team_database, teams)
+                                                                                       team_database,
+                                                                                       team_database.get_all_teams())
 
     print(
         f"Found maximum cutoff plus one value as {max_cutoff_plus_one} for teams {[team.name for team in max_objective_value_teams]}.  Now minimising cutoff")
