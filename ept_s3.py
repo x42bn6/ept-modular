@@ -1,5 +1,6 @@
 import sys
 import time
+from typing import Dict
 
 from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
@@ -60,8 +61,17 @@ def main():
         Team("BOOM Esports", Region.SEA),
         Team("Moodeng Warriors", Region.SEA),
     ]
+    teams_per_region: Dict[Region, int] = {
+        Region.WEU: 3,
+        Region.SA: 2,
+        Region.SEA: 2,
+        Region.NA: 1,
+        Region.MESWA: 1,
+        Region.CN: 2,
+        Region.EEU: 1
+    }
     for region in Region:
-        for i in range(0, MAX_TEAMS_PER_REGION):
+        for i in range(0, teams_per_region.get(region)):
             teams.append(Team(f"{region.name} team {i + 1}", region, is_pseudo_team=True))
 
     team_database: TeamDatabase = TeamDatabase()
@@ -310,6 +320,7 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("9Pandas", -42)
         esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 42)
         esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
+        esl_one_ral_2025_to_dl_s26.add_change("BOOM Esports", -155)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 
