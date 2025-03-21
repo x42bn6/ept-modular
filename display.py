@@ -19,9 +19,9 @@ class Display:
         self.tournaments_or_transfer_windows: [HasDisplayPhase] = tournaments_or_transfer_windows
         self.metadata = metadata
 
-    def print(self, team_to_optimise: Team, top_n: int, max_points: float, solver: CpSolver):
+    def print(self, header: str, team_to_optimise: Team, top_n: int, max_points: float, solver: CpSolver) -> str:
         output: str = ""
-        output += "==What does the threshold scenario look like?==\n"
+        output += f"=={header}==\n"
         output += """{{ambox
 |image=Warning.png
 |class=ambox-red
@@ -111,14 +111,13 @@ class Display:
             output += "|-\n"
             i += 1
 
-        output += "|}"
+        output += "|}\n\n"
         # noinspection PyBroadException
         try:
             pyperclip.copy(output)
         except Exception:
             pass
-        print(output)
-        print()
+        return output
 
     @staticmethod
     def display_phases_header(output, tournament: EptTournamentBase):

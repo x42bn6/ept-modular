@@ -1,12 +1,12 @@
 import sys
 import time
-from typing import Dict
+from typing import Dict, TextIO
 
 from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
-from constants import MAX_TEAMS_PER_REGION, BIG_M
+from constants import BIG_M
 from display import Display
 from display_phases import HasDisplayPhase
 from ept import EptTournamentBase
@@ -22,7 +22,6 @@ from transfer_window import TransferWindow
 
 
 def main():
-    start_time = get_epoch_time_seconds()
 
     teams: [Team] = [
         Team("Team Liquid", Region.WEU),
@@ -78,17 +77,61 @@ def main():
     for team in teams:
         team_database.add_team(team)
 
+    top_8_file = open("top-8.txt", "w")
+    top_9_cn_file = open("top-9-cn.txt", "w")
+    top_9_gg_file = open("top-9-gg.txt", "w")
+    top_10_file = open("top-10.txt", "w")
+
+    optimise_and_write(8, "Top 8", top_8_file, team_database)
+
+    def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
+        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] < 8)
+
+    def gaimin_gladiators_not_top_8(m: CpModel, r: [IntVar]):
+        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] >= 8)
+
+    def at_least_one_chinese_team_top_8(m: CpModel, r: [IntVar]):
+        team_qualified: [BooleanVar] = []
+        for t in team_database.get_teams_by_region(Region.CN):
+            team_top_8 = m.new_bool_var(f"{t.name}_acl_top_8")
+            team_index = team_database.get_team_index(t)
+            m.Add(r[team_index] < 8).only_enforce_if(team_top_8)
+            m.Add(r[team_index] >= 8).only_enforce_if(team_top_8.Not())
+            team_qualified.append(team_top_8)
+        m.AddBoolOr(team_qualified)
+
+    def no_chinese_team_top_8(m: CpModel, r: [IntVar]):
+        team_qualified: [BooleanVar] = []
+        for t in team_database.get_teams_by_region(Region.CN):
+            team_top_8 = m.new_bool_var(f"{t.name}_acl_top_8")
+            team_index = team_database.get_team_index(t)
+            m.Add(r[team_index] < 8).only_enforce_if(team_top_8)
+            m.Add(r[team_index] >= 8).only_enforce_if(team_top_8.Not())
+            team_qualified.append(team_top_8.Not())
+        m.AddBoolAnd(team_qualified)
+
+    optimise_and_write(9, "Top 9 (Chinese team guaranteed)", top_9_cn_file, team_database,
+                       [at_least_one_chinese_team_top_8, gaimin_gladiators_not_top_8])
+    optimise_and_write(9, "Top 9 (Gaimin Gladiators guaranteed)", top_9_gg_file, team_database,
+                       [no_chinese_team_top_8, gaimin_gladiators_top_8])
+    optimise_and_write(10, "Top 10", top_10_file, team_database,
+                       [gaimin_gladiators_top_8, at_least_one_chinese_team_top_8])
+
+def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
+    if scenarios is None:
+        scenarios = [lambda m, r: None]
+    teams: [Team] = team_database.get_all_teams()
+    start_time = get_epoch_time_seconds()
     min_cutoff_teams: [Team] = []
     max_objective_value_teams: [Team] = []
     min_cutoff = sys.maxsize
     max_cutoff_plus_one = -1
-    cutoff = 8
     max_cutoff_plus_one, max_objective_value_teams = optimise_maximise_cutoff_plus_one(cutoff,
                                                                                        max_cutoff_plus_one,
                                                                                        max_objective_value_teams,
                                                                                        team_database,
-                                                                                       team_database.get_all_teams())
-
+                                                                                       team_database.get_all_teams(),
+                                                                                       scenarios)
     print(
         f"Found maximum cutoff plus one value as {max_cutoff_plus_one} for teams {[team.name for team in max_objective_value_teams]}.  Now minimising cutoff")
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
@@ -122,7 +165,7 @@ def main():
             # Optimise
             total_points = full_ept.get_total_points(team_database, teams)
             minimise_cutoff(model, team, team_database, teams, total_points, cutoff, max_objective_value_team,
-                            max_cutoff_plus_one)
+                            max_cutoff_plus_one, scenarios)
 
             solver = cp_model.CpSolver()
             status = solver.Solve(model)
@@ -143,12 +186,10 @@ def main():
                 continue
 
             display: Display = Display(phases, metadata)
-            display.print(team, cutoff, min_cutoff, solver)
+            file.write(display.print(header, team, cutoff, min_cutoff, solver))
             print(f"Objective value: {min_cutoff}")
-
     print(
         f"Got cutoff value as {min_cutoff} for team {[team.name for team in min_cutoff_teams]} with corresponding teams {[team.name for team in max_objective_value_teams]} missing out with {max_cutoff_plus_one}")
-
     end_time = get_epoch_time_seconds()
     print(f"Completed in {end_time - start_time}s")
 
@@ -157,7 +198,7 @@ def get_epoch_time_seconds():
     return round(time.time())
 
 
-def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams):
+def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams, scenarios):
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
@@ -185,7 +226,7 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
 
         # Optimise
         total_points = full_ept.get_total_points(team_database, teams)
-        maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cutoff)
+        maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cutoff, scenarios)
 
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
@@ -221,7 +262,7 @@ def calculate_theoretical_maximum_for_team(phases, team, team_database):
     return max_possible_points_for_team
 
 
-def maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cutoff: int):
+def maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cutoff: int, scenarios):
     team_count_range = range(len(teams))
     ranks: [IntVar] = {team: model.NewIntVar(1, len(teams), f'ranks_{team}') for team in team_count_range}
     aux: [[BooleanVar]] = {(i, j): model.NewBoolVar(f'aux_{i}_{j}') for i in team_count_range for j in
@@ -236,11 +277,15 @@ def maximise_cutoff_plus_one(model, team, team_database, teams, total_points, cu
         ranks[i] = sum(aux[(i, j)] for j in team_count_range)
     team_index: int = team_database.get_team_index(team)
     model.Add(ranks[team_index] > cutoff)
+
+    for scenario in scenarios:
+        scenario(model, ranks)
+
     model.Maximize(total_points[team_index])
 
 
 def minimise_cutoff(model, team, team_database, teams, total_points, cutoff: int, cutoff_team: Team,
-                    cutoff_points: int):
+                    cutoff_points: int, scenarios):
     team_count_range = range(len(teams))
     ranks: [IntVar] = {team: model.NewIntVar(1, len(teams), f'ranks_{team}') for team in team_count_range}
     aux: [[BooleanVar]] = {(i, j): model.NewBoolVar(f'aux_{i}_{j}') for i in team_count_range for j in
@@ -258,6 +303,10 @@ def minimise_cutoff(model, team, team_database, teams, total_points, cutoff: int
     model.Add(total_points[cutoff_team_index] == cutoff_points)
     model.Add(ranks[cutoff_team_index] == cutoff + 1)
     model.Add(ranks[team_index] == cutoff)
+
+    for scenario in scenarios:
+        scenario(model, ranks)
+
     model.Minimize(total_points[team_index])
 
 
