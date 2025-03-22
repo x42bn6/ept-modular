@@ -360,6 +360,7 @@ class FullEpt:
 
         dl_s25_to_esl_one_ral_2025: TransferWindow = TransferWindow("dl_s25_to_esl_one_ral_2025", team_database)
         dl_s25_to_esl_one_ral_2025.add_change("Palianytsia", -21)
+        dl_s25_to_esl_one_ral_2025.add_change("AVULUS", -554)
 
         ept_esl_one_ral_2025, ept_esl_one_ral_2025_gs = EslOneRaleigh2025(metadata).build()
 
