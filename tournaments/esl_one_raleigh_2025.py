@@ -20,12 +20,10 @@ class EslOneRaleigh2025:
             "esl_one_ral_2025_playoff", metadata)
         esl_one_ral_2025: Tournament = Tournament("esl_one_ral_2025", esl_one_ral_2025_gs, metadata)
 
-        participating_teams: [Team] = team_database.get_teams_by_names("PARIVISION", "BetBoom Team", "Team Falcons", "Team Liquid",
-                                                 "Tundra Esports", "AVULUS", "Team Spirit", "Nigma Galaxy",
-                                                 "Team Tidebound", "Talon Esports", "Shopify Rebellion", "HEROIC")
-        esl_one_ral_2025_invited_teams: Root = Root("esl_one_ral_2025_root", 12, metadata, participating_teams)
-        esl_one_ral_2025_invited_teams.bind_forward(esl_one_ral_2025_gs)
-        esl_one_ral_2025_gs.set_participating_teams(participating_teams)
+        esl_one_ral_2025.group_a = team_database.get_teams_by_names(
+            "Nigma Galaxy", "PARIVISION", "Shopify Rebellion", "Talon Esports", "Team Liquid", "Team Spirit")
+        esl_one_ral_2025.group_b = team_database.get_teams_by_names(
+            "AVULUS", "BetBoom Team", "HEROIC", "Team Falcons", "Team Tidebound", "Tundra Esports")
 
         esl_one_ral_2025_playoff.bind_backward(esl_one_ral_2025_gs)
         esl_one_ral_2025_gs.bind_forward(esl_one_ral_2025_playoff)
@@ -39,7 +37,6 @@ class EslOneRaleigh2025:
                                              "2025-04-13",
                                              metadata)
 
-        esl_one_ral_2025_invited_teams.build()
         esl_one_ral_2025_gs.build()
         esl_one_ral_2025_playoff.build()
         esl_one_ral_2025.build()

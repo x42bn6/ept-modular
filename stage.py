@@ -23,6 +23,7 @@ class Tournament:
         self.starting_stage = starting_stage
         self.metadata = metadata
         self.is_team_list_complete = False
+        self.zero_point_teams = []
 
         self.indicators: [[BooleanVar]] = [
             [self.metadata.model.new_bool_var(
@@ -46,6 +47,10 @@ class Tournament:
         for team in all_teams:
             model.Add(sum(self.indicators[team_database.get_team_index(team)]) <= 1)
 
+        # Zero points
+        for team in self.zero_point_teams:
+            model.Add(sum(self.indicators[team_database.get_team_index(team)]) == 0)
+
         next_stage: Stage = self.starting_stage
         while next_stage is not None:
             next_stage.bind_elimination(self)
@@ -64,6 +69,9 @@ class Tournament:
 
     def is_team_participating(self, team: Team) -> bool:
         return self.starting_stage.is_team_participating(team)
+
+    def team_declined_or_cannot_participate(self, team: Team):
+        self.zero_point_teams.append(team)
 
 
 class Stage(ABC):

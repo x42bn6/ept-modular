@@ -1,12 +1,12 @@
 import sys
 import time
-from typing import Dict, TextIO
+from typing import TextIO
 
 from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
-from constants import BIG_M
+from constants import BIG_M, DL_S26_TEAMS_PER_REGION, DEBUG_DL_S26
 from display import Display
 from display_phases import HasDisplayPhase
 from ept import EptTournamentBase
@@ -19,6 +19,7 @@ from tournaments.dreamleague_season_26 import DreamLeagueSeason26
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024Solved
 from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025
 from transfer_window import TransferWindow
+from utilities import print_indicators
 
 
 def main():
@@ -34,12 +35,13 @@ def main():
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
-        Team("ex-9Pandas", Region.EEU),
+        Team("ex-9Pandas", Region.EEU, is_alive=False),
         Team("9Pandas", Region.EEU, is_alive=False),
 
         Team("Team Falcons", Region.MESWA),
         Team("Nigma Galaxy", Region.MESWA),
-        Team("Chimera Esports", Region.MESWA),
+        Team("Chimera Esports", Region.MESWA, is_alive=False),
+        Team("Virtus.pro", Region.MESWA),
 
         Team("Nouns Esports", Region.NA, is_alive=False),
         Team("Atlantic City", Region.NA, is_alive=False),
@@ -47,9 +49,10 @@ def main():
 
         Team("HEROIC", Region.SA),
         Team("Team Waska", Region.SA, is_alive=False),
-        Team("beastcoast", Region.SA),
+        Team("M80", Region.SA),
 
-        Team("Xtreme Gaming", Region.CN),
+        # Not really dead, but let placeholder team deal with it
+        Team("Xtreme Gaming", Region.CN, is_alive=False),
         Team("ex-Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN, is_alive=False),
         Team("Gaozu", Region.CN, is_alive=False),
@@ -58,19 +61,10 @@ def main():
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
-        Team("Moodeng Warriors", Region.SEA),
+        Team("Moodeng Warriors", Region.SEA,is_alive=False),
     ]
-    teams_per_region: Dict[Region, int] = {
-        Region.WEU: 3,
-        Region.SA: 2,
-        Region.SEA: 2,
-        Region.NA: 1,
-        Region.MESWA: 1,
-        Region.CN: 2,
-        Region.EEU: 1
-    }
     for region in Region:
-        for i in range(0, teams_per_region.get(region)):
+        for i in range(0, DL_S26_TEAMS_PER_REGION.get(region)):
             teams.append(Team(f"{region.name} team {i + 1}", region, is_pseudo_team=True))
 
     team_database: TeamDatabase = TeamDatabase()
@@ -132,6 +126,7 @@ def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: Te
                                                                                        team_database,
                                                                                        team_database.get_all_teams(),
                                                                                        scenarios)
+
     print(
         f"Found maximum cutoff plus one value as {max_cutoff_plus_one} for teams {[team.name for team in max_objective_value_teams]}.  Now minimising cutoff")
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
@@ -247,6 +242,16 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
             continue
 
         print(f"Maximum objective value: {max_cutoff_plus_one}")
+
+        if DEBUG_DL_S26:
+            print("DreamLeague Season 26 GS1")
+            print_indicators(full_ept.ept_dl_s26_gs1.stage.indicators, solver, team_database)
+
+            print("DreamLeague Season 26 GS2")
+            print_indicators(full_ept.ept_dl_s26_gs2.stage.indicators, solver, team_database)
+
+            print("DreamLeague Season 26")
+            print_indicators(full_ept.ept_dl_s26.tournament.indicators, solver, team_database)
 
     return max_cutoff_plus_one, max_objective_value_teams
 
@@ -371,6 +376,9 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 42)
         esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
         esl_one_ral_2025_to_dl_s26.add_change("BOOM Esports", -155)
+        esl_one_ral_2025_to_dl_s26.add_change("Natus Vincere", -63)
+        esl_one_ral_2025_to_dl_s26.add_change("Chimera Esports", -2450)
+        esl_one_ral_2025_to_dl_s26.add_change("Virtus.pro", 2450)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 

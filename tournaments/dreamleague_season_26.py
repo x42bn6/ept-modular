@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from constants import MAX_TEAMS_PER_REGION
+from constants import DL_S26_TEAMS_PER_REGION
 from ept import EptPairGroupStage, EptGroupStage, EptTournament, EptTournamentBase, EptStageBase
 from metadata import Metadata
 from stage import PairGroupStage, GroupStage, DoubleElimination_2U2L1D, Tournament, RootUnknownAdvances, Root
@@ -22,18 +22,30 @@ class DreamLeagueSeason26:
         dl_s26: Tournament = Tournament("dl_s26", dl_s26_gs1, metadata)
 
         participating_teams: [Team] = team_database.get_teams_by_names("PARIVISION", "BetBoom Team", "Team Falcons",
-                                                                       "Team Spirit")
+                                                                       "Team Liquid")
+        declined_teams: [Team] = team_database.get_teams_by_names("Team Spirit")
         dl_s26_invited_teams: Root = Root("dl_s26_root", 12, metadata, participating_teams)
         dl_s26_invited_teams.bind_forward(dl_s26_gs1)
 
         regional_qualifiers: [RootUnknownAdvances] = []
         for region in Region:
-            regional_qualifier_teams = [team for team in (team_database.get_teams_by_region(region))
-                                        if team not in participating_teams and team.is_alive]
+            regional_qualifier_teams = [team for team in team_database.get_teams_by_region(region) if
+                                        team not in participating_teams and
+                                        team not in declined_teams and
+                                        team.is_alive]
+            teams_per_region: int = DL_S26_TEAMS_PER_REGION.get(region)
             regional_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_{region}_qualifier",
-                                                                          regional_qualifier_teams, 1, MAX_TEAMS_PER_REGION, metadata)
+                                                                          regional_qualifier_teams,
+                                                                          teams_per_region,
+                                                                          teams_per_region,
+                                                                          metadata)
             regional_qualifier.bind_forward(dl_s26_gs1)
             regional_qualifiers.append(regional_qualifier)
+
+        for team in [team for team in team_database.get_all_teams() if
+                     team in declined_teams or
+                     not team.is_alive]:
+            dl_s26.team_declined_or_cannot_participate(team)
 
         dl_s26_gs1.bind_forward(dl_s26_gs2)
         dl_s26_playoff.bind_backward(dl_s26_gs2)

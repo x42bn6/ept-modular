@@ -398,7 +398,7 @@ def esl_one_bkk_2024():
 
         Team("HEROIC", Region.SA),
         Team("Team Waska", Region.SA),
-        Team("beastcoast", Region.SA),
+        Team("M80", Region.SA),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN),
@@ -464,7 +464,7 @@ def bracket_4U4L2DSL1D():
 
         Team("HEROIC", Region.SA),
         Team("Team Waska", Region.SA),
-        Team("beastcoast", Region.SA),
+        Team("M80", Region.SA),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN),

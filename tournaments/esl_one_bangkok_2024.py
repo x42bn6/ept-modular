@@ -25,7 +25,7 @@ class EslOneBangkok2024:
                                                                        "Natus Vincere")
         esl_one_bkk_2024_gs.group_b = team_database.get_teams_by_names("PARIVISION", "BetBoom Team",
                                                                        "Nigma Galaxy", "Team Liquid", "Gaozu",
-                                                                       "beastcoast")
+                                                                       "M80")
 
         esl_one_bkk_2024_playoff.bind_backward(esl_one_bkk_2024_gs)
         esl_one_bkk_2024_gs.bind_forward(esl_one_bkk_2024_playoff)
@@ -51,7 +51,7 @@ class EslOneBangkok2024:
         esl_one_bkk_2024_gs.team_can_finish_between("Nigma Galaxy", 5, 6)
         esl_one_bkk_2024_gs.team_can_finish_between("Team Liquid", 7, 8)
         esl_one_bkk_2024_gs.team_can_finish_between("Gaozu", 9, 10)
-        esl_one_bkk_2024_gs.team_can_finish_between("beastcoast", 11, 12)
+        esl_one_bkk_2024_gs.team_can_finish_between("M80", 11, 12)
 
         esl_one_bkk_2024_playoff.ubsf_1.set_winner("BetBoom Team")
         esl_one_bkk_2024_playoff.ubsf_2.set_winner("PARIVISION")
@@ -102,7 +102,7 @@ class EslOneBangkok2024Solved:
         esl_one_bkk_2024_gs.set_position("Nigma Galaxy", 6)
         esl_one_bkk_2024_gs.set_position("Team Liquid", 8)
         esl_one_bkk_2024_gs.set_position("Gaozu", 10)
-        esl_one_bkk_2024_gs.set_position("beastcoast", 12)
+        esl_one_bkk_2024_gs.set_position("M80", 12)
 
         esl_one_bkk_2024.set_position("PARIVISION", 1)
         esl_one_bkk_2024.set_position("Team Liquid", 2)
@@ -115,6 +115,6 @@ class EslOneBangkok2024Solved:
         esl_one_bkk_2024.set_position("BOOM Esports", 9)
         esl_one_bkk_2024.set_position("Gaozu", 10)
         esl_one_bkk_2024.set_position("Natus Vincere", 11)
-        esl_one_bkk_2024.set_position("beastcoast", 12)
+        esl_one_bkk_2024.set_position("M80", 12)
 
         return esl_one_bkk_2024, esl_one_bkk_2024_gs

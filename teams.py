@@ -21,6 +21,9 @@ class Team:
     def make_relevant(self):
         self.ept_relevant = True
 
+    def __str__(self):
+        return self.name
+
 
 class TeamDatabase:
     def __init__(self):
