@@ -35,7 +35,6 @@ def main():
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
-        Team("ex-9Pandas", Region.EEU, is_alive=False),
         Team("9Pandas", Region.EEU, is_alive=False),
 
         Team("Team Falcons", Region.MESWA),
@@ -373,7 +372,6 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("Xtreme Gaming", -98)
         esl_one_ral_2025_to_dl_s26.add_change("ex-Xtreme Gaming", 98)
         esl_one_ral_2025_to_dl_s26.add_change("9Pandas", -42)
-        esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 42)
         esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
         esl_one_ral_2025_to_dl_s26.add_change("BOOM Esports", -155)
         esl_one_ral_2025_to_dl_s26.add_change("Natus Vincere", -63)

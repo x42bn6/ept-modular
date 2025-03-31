@@ -20,9 +20,9 @@ class EslOneRaleigh2025:
             "esl_one_ral_2025_playoff", metadata)
         esl_one_ral_2025: Tournament = Tournament("esl_one_ral_2025", esl_one_ral_2025_gs, metadata)
 
-        esl_one_ral_2025.group_a = team_database.get_teams_by_names(
+        esl_one_ral_2025_gs.group_a = team_database.get_teams_by_names(
             "Nigma Galaxy", "PARIVISION", "Shopify Rebellion", "Talon Esports", "Team Liquid", "Team Spirit")
-        esl_one_ral_2025.group_b = team_database.get_teams_by_names(
+        esl_one_ral_2025_gs.group_b = team_database.get_teams_by_names(
             "AVULUS", "BetBoom Team", "HEROIC", "Team Falcons", "Team Tidebound", "Tundra Esports")
 
         esl_one_ral_2025_playoff.bind_backward(esl_one_ral_2025_gs)
