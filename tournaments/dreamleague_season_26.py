@@ -23,7 +23,8 @@ class DreamLeagueSeason26:
 
         participating_teams: [Team] = team_database.get_teams_by_names("PARIVISION", "BetBoom Team", "Team Falcons",
                                                                        "Team Liquid")
-        qualified_teams: [Team] = team_database.get_teams_by_names("Tundra Esports", "BOOM Esports")
+        qualified_teams: [Team] = team_database.get_teams_by_names("BOOM Esports",
+                                                                   "Tundra Esports", "Gaimin Gladiators")
         declined_teams: [Team] = team_database.get_teams_by_names("Team Spirit")
         dl_s26_invited_teams: Root = Root("dl_s26_root", 12, metadata, participating_teams + qualified_teams)
         dl_s26_invited_teams.bind_forward(dl_s26_gs1)
@@ -41,14 +42,15 @@ class DreamLeagueSeason26:
                                                                 2, 2,
                                                                 metadata)
         weu_qualifier: DoubleElimination_8_2Q_U_4L2DS_1Q = DoubleElimination_8_2Q_U_4L2DS_1Q(f"dl_s26_weu_qualifier",
-                                                                                             team_database.get_teams_by_names("Tundra Esports",
-                                                                                                                              "Team Secret",
-                                                                                                                              "NAVI Junior",
-                                                                                                                              "Passion UA",
-                                                                                                                              "Gaimin Gladiators",
-                                                                                                                              "Zero Tenacity",
-                                                                                                                              "AVULUS",
-                                                                                                                              "Capy Baras"),
+                                                                                             team_database.get_teams_by_names(
+                                                                                                 "Tundra Esports",
+                                                                                                 "Team Secret",
+                                                                                                 "NAVI Junior",
+                                                                                                 "Passion UA",
+                                                                                                 "Gaimin Gladiators",
+                                                                                                 "Zero Tenacity",
+                                                                                                 "AVULUS",
+                                                                                                 "Capy Baras"),
                                                                                              metadata)
         eeu_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_eeu_qualifier",
                                                                  team_database.get_teams_by_names("Natus Vincere",
@@ -91,6 +93,7 @@ class DreamLeagueSeason26:
         weu_qualifier.ubr1_3.set_winner("Gaimin Gladiators")
         weu_qualifier.ubr1_4.set_winner("Capy Baras")
         weu_qualifier.ubr2_1.set_winner("Tundra Esports")
+        weu_qualifier.ubr2_2.set_winner("Gaimin Gladiators")
         weu_qualifier.lbr1_1.set_winner("Team Secret")
         weu_qualifier.lbr1_2.set_winner("AVULUS")
 

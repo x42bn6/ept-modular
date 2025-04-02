@@ -270,7 +270,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 12
-|class="bg-down" style="text-align: left;"| CN team 1
+|class="bg-down" style="text-align: left;"| SA team 2
 | 800
 | 
 | 
@@ -292,6 +292,50 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 13
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 613
+| 
+| 
+| 
+| 
+| 0
+| 420
+| 
+| 0
+| 
+| 98
+| 
+| 0
+| 0
+| -155
+| 0
+| 0
+| 250
+|-
+|-
+|class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| {{Team|Gaimin Gladiators}}
+| 565
+| 0
+| 
+| 250
+| 
+| 
+| 
+| 
+| 0
+| 
+| 175
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 140
+|-
+|-
+|class="bg-down"| 15
 |class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
 | 560
 | 
@@ -313,7 +357,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 14
+|class="bg-down"| 16
 |class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
 | 530
 | 0
@@ -335,95 +379,29 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 15
-|class="bg-down" style="text-align: left;"| SA team 1
-| 500
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 500
-|-
-|-
-|class="bg-down"| 16
-|class="bg-down" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 425
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
-| 0
-| 
-| 175
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
 |class="bg-down"| 17
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 423
+|class="bg-down" style="text-align: left;"| CN team 2
+| 500
+| 
+| 
+| 
+| 
+| 
+| 
+| 
 | 
 | 
 | 
 | 
 | 0
-| 420
-| 
 | 0
 | 
-| 98
-| 
 | 0
 | 0
-| -155
-| 0
-| 0
-| 60
+| 500
 |-
 |-
 |class="bg-down"| 18
-|class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
-| 397
-| 
-| 
-| 
-| 
-| 0
-| 210
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| -63
-| 0
-| 0
-| 250
-|-
-|-
-|class="bg-down"| 19
 |class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
 | 350
 | 
@@ -445,9 +423,31 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
+|class="bg-down"| 19
+|class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
+| 287
+| 
+| 
+| 
+| 
+| 0
+| 210
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| -63
+| 0
+| 0
+| 140
+|-
+|-
 |class="bg-down"| 20
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 350
+| 270
 | 
 | 
 | 
@@ -464,11 +464,11 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 210
 | 0
 | 0
-| 140
+| 60
 |-
 |-
 |class="bg-down"| 21
-|class="bg-down" style="text-align: left;"| {{Team|Passion UA}}
+|class="bg-down" style="text-align: left;"| CN team 1
 | 250
 | 
 | 
@@ -490,28 +490,6 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 22
-|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
-| 238
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 98
-| 0
-| 0
-| 140
-|-
-|-
-|class="bg-down"| 23
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -528,6 +506,28 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | 0
 | -52
+| 0
+| 0
+| 0
+|-
+|-
+|class="bg-down"| 23
+|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
+| 98
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 98
 | 0
 | 0
 | 0
@@ -820,7 +820,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 37
-|class="bg-down" style="text-align: left;"| {{Team|Zero Tenacity}}
+|class="bg-down" style="text-align: left;"| {{Team|Passion UA}}
 | 0
 | 
 | 
@@ -842,7 +842,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 38
-|class="bg-down" style="text-align: left;"| {{Team|Capy Baras}}
+|class="bg-down" style="text-align: left;"| {{Team|Zero Tenacity}}
 | 0
 | 
 | 
@@ -864,7 +864,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 39
-|class="bg-down" style="text-align: left;"| NA team 1
+|class="bg-down" style="text-align: left;"| {{Team|Capy Baras}}
 | 0
 | 
 | 
@@ -886,7 +886,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 40
-|class="bg-down" style="text-align: left;"| SA team 2
+|class="bg-down" style="text-align: left;"| NA team 1
 | 0
 | 
 | 
@@ -908,7 +908,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 41
-|class="bg-down" style="text-align: left;"| WEU team 1
+|class="bg-down" style="text-align: left;"| SA team 1
 | 0
 | 
 | 
@@ -930,7 +930,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 42
-|class="bg-down" style="text-align: left;"| WEU team 2
+|class="bg-down" style="text-align: left;"| WEU team 1
 | 0
 | 
 | 
@@ -952,7 +952,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 43
-|class="bg-down" style="text-align: left;"| WEU team 3
+|class="bg-down" style="text-align: left;"| WEU team 2
 | 0
 | 
 | 
@@ -974,7 +974,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 44
-|class="bg-down" style="text-align: left;"| EEU team 1
+|class="bg-down" style="text-align: left;"| WEU team 3
 | 0
 | 
 | 
@@ -996,7 +996,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 45
-|class="bg-down" style="text-align: left;"| MESWA team 1
+|class="bg-down" style="text-align: left;"| EEU team 1
 | 0
 | 
 | 
@@ -1018,7 +1018,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 46
-|class="bg-down" style="text-align: left;"| CN team 2
+|class="bg-down" style="text-align: left;"| MESWA team 1
 | 0
 | 
 | 

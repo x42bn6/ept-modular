@@ -29,7 +29,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 10835
+| {{PlacementBg/1}} 11315
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -42,7 +42,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | {{PlacementBg/3}} 2800
 | 
 | 0
-| 560
+| 1040
 | 
 | 0
 | 0
@@ -50,30 +50,30 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |-
 |class="bg-up"| 2
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/2}} 9900
+|class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
+| {{PlacementBg/2}} 10580
 | 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
+| 0
+| {{PlacementBg/3}} 2000
 | 
 | 0
-| {{PlacementBg/3}} 3000
-| 
-| {{PlacementBg/3}} 210
+| {{PlacementBg/4}} 2400
+| -1320
+| {{PlacementBg/2}} 420
 | 0
-| 1400
+| {{PlacementBg/1}} 4200
 | 
-| 0
+| {{PlacementBg/1}} 640
 | 2240
 | 
 | 0
 | 0
-| 250
+| 0
 |-
 |-
 |class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
-| {{PlacementBg/3}} 9093
+| {{PlacementBg/3}} 9673
 | 75
 | 0
 | 1200
@@ -86,38 +86,16 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | {{PlacementBg/2}} 3500
 | 
 | 0
-| 280
+| 560
 | 
-| 0
+| {{PlacementBg/3}} 300
 | 0
 | {{PlacementBg/3}} 4000
 |-
 |-
 |class="bg-up"| 4
-|class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/4}} 8740
-| 0
-| 0
-| {{PlacementBg/3}} 2000
-| 
-| 0
-| {{PlacementBg/4}} 2400
-| -1320
-| {{PlacementBg/2}} 420
-| 0
-| {{PlacementBg/1}} 4200
-| 
-| 0
-| 1040
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| 7945
+| {{PlacementBg/4}} 9545
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -130,11 +108,33 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 1680
 | 
 | 0
-| 560
+| 2240
 | 
 | 0
 | 0
-| 140
+| 60
+|-
+|-
+|class="bg-up"| 5
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| 7940
+| 0
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
+| 
+| 0
+| {{PlacementBg/3}} 3000
+| 
+| {{PlacementBg/3}} 210
+| 0
+| 1400
+| 
+| 0
+| 280
+| 
+| 0
+| 0
+| 250
 |-
 |-
 |class="bg-up"| 6
@@ -152,11 +152,11 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 
 | 
 | {{PlacementBg/2}} 640
-| {{PlacementBg/1}} 6400
+| {{PlacementBg/2}} 4800
 | 
 | 0
 | 0
-| 800
+| 2400
 |-
 |-
 |class="bg-up"| 7
@@ -218,11 +218,11 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 
 | 
 | 0
-| {{PlacementBg/2}} 4800
+| {{PlacementBg/1}} 6400
 | 
 | 150
 | 0
-| 2400
+| 800
 |-
 |-
 |class="bg-up"| 10
@@ -271,7 +271,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |class="bg-down"| 12
 |class="bg-down" style="text-align: left;"| {{Team|Team Liquid}}
-| 7370
+| 7350
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -284,16 +284,16 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 840
 | 
 | 0
-| 280
+| 560
 | 
-| {{PlacementBg/3}} 300
+| 0
 | 0
 | 1200
 |-
 |-
 |class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|Nigma Galaxy}}
-| 3730
+| 1890
 | 0
 | 
 | 70
@@ -305,8 +305,8 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 
 | 
 | 
-| {{PlacementBg/1}} 640
-| 2240
+| 0
+| 1040
 | 
 | 0
 | 0
@@ -315,7 +315,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |class="bg-down"| 14
 |class="bg-down" style="text-align: left;"| {{Team|Shopify Rebellion}}
-| 2230
+| 1410
 | 
 | 
 | 
@@ -328,37 +328,37 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 350
 | 
 | 0
-| 1040
+| 280
 | 
 | 0
 | 0
-| 60
+| 0
 |-
 |-
 |class="bg-down"| 15
-|class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 710
-| 
-| 
-| 
-| 
-| 
-| 
-| 
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 503
 | 
 | 
 | 
 | 
 | 0
+| 420
+| 
 | 0
-| 210
+| 
+| 98
+| 
 | 0
 | 0
-| 500
+| -155
+| 0
+| 0
+| 140
 |-
 |-
 |class="bg-down"| 16
-|class="bg-down" style="text-align: left;"| CN team 1
+|class="bg-down" style="text-align: left;"| SA team 2
 | 500
 | 
 | 
@@ -380,25 +380,25 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |-
 |class="bg-down"| 17
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 423
+|class="bg-down" style="text-align: left;"| EEU team 1
+| 500
+| 
+| 
+| 
+| 
+| 
+| 
+| 
 | 
 | 
 | 
 | 
 | 0
-| 420
-| 
 | 0
 | 
-| 98
-| 
 | 0
 | 0
-| -155
-| 0
-| 0
-| 60
+| 500
 |-
 |-
 |class="bg-down"| 18
@@ -424,6 +424,50 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |-
 |class="bg-down"| 19
+|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
+| 238
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 98
+| 0
+| 0
+| 140
+|-
+|-
+|class="bg-down"| 20
+|class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
+| 210
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 210
+| 0
+| 0
+| 0
+|-
+|-
+|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
 | 147
 | 
@@ -445,29 +489,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| EEU team 1
-| 140
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 140
-|-
-|-
-|class="bg-down"| 21
+|class="bg-down"| 22
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -489,29 +511,29 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 22
-|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
-| 98
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 98
-| 0
-| 0
-| 0
-|-
-|-
 |class="bg-down"| 23
+|class="bg-down" style="text-align: left;"| NA team 1
+| 60
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 60
+|-
+|-
+|class="bg-down"| 24
 |class="bg-down" style="text-align: left;"| {{Team|Team Waska}}
 | 0
 | {{PlacementBg/4}} 150
@@ -533,7 +555,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 24
+|class="bg-down"| 25
 |class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
 | 0
 | 75
@@ -555,7 +577,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 25
+|class="bg-down"| 26
 |class="bg-down" style="text-align: left;"| {{Team|Palianytsia}}
 | 0
 | 0
@@ -577,7 +599,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 26
+|class="bg-down"| 27
 |class="bg-down" style="text-align: left;"| {{Team|Nouns Esports}}
 | 0
 | 0
@@ -599,7 +621,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 27
+|class="bg-down"| 28
 |class="bg-down" style="text-align: left;"| {{Team|Azure Ray}}
 | 0
 | 0
@@ -621,7 +643,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 28
+|class="bg-down"| 29
 |class="bg-down" style="text-align: left;"| {{Team|Atlantic City}}
 | 0
 | 
@@ -643,7 +665,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 29
+|class="bg-down"| 30
 |class="bg-down" style="text-align: left;"| {{Team|M80}}
 | 0
 | 
@@ -665,7 +687,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 30
+|class="bg-down"| 31
 |class="bg-down" style="text-align: left;"| {{Team|Gaozu}}
 | 0
 | 
@@ -687,7 +709,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 31
+|class="bg-down"| 32
 |class="bg-down" style="text-align: left;"| {{Team|Chimera Esports}}
 | 0
 | 
@@ -709,7 +731,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 32
+|class="bg-down"| 33
 |class="bg-down" style="text-align: left;"| {{Team|9Pandas}}
 | 0
 | 
@@ -731,7 +753,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 33
+|class="bg-down"| 34
 |class="bg-down" style="text-align: left;"| {{Team|Team Secret}}
 | 0
 | 
@@ -753,7 +775,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 34
+|class="bg-down"| 35
 |class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
 | 0
 | 
@@ -775,7 +797,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 35
+|class="bg-down"| 36
 |class="bg-down" style="text-align: left;"| {{Team|Passion UA}}
 | 0
 | 
@@ -797,7 +819,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 36
+|class="bg-down"| 37
 |class="bg-down" style="text-align: left;"| {{Team|Zero Tenacity}}
 | 0
 | 
@@ -819,30 +841,8 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 37
-|class="bg-down" style="text-align: left;"| {{Team|Capy Baras}}
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
 |class="bg-down"| 38
-|class="bg-down" style="text-align: left;"| NA team 1
+|class="bg-down" style="text-align: left;"| {{Team|Capy Baras}}
 | 0
 | 
 | 
@@ -886,28 +886,6 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 |-
 |-
 |class="bg-down"| 40
-|class="bg-down" style="text-align: left;"| SA team 2
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 41
 |class="bg-down" style="text-align: left;"| WEU team 1
 | 0
 | 
@@ -929,7 +907,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 42
+|class="bg-down"| 41
 |class="bg-down" style="text-align: left;"| WEU team 2
 | 0
 | 
@@ -951,7 +929,7 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 43
+|class="bg-down"| 42
 |class="bg-down" style="text-align: left;"| WEU team 3
 | 0
 | 
@@ -973,8 +951,30 @@ This is the following scenario where {{Team|Virtus.pro}} become the cutoff for t
 | 0
 |-
 |-
-|class="bg-down"| 44
+|class="bg-down"| 43
 |class="bg-down" style="text-align: left;"| MESWA team 1
+| 0
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 0
+|-
+|-
+|class="bg-down"| 44
+|class="bg-down" style="text-align: left;"| CN team 1
 | 0
 | 
 | 
@@ -1093,7 +1093,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 12965
+| {{PlacementBg/1}} 11205
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -1105,39 +1105,39 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | {{PlacementBg/1}} 420
 | {{PlacementBg/3}} 2800
 | 
-| {{PlacementBg/1}} 640
-| 2240
+| 0
+| 1040
 | 
 | 0
 | 0
-| 60
+| 140
 |-
 |-
 |class="bg-up"| 2
-|class="bg-up" style="text-align: left;"| {{Team|Team Tidebound}}
-| {{PlacementBg/2}} 10240
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| {{PlacementBg/2}} 8220
+| 0
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
 | 
+| 0
+| {{PlacementBg/3}} 3000
 | 
+| {{PlacementBg/3}} 210
+| 0
+| 1400
 | 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| {{PlacementBg/2}} 640
-| {{PlacementBg/1}} 6400
+| 0
+| 560
 | 
 | 0
 | 0
-| {{PlacementBg/4}} 3200
+| 250
 |-
 |-
 |class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| {{PlacementBg/3}} 8930
+| {{PlacementBg/3}} 8150
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -1150,33 +1150,33 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 840
 | 
 | 0
-| 2240
+| 560
 | 
-| {{PlacementBg/3}} 300
 | 0
-| 800
+| 0
+| 2000
 |-
 |-
 |class="bg-up"| 4
-|class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 8345
-| {{PlacementBg/2}} 300
-| 0
-| {{PlacementBg/1}} 3000
+|class="bg-up" style="text-align: left;"| {{Team|Team Tidebound}}
+| {{PlacementBg/4}} 8000
 | 
-| {{PlacementBg/1}} 480
-| 1680
 | 
-| 105
-| 0
-| 1680
 | 
-| 0
-| 1040
+| 
+| 
+| 
+| 
+| 
+| 
+| 
 | 
 | 0
+| {{PlacementBg/3}} 4000
+| 
 | 0
-| 60
+| 0
+| {{PlacementBg/3}} 4000
 |-
 |-
 |class="bg-up"| 5
@@ -1202,25 +1202,25 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-up"| 6
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| 7940
+|class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
+| 7753
+| 75
 | 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
+| 1200
+| 
+| 
+| 
+| -382
+| {{PlacementBg/1}} 420
+| 0
+| {{PlacementBg/2}} 3500
+| 
+| {{PlacementBg/1}} 640
+| 2240
 | 
 | 0
-| {{PlacementBg/3}} 3000
-| 
-| {{PlacementBg/3}} 210
 | 0
-| 1400
-| 
-| 0
-| 280
-| 
-| 0
-| 0
-| 250
+| 60
 |-
 |-
 |class="bg-up"| 7
@@ -1260,11 +1260,11 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 560
 | 
 | 0
-| {{PlacementBg/3}} 4000
+| {{PlacementBg/4}} 3200
 | 
 | {{PlacementBg/2}} 600
 | 0
-| 2400
+| {{PlacementBg/4}} 3200
 |-
 |-
 |class="bg-up"| 9
@@ -1282,11 +1282,11 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 
 | 0
-| {{PlacementBg/4}} 3200
+| {{PlacementBg/1}} 6400
 | 
 | 150
 | 0
-| {{PlacementBg/3}} 4000
+| 800
 |-
 |-
 |class="bg-up"| 10
@@ -1328,36 +1328,36 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 | {{PlacementBg/2}} 4800
 | 
-| {{PlacementBg/4}} 300
+| {{PlacementBg/3}} 300
 | 0
 | 1200
 |-
 |-
 |class="bg-down"| 12
-|class="bg-down" style="text-align: left;"| {{Team|Tundra Esports}}
-| 5873
-| 75
+|class="bg-down" style="text-align: left;"| {{Team|Team Falcons}}
+| 7585
+| {{PlacementBg/2}} 300
 | 0
-| 1200
+| {{PlacementBg/1}} 3000
 | 
+| {{PlacementBg/1}} 480
+| 1680
 | 
-| 
-| -382
-| {{PlacementBg/1}} 420
+| 105
 | 0
-| {{PlacementBg/2}} 3500
-| 
-| 0
-| 560
+| 1680
 | 
 | 0
+| 280
+| 
 | 0
-| 500
+| 0
+| 60
 |-
 |-
 |class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|Shopify Rebellion}}
-| 3690
+| 4010
 | 
 | 
 | 
@@ -1369,15 +1369,37 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 350
 | 
-| 0
-| 560
+| {{PlacementBg/2}} 640
+| 2240
 | 
 | 0
 | 0
-| 2000
+| 0
 |-
 |-
 |class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| NA team 1
+| 2700
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| {{PlacementBg/4}} 300
+| 0
+| 2400
+|-
+|-
+|class="bg-down"| 15
 |class="bg-down" style="text-align: left;"| {{Team|Nigma Galaxy}}
 | 1890
 | 0
@@ -1399,53 +1421,31 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 15
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 863
+|class="bg-down"| 16
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 850
+| 
+| 
+| 
 | 
 | 
 | 
 | 
 | 0
-| 420
 | 
-| 0
-| 
-| 98
+| 350
 | 
 | 0
 | 0
-| -155
+| 
 | 0
 | 0
 | 500
 |-
 |-
-|class="bg-down"| 16
-|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 350
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 
-| 350
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
 |class="bg-down"| 17
 |class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
-| 287
+| 647
 | 
 | 
 | 
@@ -1462,34 +1462,34 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | -63
 | 0
 | 0
-| 140
+| 500
 |-
 |-
 |class="bg-down"| 18
-|class="bg-down" style="text-align: left;"| CN team 2
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 503
 | 
 | 
 | 
 | 
 | 0
+| 420
+| 
 | 0
+| 
+| 98
 | 
 | 0
 | 0
-| 250
+| -155
+| 0
+| 0
+| 140
 |-
 |-
 |class="bg-down"| 19
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 210
+| 460
 | 
 | 
 | 
@@ -1506,32 +1506,10 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 210
 | 0
 | 0
-| 0
+| 250
 |-
 |-
 |class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| SA team 1
-| 140
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 140
-|-
-|-
-|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -1553,7 +1531,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 22
+|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
 | 98
 | 
@@ -1575,7 +1553,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 23
+|class="bg-down"| 22
 |class="bg-down" style="text-align: left;"| {{Team|Team Waska}}
 | 0
 | {{PlacementBg/4}} 150
@@ -1597,7 +1575,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 24
+|class="bg-down"| 23
 |class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
 | 0
 | 75
@@ -1619,7 +1597,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 25
+|class="bg-down"| 24
 |class="bg-down" style="text-align: left;"| {{Team|Palianytsia}}
 | 0
 | 0
@@ -1641,7 +1619,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 26
+|class="bg-down"| 25
 |class="bg-down" style="text-align: left;"| {{Team|Nouns Esports}}
 | 0
 | 0
@@ -1663,7 +1641,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 27
+|class="bg-down"| 26
 |class="bg-down" style="text-align: left;"| {{Team|Azure Ray}}
 | 0
 | 0
@@ -1685,7 +1663,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 28
+|class="bg-down"| 27
 |class="bg-down" style="text-align: left;"| {{Team|Atlantic City}}
 | 0
 | 
@@ -1707,7 +1685,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 29
+|class="bg-down"| 28
 |class="bg-down" style="text-align: left;"| {{Team|M80}}
 | 0
 | 
@@ -1729,7 +1707,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 30
+|class="bg-down"| 29
 |class="bg-down" style="text-align: left;"| {{Team|Gaozu}}
 | 0
 | 
@@ -1751,7 +1729,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 31
+|class="bg-down"| 30
 |class="bg-down" style="text-align: left;"| {{Team|Chimera Esports}}
 | 0
 | 
@@ -1773,7 +1751,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 32
+|class="bg-down"| 31
 |class="bg-down" style="text-align: left;"| {{Team|9Pandas}}
 | 0
 | 
@@ -1795,7 +1773,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 33
+|class="bg-down"| 32
 |class="bg-down" style="text-align: left;"| {{Team|Team Secret}}
 | 0
 | 
@@ -1817,7 +1795,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 34
+|class="bg-down"| 33
 |class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
 | 0
 | 
@@ -1839,7 +1817,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 35
+|class="bg-down"| 34
 |class="bg-down" style="text-align: left;"| {{Team|Passion UA}}
 | 0
 | 
@@ -1861,7 +1839,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 36
+|class="bg-down"| 35
 |class="bg-down" style="text-align: left;"| {{Team|Zero Tenacity}}
 | 0
 | 
@@ -1883,7 +1861,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 37
+|class="bg-down"| 36
 |class="bg-down" style="text-align: left;"| {{Team|Capy Baras}}
 | 0
 | 
@@ -1905,29 +1883,29 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
+|class="bg-down"| 37
+|class="bg-down" style="text-align: left;"| SA team 1
+| 0
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 0
+|-
+|-
 |class="bg-down"| 38
-|class="bg-down" style="text-align: left;"| NA team 1
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 39
 |class="bg-down" style="text-align: left;"| SA team 2
 | 0
 | 
@@ -1949,7 +1927,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 40
+|class="bg-down"| 39
 |class="bg-down" style="text-align: left;"| WEU team 1
 | 0
 | 
@@ -1971,7 +1949,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 41
+|class="bg-down"| 40
 |class="bg-down" style="text-align: left;"| WEU team 2
 | 0
 | 
@@ -1993,7 +1971,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 42
+|class="bg-down"| 41
 |class="bg-down" style="text-align: left;"| WEU team 3
 | 0
 | 
@@ -2015,7 +1993,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 43
+|class="bg-down"| 42
 |class="bg-down" style="text-align: left;"| EEU team 1
 | 0
 | 
@@ -2037,7 +2015,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 44
+|class="bg-down"| 43
 |class="bg-down" style="text-align: left;"| MESWA team 1
 | 0
 | 
@@ -2059,8 +2037,30 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 45
+|class="bg-down"| 44
 |class="bg-down" style="text-align: left;"| CN team 1
+| 0
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 0
+|-
+|-
+|class="bg-down"| 45
+|class="bg-down" style="text-align: left;"| CN team 2
 | 0
 | 
 | 
