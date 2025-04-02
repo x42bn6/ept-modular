@@ -23,13 +23,17 @@ from utilities import print_indicators
 
 
 def main():
-
     teams: [Team] = [
         Team("Team Liquid", Region.WEU),
         Team("Gaimin Gladiators", Region.WEU),
         Team("Tundra Esports", Region.WEU),
         Team("AVULUS", Region.WEU),
         Team("Palianytsia", Region.WEU, is_alive=False),
+        Team("Team Secret", Region.WEU),
+        Team("NAVI Junior", Region.WEU),
+        Team("Passion UA", Region.WEU),
+        Team("Zero Tenacity", Region.WEU),
+        Team("Capy Baras", Region.WEU),
 
         Team("BetBoom Team", Region.EEU),
         Team("PARIVISION", Region.EEU),
@@ -48,7 +52,8 @@ def main():
 
         Team("HEROIC", Region.SA),
         Team("Team Waska", Region.SA, is_alive=False),
-        Team("M80", Region.SA),
+        Team("M80", Region.SA, is_alive=False),
+        Team("Perrito Panzon", Region.SA),
 
         # Not really dead, but let placeholder team deal with it
         Team("Xtreme Gaming", Region.CN, is_alive=False),
@@ -60,7 +65,7 @@ def main():
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
-        Team("Moodeng Warriors", Region.SEA,is_alive=False),
+        Team("Moodeng Warriors", Region.SEA, is_alive=False),
     ]
     for region in Region:
         for i in range(0, DL_S26_TEAMS_PER_REGION.get(region)):
@@ -109,6 +114,7 @@ def main():
                        [no_chinese_team_top_8, gaimin_gladiators_top_8])
     optimise_and_write(10, "Top 10", top_10_file, team_database,
                        [gaimin_gladiators_top_8, at_least_one_chinese_team_top_8])
+
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
     if scenarios is None:
@@ -192,7 +198,8 @@ def get_epoch_time_seconds():
     return round(time.time())
 
 
-def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams, scenarios):
+def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective_value_teams, team_database, teams,
+                                      scenarios):
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
@@ -377,6 +384,9 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("Natus Vincere", -63)
         esl_one_ral_2025_to_dl_s26.add_change("Chimera Esports", -2450)
         esl_one_ral_2025_to_dl_s26.add_change("Virtus.pro", 2450)
+        esl_one_ral_2025_to_dl_s26.add_change("Moodeng Warriors", -52)
+        esl_one_ral_2025_to_dl_s26.add_change("M80", -210)
+        esl_one_ral_2025_to_dl_s26.add_change("Perrito Panzon", 210)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 

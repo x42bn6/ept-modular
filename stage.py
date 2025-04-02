@@ -582,6 +582,7 @@ class DoubleElimination_2U2L1D(Stage, ABC):
         return True
 
 
+# ESL One playoffs
 # noinspection PyPep8Naming
 class DoubleElimination_4U4L2DSL1D(Stage, ABC):
     def __init__(self, name: str, metadata: Metadata, previous_stage_lbr1_1_positions=None):
@@ -680,3 +681,81 @@ class DoubleElimination_4U4L2DSL1D(Stage, ABC):
     def is_team_participating(self, team: Team) -> bool:
         # TODO: is not used as root, so teams are unknown
         return True
+
+
+# WEU - 8 teams, 3 qualify
+# noinspection PyPep8Naming
+class DoubleElimination_8_2Q_U_4L2DS_1Q(Stage, ABC):
+    def __init__(self, name: str, teams: [Team], metadata: Metadata):
+        super().__init__(name, 8, metadata)
+
+        self.teams = teams
+
+        # Bracket
+        self.ubr1_1: SingleMatch = SingleMatch(f"{name}_ubr1_1", metadata, teams[0:2])
+        self.ubr1_2: SingleMatch = SingleMatch(f"{name}_ubr1_2", metadata, teams[2:4])
+        self.ubr1_3: SingleMatch = SingleMatch(f"{name}_ubr1_3", metadata, teams[4:6])
+        self.ubr1_4: SingleMatch = SingleMatch(f"{name}_ubr1_4", metadata, teams[6:8])
+
+        self.ubr2_1: SingleMatch = SingleMatch(f"{name}_ubr2_1", metadata)
+        self.ubr2_2: SingleMatch = SingleMatch(f"{name}_ubr2_2", metadata)
+
+        self.lbr1_1: SingleMatch = SingleMatch(f"{name}_lbr1_1", metadata)
+        self.lbr1_2: SingleMatch = SingleMatch(f"{name}_lbr1_2", metadata)
+
+        self.lbr2_1: SingleMatch = SingleMatch(f"{name}_lbr2_1", metadata)
+        self.lbr2_2: SingleMatch = SingleMatch(f"{name}_lbr2_2", metadata)
+
+        self.lbr2: SingleMatch = SingleMatch(f"{name}_lbr2", metadata)
+
+        self.lbr3: SingleMatch = SingleMatch(f"{name}_lbr3", metadata)
+
+        self.ubr1_1.bind_winner(self.ubr2_1)
+        self.ubr1_1.bind_loser(self.lbr1_1)
+        self.ubr1_2.bind_winner(self.ubr2_1)
+        self.ubr1_2.bind_loser(self.lbr1_1)
+        self.ubr1_3.bind_winner(self.ubr2_2)
+        self.ubr1_3.bind_loser(self.lbr1_2)
+        self.ubr1_4.bind_winner(self.ubr2_2)
+        self.ubr1_4.bind_loser(self.lbr1_2)
+
+        self.ubr2_1.bind_loser(self.lbr2_2)
+        self.ubr2_2.bind_loser(self.lbr2_1)
+
+        self.lbr1_1.bind_winner(self.lbr2_1)
+        self.lbr1_2.bind_winner(self.lbr2_2)
+
+        self.lbr2_1.bind_winner(self.lbr2)
+        self.lbr2_2.bind_winner(self.lbr2)
+
+        self.ubr1_1.build()
+        self.ubr1_2.build()
+        self.ubr1_3.build()
+        self.ubr1_4.build()
+
+        self.ubr2_1.build()
+        self.ubr2_2.build()
+
+        self.lbr1_1.build()
+        self.lbr1_2.build()
+
+        self.lbr2_1.build()
+        self.lbr2_2.build()
+
+        self.lbr2.build()
+
+    def is_team_participating(self, team: Team) -> bool:
+        return team in self.teams
+
+    def add_constraints(self):
+        pass
+
+    def bind_elimination(self, tournament: Tournament):
+        model: CpModel = self.metadata.model
+        team_database: TeamDatabase = self.metadata.team_database
+
+        for team in team_database.get_all_teams():
+            team_index: int = team_database.get_team_index(team)
+            model.Add(self.ubr2_1.indicators[team_index][0] == tournament.indicators[team_index][0])
+            model.Add(self.ubr2_2.indicators[team_index][0] == tournament.indicators[team_index][1])
+            model.Add(self.lbr3.indicators[team_index][0] == tournament.indicators[team_index][2])
