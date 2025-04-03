@@ -29,17 +29,14 @@ def main():
         Team("Tundra Esports", Region.WEU),
         Team("AVULUS", Region.WEU),
         Team("Palianytsia", Region.WEU, is_alive=False),
-        Team("Team Secret", Region.WEU),
         Team("NAVI Junior", Region.WEU),
-        Team("Passion UA", Region.WEU),
-        Team("Zero Tenacity", Region.WEU),
-        Team("Capy Baras", Region.WEU),
 
         Team("BetBoom Team", Region.EEU),
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
         Team("9Pandas", Region.EEU, is_alive=False),
+        Team("Aurora Gaming", Region.EEU),
 
         Team("Team Falcons", Region.MESWA),
         Team("Nigma Galaxy", Region.MESWA),
@@ -76,10 +73,6 @@ def main():
         team_database.add_team(team)
 
     top_8_file = open("top-8.txt", "w")
-    top_9_cn_file = open("top-9-cn.txt", "w")
-    top_9_gg_file = open("top-9-gg.txt", "w")
-    top_10_file = open("top-10.txt", "w")
-
     optimise_and_write(8, "Top 8", top_8_file, team_database)
 
     def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
@@ -108,10 +101,15 @@ def main():
             team_qualified.append(team_top_8.Not())
         m.AddBoolAnd(team_qualified)
 
+    top_9_cn_file = open("top-9-cn.txt", "w")
     optimise_and_write(9, "Top 9 (Chinese team guaranteed)", top_9_cn_file, team_database,
                        [at_least_one_chinese_team_top_8, gaimin_gladiators_not_top_8])
+
+    top_9_gg_file = open("top-9-gg.txt", "w")
     optimise_and_write(9, "Top 9 (Gaimin Gladiators guaranteed)", top_9_gg_file, team_database,
                        [no_chinese_team_top_8, gaimin_gladiators_top_8])
+
+    top_10_file = open("top-10.txt", "w")
     optimise_and_write(10, "Top 10", top_10_file, team_database,
                        [gaimin_gladiators_top_8, at_least_one_chinese_team_top_8])
 
