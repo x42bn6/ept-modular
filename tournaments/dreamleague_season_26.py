@@ -22,7 +22,8 @@ class DreamLeagueSeason26:
 
         participating_teams: [Team] = team_database.get_teams_by_names("PARIVISION", "BetBoom Team", "Team Falcons",
                                                                        "Team Liquid")
-        qualified_teams: [Team] = team_database.get_teams_by_names("Perrito Panzon",
+        qualified_teams: [Team] = team_database.get_teams_by_names("Perrito Panzon", "Mosquito Clan",
+                                                                   "Shopify Rebellion",
                                                                    "Tundra Esports", "Gaimin Gladiators", "AVULUS",
                                                                    "Aurora Gaming",
                                                                    "Nigma Galaxy",
@@ -31,17 +32,6 @@ class DreamLeagueSeason26:
         dl_s26_invited_teams: Root = Root("dl_s26_root", 12, metadata, participating_teams + qualified_teams)
         dl_s26_invited_teams.bind_forward(dl_s26_gs1)
 
-        na_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_na_qualifier",
-                                                                team_database.get_teams_by_names("Shopify Rebellion",
-                                                                                                 "NA team 1"),
-                                                                1, 1,
-                                                                metadata)
-        sa_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_sa_qualifier",
-                                                                team_database.get_teams_by_names("HEROIC",
-                                                                                                 "SA team 1",
-                                                                                                 "SA team 2"),
-                                                                1, 1,
-                                                                metadata)
         cn_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_cn_qualifier",
                                                                 team_database.get_teams_by_names("Yakult Brothers",
                                                                                                  "Team Tidebound",
@@ -51,13 +41,7 @@ class DreamLeagueSeason26:
                                                                                                  "CN team 2"),
                                                                 2, 2,
                                                                 metadata)
-
-        na_qualifier.bind_forward(dl_s26_gs1)
-        sa_qualifier.bind_forward(dl_s26_gs1)
         cn_qualifier.bind_forward(dl_s26_gs1)
-
-        na_qualifier.build()
-        sa_qualifier.build()
         cn_qualifier.build()
 
         for team in [team for team in team_database.get_all_teams() if

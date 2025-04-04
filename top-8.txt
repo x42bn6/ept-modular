@@ -50,30 +50,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-up"| 2
-|class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/2}} 11385
-| {{PlacementBg/1}} 300
-| 0
-| {{PlacementBg/4}} 1600
-| 
-| 0
-| {{PlacementBg/1}} 4800
-| 
-| 105
-| {{PlacementBg/1}} 420
-| {{PlacementBg/3}} 2800
-| 
-| 0
-| 560
-| 
-| 0
-| 0
-| 800
-|-
-|-
-|class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|Shopify Rebellion}}
-| {{PlacementBg/3}} 11170
+| {{PlacementBg/2}} 11170
 | 
 | 
 | 
@@ -91,6 +69,28 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | {{PlacementBg/2}} 600
 | 0
 | {{PlacementBg/3}} 4000
+|-
+|-
+|class="bg-up"| 3
+|class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
+| {{PlacementBg/3}} 11085
+| {{PlacementBg/1}} 300
+| 0
+| {{PlacementBg/4}} 1600
+| 
+| 0
+| {{PlacementBg/1}} 4800
+| 
+| 105
+| {{PlacementBg/1}} 420
+| {{PlacementBg/3}} 2800
+| 
+| 0
+| 560
+| 
+| 0
+| 0
+| 500
 |-
 |-
 |class="bg-up"| 4
@@ -152,11 +152,11 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 1400
 | 
 | 0
-| 1040
+| 2240
 | 
 | 150
 | 0
-| 2400
+| 1200
 |-
 |-
 |class="bg-up"| 7
@@ -174,11 +174,11 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 1680
 | 
 | 0
-| 2240
+| 1040
 | 
 | {{PlacementBg/3}} 300
 | 0
-| 1200
+| 2400
 |-
 |-
 |class="bg-up"| 8
@@ -248,25 +248,25 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |-
 |class="bg-down"| 11
-|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
-| 1060
+|class="bg-down" style="text-align: left;"| {{Team|Gaimin Gladiators}}
+| 1225
+| 0
 | 
-| 
-| 
-| 
-| 
-| 
-| 
+| 250
 | 
 | 
 | 
 | 
 | 0
-| 560
+| 
+| 175
 | 
 | 0
 | 0
-| 500
+| 
+| 0
+| 0
+| 800
 |-
 |-
 |class="bg-down"| 12
@@ -293,7 +293,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 863
+| 613
 | 
 | 
 | 
@@ -310,12 +310,12 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | -155
 | 0
 | 0
-| 500
+| 250
 |-
 |-
 |class="bg-down"| 14
 |class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
-| 780
+| 590
 | 0
 | 
 | 250
@@ -332,34 +332,38 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 0
 | 0
-| 250
+| 60
 |-
 |-
 |class="bg-down"| 15
-|class="bg-down" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 565
-| 0
-| 
-| 250
+|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
+| 560
 | 
 | 
 | 
 | 
-| 0
 | 
-| 175
 | 
-| 0
-| 0
+| 
+| 
+| 
+| 
 | 
 | 0
+| 560
+| 
 | 0
-| 140
+| 0
+| 0
 |-
 |-
 |class="bg-down"| 16
-|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 350
+|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
+| 500
+| 
+| 
+| 
+| 
 | 
 | 
 | 
@@ -368,18 +372,36 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 0
-| 
-| 350
-| 
-| 0
 | 0
 | 
 | 0
 | 0
-| 0
+| 500
 |-
 |-
 |class="bg-down"| 17
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 495
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 
+| 350
+| 
+| 0
+| 0
+| -105
+| 0
+| 0
+| 250
+|-
+|-
+|class="bg-down"| 18
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
 | 270
 | 
@@ -401,29 +423,29 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 60
 |-
 |-
-|class="bg-down"| 18
-|class="bg-down" style="text-align: left;"| SA team 1
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 250
-|-
-|-
 |class="bg-down"| 19
+|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
+| 238
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 98
+| 0
+| 0
+| 140
+|-
+|-
+|class="bg-down"| 20
 |class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
 | 147
 | 
@@ -445,7 +467,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 20
+|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
 | 140
 | 
@@ -467,7 +489,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 140
 |-
 |-
-|class="bg-down"| 21
+|class="bg-down"| 22
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -489,51 +511,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 22
-|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
-| 98
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 98
-| 0
-| 0
-| 0
-|-
-|-
 |class="bg-down"| 23
-|class="bg-down" style="text-align: left;"| CN team 2
-| 60
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 60
-|-
-|-
-|class="bg-down"| 24
 |class="bg-down" style="text-align: left;"| {{Team|Team Waska}}
 | 0
 | {{PlacementBg/4}} 150
@@ -555,7 +533,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 25
+|class="bg-down"| 24
 |class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
 | 0
 | 75
@@ -577,7 +555,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 26
+|class="bg-down"| 25
 |class="bg-down" style="text-align: left;"| {{Team|Palianytsia}}
 | 0
 | 0
@@ -599,7 +577,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 27
+|class="bg-down"| 26
 |class="bg-down" style="text-align: left;"| {{Team|Nouns Esports}}
 | 0
 | 0
@@ -621,7 +599,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 28
+|class="bg-down"| 27
 |class="bg-down" style="text-align: left;"| {{Team|Azure Ray}}
 | 0
 | 0
@@ -643,7 +621,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 29
+|class="bg-down"| 28
 |class="bg-down" style="text-align: left;"| {{Team|Atlantic City}}
 | 0
 | 
@@ -665,7 +643,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 30
+|class="bg-down"| 29
 |class="bg-down" style="text-align: left;"| {{Team|M80}}
 | 0
 | 
@@ -687,7 +665,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 31
+|class="bg-down"| 30
 |class="bg-down" style="text-align: left;"| {{Team|Gaozu}}
 | 0
 | 
@@ -709,7 +687,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 32
+|class="bg-down"| 31
 |class="bg-down" style="text-align: left;"| {{Team|Chimera Esports}}
 | 0
 | 
@@ -731,7 +709,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 33
+|class="bg-down"| 32
 |class="bg-down" style="text-align: left;"| {{Team|9Pandas}}
 | 0
 | 
@@ -753,7 +731,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 34
+|class="bg-down"| 33
 |class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
 | 0
 | 
@@ -775,161 +753,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 35
-|class="bg-down" style="text-align: left;"| NA team 1
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 36
-|class="bg-down" style="text-align: left;"| SA team 2
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 37
-|class="bg-down" style="text-align: left;"| WEU team 1
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 38
-|class="bg-down" style="text-align: left;"| WEU team 2
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 39
-|class="bg-down" style="text-align: left;"| WEU team 3
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 40
-|class="bg-down" style="text-align: left;"| EEU team 1
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 41
-|class="bg-down" style="text-align: left;"| MESWA team 1
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 42
+|class="bg-down"| 34
 |class="bg-down" style="text-align: left;"| CN team 1
 | 0
 | 
@@ -951,30 +775,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 43
-|class="bg-down" style="text-align: left;"| SEA team 1
-| 0
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 44
-|class="bg-down" style="text-align: left;"| SEA team 2
+|class="bg-down"| 35
+|class="bg-down" style="text-align: left;"| CN team 2
 | 0
 | 
 | 

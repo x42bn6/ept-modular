@@ -51,6 +51,7 @@ def main():
         Team("Team Waska", Region.SA, is_alive=False),
         Team("M80", Region.SA, is_alive=False),
         Team("Perrito Panzon", Region.SA),
+        Team("Mosquito Clan", Region.SA),
 
         # Not really dead, but let placeholder team deal with it
         Team("Xtreme Gaming", Region.CN, is_alive=False),
@@ -59,14 +60,13 @@ def main():
         Team("Gaozu", Region.CN, is_alive=False),
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
+        Team("CN team 1", Region.CN, is_pseudo_team=True),
+        Team("CN team 2", Region.CN, is_pseudo_team=True),
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
         Team("Moodeng Warriors", Region.SEA, is_alive=False),
     ]
-    for region in Region:
-        for i in range(0, DL_S26_TEAMS_PER_REGION.get(region)):
-            teams.append(Team(f"{region.name} team {i + 1}", region, is_pseudo_team=True))
 
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
@@ -385,6 +385,7 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("Moodeng Warriors", -52)
         esl_one_ral_2025_to_dl_s26.add_change("M80", -210)
         esl_one_ral_2025_to_dl_s26.add_change("Perrito Panzon", 210)
+        esl_one_ral_2025_to_dl_s26.add_change("Yakult Brothers", -105)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 
