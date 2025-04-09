@@ -44,12 +44,12 @@ class EslOneRaleigh2025:
         esl_one_ral_2025_gs.team_can_finish_between("Shopify Rebellion", 9, 10)
         esl_one_ral_2025_gs.team_can_finish_between("Talon Esports", 11, 12)
 
-        esl_one_ral_2025_gs.team_can_finish_between("Team Falcons", 1, 8)
-        esl_one_ral_2025_gs.team_can_finish_between("AVULUS", 1, 10)
-        esl_one_ral_2025_gs.team_can_finish_between("BetBoom Team", 1, 12)
-        esl_one_ral_2025_gs.team_can_finish_between("Tundra Esports", 1, 12)
-        esl_one_ral_2025_gs.team_can_finish_between("Team Tidebound", 3, 12)
-        esl_one_ral_2025_gs.team_can_finish_between("HEROIC", 5, 12)
+        esl_one_ral_2025_gs.team_can_finish_between("Team Falcons", 1, 4)
+        esl_one_ral_2025_gs.team_can_finish_between("AVULUS", 1, 8)
+        esl_one_ral_2025_gs.team_can_finish_between("BetBoom Team", 1, 8)
+        esl_one_ral_2025_gs.team_can_finish_between("Tundra Esports", 1, 8)
+        esl_one_ral_2025_gs.team_can_finish_between("Team Tidebound", 9, 12)
+        esl_one_ral_2025_gs.team_can_finish_between("HEROIC", 9, 12)
 
         esl_one_ral_2025_gs.build()
         esl_one_ral_2025_playoff.build()
