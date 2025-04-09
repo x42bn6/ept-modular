@@ -590,7 +590,7 @@ class DoubleElimination_4U4L2DSL1D(Stage, ABC):
 
         # For some reason, this is not A5 vs. B6 and B5 vs. A6, but can be A5 vs. B5 (ESL One Bangkok 2024)
         # This field defines what LBR1 series 1 (in Liquipedia terms) positions should be.
-        # A3=4, B3=5, A4=6, B6=7
+        # A3=4, B3=5, A4=6, B4=7
         if previous_stage_lbr1_1_positions is None:
             previous_stage_lbr1_1_positions = [4, 7]
         self.previous_stage_lbr1_1_positions = previous_stage_lbr1_1_positions
