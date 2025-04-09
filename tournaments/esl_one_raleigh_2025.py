@@ -37,12 +37,12 @@ class EslOneRaleigh2025:
                                              "2025-04-13",
                                              metadata)
 
-        esl_one_ral_2025_gs.team_can_finish_between("PARIVISION", 1, 6)
-        esl_one_ral_2025_gs.team_can_finish_between("Team Spirit", 1, 8)
-        esl_one_ral_2025_gs.team_can_finish_between("Team Liquid", 1, 8)
-        esl_one_ral_2025_gs.team_can_finish_between("Nigma Galaxy", 3, 8)
-        esl_one_ral_2025_gs.team_can_finish_between("Shopify Rebellion", 9, 12)
-        esl_one_ral_2025_gs.team_can_finish_between("Talon Esports", 9, 12)
+        esl_one_ral_2025_gs.team_can_finish_between("PARIVISION", 1, 2)
+        esl_one_ral_2025_gs.team_can_finish_between("Team Spirit", 3, 4)
+        esl_one_ral_2025_gs.team_can_finish_between("Team Liquid", 5, 6)
+        esl_one_ral_2025_gs.team_can_finish_between("Nigma Galaxy", 7, 8)
+        esl_one_ral_2025_gs.team_can_finish_between("Shopify Rebellion", 9, 10)
+        esl_one_ral_2025_gs.team_can_finish_between("Talon Esports", 11, 12)
 
         esl_one_ral_2025_gs.team_can_finish_between("Team Falcons", 1, 8)
         esl_one_ral_2025_gs.team_can_finish_between("AVULUS", 1, 10)
