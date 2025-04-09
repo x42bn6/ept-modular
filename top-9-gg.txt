@@ -29,7 +29,7 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 13405
+| {{PlacementBg/1}} 15365
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -42,33 +42,33 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | {{PlacementBg/3}} 2800
 | 
 | {{PlacementBg/1}} 640
-| 2240
+| {{PlacementBg/4}} 3200
 | 
+| {{PlacementBg/3}} 300
 | 0
-| 0
-| 500
+| 1200
 |-
 |-
 |class="bg-up"| 2
-|class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
-| {{PlacementBg/2}} 12963
-| 75
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| {{PlacementBg/2}} 13950
 | 0
-| 1200
-| 
-| 
-| 
-| -382
-| {{PlacementBg/1}} 420
-| 0
-| {{PlacementBg/2}} 3500
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
 | 
 | 0
-| {{PlacementBg/3}} 4000
+| {{PlacementBg/3}} 3000
 | 
-| 150
+| {{PlacementBg/3}} 210
 | 0
-| {{PlacementBg/3}} 4000
+| 1400
+| 
+| 0
+| {{PlacementBg/1}} 6400
+| 
+| 0
+| 0
+| 140
 |-
 |-
 |class="bg-up"| 3
@@ -95,7 +95,7 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 |-
 |class="bg-up"| 4
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 12125
+| {{PlacementBg/4}} 10375
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -112,54 +112,32 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 
 | 0
 | 0
-| 2000
+| 250
 |-
 |-
 |class="bg-up"| 5
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| 11000
+|class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
+| 8003
+| 75
 | 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
+| 1200
 | 
-| 0
-| {{PlacementBg/3}} 3000
 | 
-| {{PlacementBg/3}} 210
+| 
+| -382
+| {{PlacementBg/1}} 420
 | 0
-| 1400
+| {{PlacementBg/2}} 3500
 | 
 | 0
 | 1040
 | 
 | 150
 | 0
-| 2400
+| 2000
 |-
 |-
 |class="bg-up"| 6
-|class="bg-up" style="text-align: left;"| {{Team|AVULUS}}
-| 7943
-| 0
-| 
-| 125
-| 
-| 0
-| 1680
-| 
-| 0
-| 
-| 42
-| -554
-| 0
-| {{PlacementBg/1}} 6400
-| 
-| 0
-| 0
-| 250
-|-
-|-
-|class="bg-up"| 7
 |class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
 | 7625
 | 0
@@ -181,7 +159,7 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | {{PlacementBg/1}} 6000
 |-
 |-
-|class="bg-up"| 8
+|class="bg-up"| 7
 |class="bg-up" style="text-align: left;"| {{Team|Nigma Galaxy}}
 | 7550
 | 0
@@ -196,11 +174,33 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 
 | 
 | 0
-| {{PlacementBg/4}} 3200
+| {{PlacementBg/3}} 4000
 | 
-| {{PlacementBg/3}} 300
+| {{PlacementBg/4}} 300
 | 0
-| {{PlacementBg/4}} 3200
+| 2400
+|-
+|-
+|class="bg-up"| 8
+|class="bg-up" style="text-align: left;"| {{Team|AVULUS}}
+| 7533
+| 0
+| 
+| 125
+| 
+| 0
+| 1680
+| 
+| 0
+| 
+| 42
+| -554
+| 0
+| 2240
+| 
+| 0
+| 0
+| {{PlacementBg/3}} 4000
 |-
 |-
 |class="bg-up"| 9
@@ -248,6 +248,28 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 |-
 |-
 |class="bg-down"| 11
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 3595
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 
+| 350
+| 
+| 0
+| 0
+| -105
+| 150
+| 0
+| {{PlacementBg/4}} 3200
+|-
+|-
+|class="bg-down"| 12
 |class="bg-down" style="text-align: left;"| {{Team|Virtus.pro}}
 | 2450
 | 
@@ -269,51 +291,7 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 0
 |-
 |-
-|class="bg-down"| 12
-|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 1745
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 
-| 350
-| 
-| 0
-| 0
-| -105
-| {{PlacementBg/4}} 300
-| 0
-| 1200
-|-
-|-
 |class="bg-down"| 13
-|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
-| 1030
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 280
-| 
-| 0
-| 0
-| 500
-|-
-|-
-|class="bg-down"| 14
 |class="bg-down" style="text-align: left;"| {{Team|HEROIC}}
 | 889
 | 0
@@ -335,9 +313,53 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 0
 |-
 |-
+|class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
+| 598
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 98
+| 0
+| 0
+| 500
+|-
+|-
 |class="bg-down"| 15
+|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
+| 590
+| 0
+| 
+| 250
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 280
+| 
+| 0
+| 0
+| 60
+|-
+|-
+|class="bg-down"| 16
 |class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
-| 810
+| 560
 | 
 | 
 | 
@@ -354,10 +376,10 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 
 | 0
 | 0
-| 250
+| 0
 |-
 |-
-|class="bg-down"| 16
+|class="bg-down"| 17
 |class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
 | 503
 | 
@@ -379,9 +401,31 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 140
 |-
 |-
-|class="bg-down"| 17
+|class="bg-down"| 18
+|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+| 500
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 500
+|-
+|-
+|class="bg-down"| 19
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 350
+| 270
 | 
 | 
 | 
@@ -398,10 +442,32 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 210
 | 0
 | 0
-| 140
+| 60
 |-
 |-
-|class="bg-down"| 18
+|class="bg-down"| 20
+|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
+| 250
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 250
+|-
+|-
+|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
 | 147
 | 
@@ -423,7 +489,7 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 0
 |-
 |-
-|class="bg-down"| 19
+|class="bg-down"| 22
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -443,72 +509,6 @@ This is the following scenario where {{Team|Team Liquid}} become the cutoff for 
 | 0
 | 0
 | 0
-|-
-|-
-|class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
-| 98
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 98
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 21
-|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
-| 60
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 60
-|-
-|-
-|class="bg-down"| 22
-|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
-| 60
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 60
 |-
 |-
 |class="bg-down"| 23
@@ -829,7 +829,7 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 14365
+| {{PlacementBg/1}} 18015
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -841,17 +841,17 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | {{PlacementBg/1}} 420
 | {{PlacementBg/3}} 2800
 | 
-| {{PlacementBg/2}} 640
-| {{PlacementBg/4}} 3200
+| {{PlacementBg/1}} 640
+| {{PlacementBg/3}} 4000
 | 
+| 150
 | 0
-| 0
-| 500
+| {{PlacementBg/4}} 3200
 |-
 |-
 |class="bg-up"| 2
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/2}} 12545
+| {{PlacementBg/2}} 14035
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -863,17 +863,17 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 | 1680
 | 
-| 0
+| {{PlacementBg/2}} 640
 | {{PlacementBg/2}} 4800
 | 
+| 150
 | 0
-| 0
-| 500
+| 1200
 |-
 |-
 |class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/3}} 11700
+| {{PlacementBg/3}} 10900
 | 0
 | 0
 | {{PlacementBg/3}} 2000
@@ -886,7 +886,7 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | {{PlacementBg/1}} 4200
 | 
 | 0
-| {{PlacementBg/3}} 4000
+| {{PlacementBg/4}} 3200
 | 
 | 0
 | 0
@@ -894,30 +894,30 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 |-
 |-
 |class="bg-up"| 4
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/4}} 11000
+|class="bg-up" style="text-align: left;"| {{Team|AVULUS}}
+| {{PlacementBg/4}} 9993
 | 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
+| 
+| 125
 | 
 | 0
-| {{PlacementBg/3}} 3000
-| 
-| {{PlacementBg/3}} 210
-| 0
-| 1400
+| 1680
 | 
 | 0
-| 1040
 | 
-| 150
+| 42
+| -554
 | 0
-| 2400
+| {{PlacementBg/1}} 6400
+| 
+| {{PlacementBg/3}} 300
+| 0
+| 2000
 |-
 |-
 |class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 9230
+| 9030
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -932,36 +932,36 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 | 1040
 | 
-| {{PlacementBg/1}} 600
 | 0
-| 2000
+| 0
+| 2400
 |-
 |-
 |class="bg-up"| 6
-|class="bg-up" style="text-align: left;"| {{Team|AVULUS}}
-| 7373
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| 8590
 | 0
-| 
-| 125
-| 
-| 0
-| 1680
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
 | 
 | 0
+| {{PlacementBg/3}} 3000
 | 
-| 42
-| -554
-| {{PlacementBg/1}} 640
-| 2240
+| {{PlacementBg/3}} 210
+| 0
+| 1400
+| 
+| 0
+| 1040
 | 
 | 0
 | 0
-| {{PlacementBg/4}} 3200
+| 140
 |-
 |-
 |class="bg-up"| 7
 |class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 7325
+| 7625
 | 0
 | 
 | 250
@@ -976,14 +976,14 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 | 0
 | 
-| {{PlacementBg/3}} 300
+| {{PlacementBg/1}} 600
 | {{PlacementBg/1}} 600
 | {{PlacementBg/1}} 6000
 |-
 |-
 |class="bg-up"| 8
 |class="bg-up" style="text-align: left;"| {{Team|Nigma Galaxy}}
-| 7310
+| 7390
 | 0
 | 
 | 70
@@ -996,11 +996,11 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 
 | 
 | 0
-| {{PlacementBg/1}} 6400
+| 2240
 | 
+| {{PlacementBg/4}} 300
 | 0
-| 0
-| 60
+| {{PlacementBg/3}} 4000
 |-
 |-
 |class="bg-up"| 9
@@ -1048,28 +1048,6 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 |-
 |-
 |class="bg-down"| 11
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 4663
-| 
-| 
-| 
-| 
-| 0
-| 420
-| 
-| 0
-| 
-| 98
-| 
-| 0
-| 0
-| -155
-| {{PlacementBg/4}} 300
-| 0
-| {{PlacementBg/3}} 4000
-|-
-|-
-|class="bg-down"| 12
 |class="bg-down" style="text-align: left;"| {{Team|Virtus.pro}}
 | 2450
 | 
@@ -1091,9 +1069,9 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 |-
 |-
-|class="bg-down"| 13
+|class="bg-down"| 12
 |class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
-| 1480
+| 1030
 | 0
 | 
 | 250
@@ -1108,36 +1086,14 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 | 280
 | 
-| 150
 | 0
-| 800
+| 0
+| 500
 |-
 |-
-|class="bg-down"| 14
-|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
-| 1200
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 1200
-|-
-|-
-|class="bg-down"| 15
+|class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|HEROIC}}
-| 1169
+| 889
 | 0
 | 
 | 70
@@ -1150,38 +1106,60 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 560
 | 
 | 0
-| 560
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 16
-|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
-| 420
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
 | 280
 | 
 | 0
 | 0
-| 140
+| 0
 |-
 |-
-|class="bg-down"| 17
+|class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
+| 810
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 560
+| 
+| 0
+| 0
+| 250
+|-
+|-
+|class="bg-down"| 15
+|class="bg-down" style="text-align: left;"| CN team 2
+| 800
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 800
+|-
+|-
+|class="bg-down"| 16
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 270
+| 710
 | 
 | 
 | 
@@ -1198,32 +1176,32 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 210
 | 0
 | 0
-| 60
+| 500
+|-
+|-
+|class="bg-down"| 17
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 503
+| 
+| 
+| 
+| 
+| 0
+| 420
+| 
+| 0
+| 
+| 98
+| 
+| 0
+| 0
+| -155
+| 0
+| 0
+| 140
 |-
 |-
 |class="bg-down"| 18
-|class="bg-down" style="text-align: left;"| CN team 2
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 250
-|-
-|-
-|class="bg-down"| 19
 |class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
 | 245
 | 
@@ -1245,7 +1223,7 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 |-
 |-
-|class="bg-down"| 20
+|class="bg-down"| 19
 |class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
 | 147
 | 
@@ -1267,29 +1245,7 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 |-
 |-
-|class="bg-down"| 21
-|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
-| 140
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 0
-| 0
-| 140
-|-
-|-
-|class="bg-down"| 22
+|class="bg-down"| 20
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -1311,7 +1267,7 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 |-
 |-
-|class="bg-down"| 23
+|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|ex-Xtreme Gaming}}
 | 98
 | 
@@ -1331,6 +1287,50 @@ This is the following scenario where {{Team|Tundra Esports}} become the cutoff f
 | 0
 | 0
 | 0
+|-
+|-
+|class="bg-down"| 22
+|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+| 60
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 60
+|-
+|-
+|class="bg-down"| 23
+|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
+| 60
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 0
+| 0
+| 60
 |-
 |-
 |class="bg-down"| 24
@@ -1629,7 +1629,7 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 14115
+| {{PlacementBg/1}} 17565
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -1642,60 +1642,16 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | {{PlacementBg/3}} 2800
 | 
 | {{PlacementBg/1}} 640
-| {{PlacementBg/4}} 3200
-| 
-| 0
-| 0
-| 250
-|-
-|-
-|class="bg-up"| 2
-|class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/2}} 14100
-| 0
-| 0
-| {{PlacementBg/3}} 2000
-| 
-| 0
-| {{PlacementBg/4}} 2400
-| -1320
-| {{PlacementBg/2}} 420
-| 0
-| {{PlacementBg/1}} 4200
-| 
-| 0
 | {{PlacementBg/1}} 6400
 | 
 | 0
 | 0
-| 0
+| 500
 |-
 |-
-|class="bg-up"| 3
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/3}} 11950
-| 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
-| 
-| 0
-| {{PlacementBg/3}} 3000
-| 
-| {{PlacementBg/3}} 210
-| 0
-| 1400
-| 
-| 0
-| 1040
-| 
-| {{PlacementBg/3}} 300
-| 0
-| {{PlacementBg/4}} 3200
-|-
-|-
-|class="bg-up"| 4
+|class="bg-up"| 2
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 11225
+| {{PlacementBg/2}} 12385
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -1708,16 +1664,60 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 1680
 | 
 | {{PlacementBg/2}} 640
+| {{PlacementBg/3}} 4000
+| 
+| 0
+| 0
+| 500
+|-
+|-
+|class="bg-up"| 3
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| {{PlacementBg/3}} 11800
+| 0
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
+| 
+| 0
+| {{PlacementBg/3}} 3000
+| 
+| {{PlacementBg/3}} 210
+| 0
+| 1400
+| 
+| 0
 | 2240
 | 
-| {{PlacementBg/4}} 300
+| 150
 | 0
-| 800
+| 2000
+|-
+|-
+|class="bg-up"| 4
+|class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
+| {{PlacementBg/4}} 10900
+| 0
+| 0
+| {{PlacementBg/3}} 2000
+| 
+| 0
+| {{PlacementBg/4}} 2400
+| -1320
+| {{PlacementBg/2}} 420
+| 0
+| {{PlacementBg/1}} 4200
+| 
+| 0
+| {{PlacementBg/4}} 3200
+| 
+| 0
+| 0
+| 0
 |-
 |-
 |class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
-| 9853
+| 8553
 | 75
 | 0
 | 1200
@@ -1732,34 +1732,12 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 0
 | 1040
 | 
+| {{PlacementBg/3}} 300
 | 0
-| 0
-| {{PlacementBg/3}} 4000
+| 2400
 |-
 |-
 |class="bg-up"| 6
-|class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 8330
-| {{PlacementBg/3}} 150
-| 0
-| 1000
-| 
-| 0
-| {{PlacementBg/2}} 3600
-| 
-| 0
-| 0
-| 840
-| 
-| 0
-| 2240
-| 
-| 0
-| 0
-| 500
-|-
-|-
-|class="bg-up"| 7
 |class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
 | 7625
 | 0
@@ -1781,9 +1759,31 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | {{PlacementBg/1}} 6000
 |-
 |-
+|class="bg-up"| 7
+|class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
+| 7430
+| {{PlacementBg/3}} 150
+| 0
+| 1000
+| 
+| 0
+| {{PlacementBg/2}} 3600
+| 
+| 0
+| 0
+| 840
+| 
+| 0
+| 1040
+| 
+| 0
+| 0
+| 800
+|-
+|-
 |class="bg-up"| 8
 |class="bg-up" style="text-align: left;"| {{Team|Nigma Galaxy}}
-| 7400
+| 7390
 | 0
 | 
 | 70
@@ -1796,11 +1796,11 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 
 | 
 | 0
-| {{PlacementBg/3}} 4000
+| 2240
 | 
-| 150
+| {{PlacementBg/4}} 300
 | 0
-| 2400
+| {{PlacementBg/3}} 4000
 |-
 |-
 |class="bg-up"| 9
@@ -1848,6 +1848,28 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 |-
 |-
 |class="bg-down"| 11
+|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+| 3350
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 
+| 150
+| 0
+| {{PlacementBg/4}} 3200
+|-
+|-
+|class="bg-down"| 12
 |class="bg-down" style="text-align: left;"| {{Team|Virtus.pro}}
 | 2450
 | 
@@ -1869,51 +1891,7 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 0
 |-
 |-
-|class="bg-down"| 12
-|class="bg-down" style="text-align: left;"| CN team 1
-| 2150
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 
-| 150
-| 0
-| 2000
-|-
-|-
 |class="bg-down"| 13
-|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
-| 1030
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 280
-| 
-| 0
-| 0
-| 500
-|-
-|-
-|class="bg-down"| 14
 |class="bg-down" style="text-align: left;"| {{Team|HEROIC}}
 | 889
 | 0
@@ -1935,12 +1913,12 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 0
 |-
 |-
-|class="bg-down"| 15
-|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
-| 560
+|class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
+| 780
+| 0
 | 
-| 
-| 
+| 250
 | 
 | 
 | 
@@ -1950,38 +1928,38 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 
 | 
 | 0
-| 560
+| 280
 | 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 16
-|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 495
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 
-| 350
-| 
-| 0
-| 0
-| -105
 | 0
 | 0
 | 250
 |-
 |-
-|class="bg-down"| 17
+|class="bg-down"| 15
+|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
+| 620
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 560
+| 
+| 0
+| 0
+| 60
+|-
+|-
+|class="bg-down"| 16
 |class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 423
+| 503
 | 
 | 
 | 
@@ -1998,12 +1976,12 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | -155
 | 0
 | 0
-| 60
+| 140
 |-
 |-
-|class="bg-down"| 18
+|class="bg-down"| 17
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 350
+| 460
 | 
 | 
 | 
@@ -2020,7 +1998,29 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 | 210
 | 0
 | 0
-| 140
+| 250
+|-
+|-
+|class="bg-down"| 18
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 245
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 
+| 350
+| 
+| 0
+| 0
+| -105
+| 0
+| 0
+| 0
 |-
 |-
 |class="bg-down"| 19
@@ -2046,7 +2046,7 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 |-
 |-
 |class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
+|class="bg-down" style="text-align: left;"| CN team 2
 | 140
 | 
 | 
@@ -2112,7 +2112,7 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 |-
 |-
 |class="bg-down"| 23
-|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
 | 60
 | 
 | 
@@ -2376,7 +2376,7 @@ This is the following scenario where {{Team|AVULUS}} become the cutoff for the <
 |-
 |-
 |class="bg-down"| 35
-|class="bg-down" style="text-align: left;"| CN team 2
+|class="bg-down" style="text-align: left;"| CN team 1
 | 0
 | 
 | 
