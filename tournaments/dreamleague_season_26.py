@@ -45,8 +45,7 @@ class DreamLeagueSeason26:
         cn_qualifier.build()
 
         for team in [team for team in team_database.get_all_teams() if
-                     team in declined_teams or
-                     not team.is_alive]:
+                     team in declined_teams]:
             dl_s26.team_declined_or_cannot_participate(team)
 
         dl_s26_gs1.bind_forward(dl_s26_gs2)

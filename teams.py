@@ -11,12 +11,11 @@ class Region(Enum):
     SEA = 7
 
 class Team:
-    def __init__(self, name: str, region: Region, is_pseudo_team: bool = False, is_alive: bool = True):
+    def __init__(self, name: str, region: Region, is_pseudo_team: bool = False):
         self.name = name
         self.ept_relevant = False
         self.region = region
         self.is_pseudo_team = is_pseudo_team
-        self.is_alive = is_alive
 
     def make_relevant(self):
         self.ept_relevant = True

@@ -28,37 +28,36 @@ def main():
         Team("Gaimin Gladiators", Region.WEU),
         Team("Tundra Esports", Region.WEU),
         Team("AVULUS", Region.WEU),
-        Team("Palianytsia", Region.WEU, is_alive=False),
+        Team("Palianytsia", Region.WEU),
         Team("NAVI Junior", Region.WEU),
 
         Team("BetBoom Team", Region.EEU),
         Team("PARIVISION", Region.EEU),
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
-        Team("9Pandas", Region.EEU, is_alive=False),
-        Team("ex-9Pandas", Region.EEU, is_alive=False),
+        Team("9Pandas", Region.EEU),
+        Team("ex-9Pandas", Region.EEU),
         Team("Aurora Gaming", Region.EEU),
 
         Team("Team Falcons", Region.MESWA),
         Team("Nigma Galaxy", Region.MESWA),
-        Team("Chimera Esports", Region.MESWA, is_alive=False),
+        Team("Chimera Esports", Region.MESWA),
         Team("Virtus.pro", Region.MESWA),
 
-        Team("Nouns Esports", Region.NA, is_alive=False),
-        Team("Atlantic City", Region.NA, is_alive=False),
+        Team("Nouns Esports", Region.NA),
+        Team("Atlantic City", Region.NA),
         Team("Shopify Rebellion", Region.NA),
 
         Team("HEROIC", Region.SA),
-        Team("Team Waska", Region.SA, is_alive=False),
-        Team("M80", Region.SA, is_alive=False),
+        Team("Team Waska", Region.SA),
+        Team("M80", Region.SA),
         Team("Perrito Panzon", Region.SA),
         Team("Mosquito Clan", Region.SA),
 
-        # Not really dead, but let placeholder team deal with it
-        Team("Xtreme Gaming", Region.CN, is_alive=False),
+        Team("Xtreme Gaming", Region.CN),
         Team("ex-Xtreme Gaming", Region.CN),
-        Team("Azure Ray", Region.CN, is_alive=False),
-        Team("Gaozu", Region.CN, is_alive=False),
+        Team("Azure Ray", Region.CN),
+        Team("Gaozu", Region.CN),
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
         Team("CN team 1", Region.CN, is_pseudo_team=True),
@@ -66,7 +65,7 @@ def main():
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
-        Team("Moodeng Warriors", Region.SEA, is_alive=False),
+        Team("Moodeng Warriors", Region.SEA),
     ]
 
     team_database: TeamDatabase = TeamDatabase()
@@ -136,9 +135,6 @@ def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: Te
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
-        if not team.is_alive:
-            continue
-
         if team.is_pseudo_team:
             if team.region in regions_with_pseudo_teams_solved:
                 continue
@@ -202,9 +198,6 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
-        if not team.is_alive:
-            continue
-
         if team.is_pseudo_team:
             if team.region in regions_with_pseudo_teams_solved:
                 continue
