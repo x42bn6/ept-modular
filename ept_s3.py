@@ -76,18 +76,18 @@ def main():
     optimise_and_write(8, "Top 8", top_8_file, team_database)
 
     def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
-        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] < 8)
+        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] <= 8)
 
     def gaimin_gladiators_not_top_8(m: CpModel, r: [IntVar]):
-        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] >= 8)
+        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] > 8)
 
     def at_least_one_chinese_team_top_8(m: CpModel, r: [IntVar]):
         team_qualified: [BooleanVar] = []
         for t in team_database.get_teams_by_region(Region.CN):
             team_top_8 = m.new_bool_var(f"{t.name}_acl_top_8")
             team_index = team_database.get_team_index(t)
-            m.Add(r[team_index] < 8).only_enforce_if(team_top_8)
-            m.Add(r[team_index] >= 8).only_enforce_if(team_top_8.Not())
+            m.Add(r[team_index] <= 8).only_enforce_if(team_top_8)
+            m.Add(r[team_index] > 8).only_enforce_if(team_top_8.Not())
             team_qualified.append(team_top_8)
         m.AddBoolOr(team_qualified)
 
@@ -96,8 +96,8 @@ def main():
         for t in team_database.get_teams_by_region(Region.CN):
             team_top_8 = m.new_bool_var(f"{t.name}_acl_top_8")
             team_index = team_database.get_team_index(t)
-            m.Add(r[team_index] < 8).only_enforce_if(team_top_8)
-            m.Add(r[team_index] >= 8).only_enforce_if(team_top_8.Not())
+            m.Add(r[team_index] <= 8).only_enforce_if(team_top_8)
+            m.Add(r[team_index] > 8).only_enforce_if(team_top_8.Not())
             team_qualified.append(team_top_8.Not())
         m.AddBoolAnd(team_qualified)
 
