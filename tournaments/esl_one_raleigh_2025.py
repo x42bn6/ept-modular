@@ -45,8 +45,8 @@ class EslOneRaleigh2025:
         esl_one_ral_2025_gs.team_can_finish_between("Talon Esports", 11, 12)
 
         esl_one_ral_2025_gs.team_can_finish_between("Team Falcons", 1, 2)
-        esl_one_ral_2025_gs.team_can_finish_between("Tundra Esports", 3, 6)
-        esl_one_ral_2025_gs.team_can_finish_between("BetBoom Team", 3, 6)
+        esl_one_ral_2025_gs.team_can_finish_between("Tundra Esports", 3, 4)
+        esl_one_ral_2025_gs.team_can_finish_between("BetBoom Team", 5, 6)
         esl_one_ral_2025_gs.team_can_finish_between("AVULUS", 7, 8)
         esl_one_ral_2025_gs.team_can_finish_between("Team Tidebound", 9, 10)
         esl_one_ral_2025_gs.team_can_finish_between("HEROIC", 11, 12)
