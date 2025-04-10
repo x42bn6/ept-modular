@@ -52,6 +52,7 @@ class EslOneRaleigh2025:
         esl_one_ral_2025_gs.team_can_finish_between("HEROIC", 11, 12)
 
         esl_one_ral_2025_playoff.ubsf_1.set_winner("Tundra Esports")
+        esl_one_ral_2025_playoff.ubsf_2.set_winner("Team Spirit")
 
         esl_one_ral_2025_gs.build()
         esl_one_ral_2025_playoff.build()
