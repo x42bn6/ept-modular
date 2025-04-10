@@ -36,6 +36,7 @@ def main():
         Team("Team Spirit", Region.EEU),
         Team("Natus Vincere", Region.EEU),
         Team("9Pandas", Region.EEU, is_alive=False),
+        Team("ex-9Pandas", Region.EEU, is_alive=False),
         Team("Aurora Gaming", Region.EEU),
 
         Team("Team Falcons", Region.MESWA),
@@ -377,6 +378,7 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("Xtreme Gaming", -98)
         esl_one_ral_2025_to_dl_s26.add_change("ex-Xtreme Gaming", 98)
         esl_one_ral_2025_to_dl_s26.add_change("9Pandas", -42)
+        esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 29)
         esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
         esl_one_ral_2025_to_dl_s26.add_change("BOOM Esports", -155)
         esl_one_ral_2025_to_dl_s26.add_change("Natus Vincere", -63)
@@ -385,7 +387,7 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("Moodeng Warriors", -52)
         esl_one_ral_2025_to_dl_s26.add_change("M80", -210)
         esl_one_ral_2025_to_dl_s26.add_change("Perrito Panzon", 210)
-        esl_one_ral_2025_to_dl_s26.add_change("Yakult Brothers", -105)
+        esl_one_ral_2025_to_dl_s26.add_change("Yakult Brothers", -350)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 
