@@ -55,7 +55,6 @@ def main():
         Team("Mosquito Clan", Region.SA),
 
         Team("Xtreme Gaming", Region.CN),
-        Team("ex-Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN),
         Team("Gaozu", Region.CN),
         Team("Yakult Brothers", Region.CN),
@@ -369,7 +368,6 @@ class FullEpt:
 
         esl_one_ral_2025_to_dl_s26: TransferWindow = TransferWindow("esl_one_ral_2025_to_dl_s26", team_database)
         esl_one_ral_2025_to_dl_s26.add_change("Xtreme Gaming", -98)
-        esl_one_ral_2025_to_dl_s26.add_change("ex-Xtreme Gaming", 98)
         esl_one_ral_2025_to_dl_s26.add_change("9Pandas", -42)
         esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 29)
         esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
