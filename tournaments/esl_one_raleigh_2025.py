@@ -57,6 +57,8 @@ class EslOneRaleigh2025:
         esl_one_ral_2025_playoff.lbr1_1.set_winner("Team Liquid")
         esl_one_ral_2025_playoff.lbr1_2.set_winner("BetBoom Team")
 
+        esl_one_ral_2025_playoff.lbqf_1.set_winner("PARIVISION")
+
         esl_one_ral_2025_gs.build()
         esl_one_ral_2025_playoff.build()
         esl_one_ral_2025.build()

@@ -74,21 +74,28 @@ def main():
     top_8_file = open("top-8.txt", "w")
     optimise_and_write(8, "Top 8", top_8_file, team_database)
 
-    def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
-        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] <= 8)
+    def gaimin_gladiators_top_n(m: CpModel, r: [IntVar], n: int):
+        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] <= n)
+
+    def at_least_one_chinese_team_top_n(m: CpModel, r: [IntVar], n: int):
+        team_qualified: [BooleanVar] = []
+        for t in team_database.get_teams_by_region(Region.CN):
+            team_top_n = m.new_bool_var(f"{t.name}_acl_top_n")
+            team_index = team_database.get_team_index(t)
+            m.Add(r[team_index] <= 8).only_enforce_if(team_top_n)
+            m.Add(r[team_index] > 8).only_enforce_if(team_top_n.Not())
+            team_qualified.append(team_top_n)
+        m.AddBoolOr(team_qualified)
+
+    def at_least_one_chinese_team_top_8(m: CpModel, r: [IntVar]):
+        at_least_one_chinese_team_top_n(m, r, 8)
 
     def gaimin_gladiators_not_top_8(m: CpModel, r: [IntVar]):
         m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] > 8)
 
-    def at_least_one_chinese_team_top_8(m: CpModel, r: [IntVar]):
-        team_qualified: [BooleanVar] = []
-        for t in team_database.get_teams_by_region(Region.CN):
-            team_top_8 = m.new_bool_var(f"{t.name}_acl_top_8")
-            team_index = team_database.get_team_index(t)
-            m.Add(r[team_index] <= 8).only_enforce_if(team_top_8)
-            m.Add(r[team_index] > 8).only_enforce_if(team_top_8.Not())
-            team_qualified.append(team_top_8)
-        m.AddBoolOr(team_qualified)
+    top_9_cn_file = open("top-9-cn.txt", "w")
+    optimise_and_write(9, "Top 9 (Chinese team guaranteed)", top_9_cn_file, team_database,
+                       [at_least_one_chinese_team_top_8, gaimin_gladiators_not_top_8])
 
     def no_chinese_team_top_8(m: CpModel, r: [IntVar]):
         team_qualified: [BooleanVar] = []
@@ -100,17 +107,23 @@ def main():
             team_qualified.append(team_top_8.Not())
         m.AddBoolAnd(team_qualified)
 
-    top_9_cn_file = open("top-9-cn.txt", "w")
-    optimise_and_write(9, "Top 9 (Chinese team guaranteed)", top_9_cn_file, team_database,
-                       [at_least_one_chinese_team_top_8, gaimin_gladiators_not_top_8])
+    def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
+        gaimin_gladiators_top_n(m, r, 8)
 
     top_9_gg_file = open("top-9-gg.txt", "w")
     optimise_and_write(9, "Top 9 (Gaimin Gladiators guaranteed)", top_9_gg_file, team_database,
                        [no_chinese_team_top_8, gaimin_gladiators_top_8])
 
+    # Note that we have to do top 9 here, because, say, GG could finish in top 8 (9th qualifies) and ACL winner could then finish 9th (10th qualifies)
+    def gaimin_gladiators_top_9(m: CpModel, r: [IntVar]):
+        gaimin_gladiators_top_n(m, r, 9)
+
+    def at_least_one_chinese_team_top_9(m: CpModel, r: [IntVar]):
+        at_least_one_chinese_team_top_n(m, r, 9)
+
     top_10_file = open("top-10.txt", "w")
     optimise_and_write(10, "Top 10", top_10_file, team_database,
-                       [gaimin_gladiators_top_8, at_least_one_chinese_team_top_8])
+                       [gaimin_gladiators_top_9, at_least_one_chinese_team_top_9])
 
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
