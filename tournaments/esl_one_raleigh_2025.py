@@ -64,6 +64,8 @@ class EslOneRaleigh2025:
 
         esl_one_ral_2025_playoff.lbsf.set_winner("PARIVISION")
 
+        esl_one_ral_2025_playoff.lbf.set_winner("PARIVISION")
+
         esl_one_ral_2025_gs.build()
         esl_one_ral_2025_playoff.build()
         esl_one_ral_2025.build()
