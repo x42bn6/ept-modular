@@ -29,7 +29,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 16815
+| {{PlacementBg/1}} 17045
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -41,17 +41,17 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | {{PlacementBg/1}} 420
 | {{PlacementBg/3}} 2800
 | 
-| {{PlacementBg/1}} 640
-| {{PlacementBg/2}} 4800
+| {{PlacementBg/1}} 480
+| {{PlacementBg/1}} 6400
 | 
-| 150
 | 0
-| 1200
+| 0
+| 140
 |-
 |-
 |class="bg-up"| 2
 |class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/2}} 14100
+| {{PlacementBg/2}} 12500
 | 0
 | 0
 | {{PlacementBg/3}} 2000
@@ -64,7 +64,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | {{PlacementBg/1}} 4200
 | 
 | 0
-| {{PlacementBg/1}} 6400
+| {{PlacementBg/2}} 4800
 | 
 | 0
 | 0
@@ -73,7 +73,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 |-
 |class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/3}} 12910
+| {{PlacementBg/3}} 11110
 | 0
 | {{PlacementBg/1}} 300
 | {{PlacementBg/2}} 2500
@@ -88,14 +88,14 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | {{PlacementBg/4}} 3200
 | 
-| {{PlacementBg/3}} 300
 | 0
-| 2000
+| 0
+| 500
 |-
 |-
 |class="bg-up"| 4
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 10625
+| {{PlacementBg/4}} 9625
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -107,17 +107,17 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | 1680
 | 
-| {{PlacementBg/2}} 640
+| 0
 | 2240
 | 
 | 0
 | 0
-| 500
+| 140
 |-
 |-
 |class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
-| 8953
+| 9063
 | 75
 | 0
 | 1200
@@ -134,12 +134,12 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 0
 | 0
-| 140
+| 250
 |-
 |-
 |class="bg-up"| 6
 |class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 8780
+| 8080
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -154,36 +154,14 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | 2240
 | 
-| 150
 | 0
-| 800
+| 0
+| 250
 |-
 |-
 |class="bg-up"| 7
-|class="bg-up" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 6000
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 
-| 350
-| 
-| 0
-| 0
-| -350
-| 0
-| 0
-| {{PlacementBg/1}} 6000
-|-
-|-
-|class="bg-up"| 8
 |class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 5625
+| 6025
 | 0
 | 
 | 250
@@ -195,34 +173,56 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 175
 | 
+| 
+| 
+| 
 | 0
+| {{PlacementBg/1}} 600
+| {{PlacementBg/2}} 5000
+|-
+|-
+|class="bg-up"| 8
+|class="bg-up" style="text-align: left;"| {{Team|Xtreme Gaming}}
+| 6000
+| 75
+| 0
+| 600
+| -675
+| 
+| 
+| 
 | 0
 | 
-| {{PlacementBg/1}} 600
-| {{PlacementBg/1}} 600
-| {{PlacementBg/3}} 4000
+| 98
+| 
+| 
+| 
+| -98
+| 0
+| 0
+| {{PlacementBg/1}} 6000
 |-
 |-
 |class="bg-up"| 9
-|class="bg-up" style="text-align: left;"| {{Team|Talon Esports}}
-| 5530
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
+|class="bg-up" style="text-align: left;"| {{Team|Shopify Rebellion}}
+| 5840
 | 
 | 
 | 
 | 
 | 0
-| 280
+| 780
 | 
 | 0
+| 
+| 350
+| 
 | 0
-| {{PlacementBg/2}} 5000
+| 560
+| 
+| 150
+| 0
+| {{PlacementBg/3}} 4000
 |-
 |-
 |class="bg-up"| 10
@@ -242,7 +242,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | 1040
 | 
-| {{PlacementBg/4}} 300
+| {{PlacementBg/3}} 300
 | 0
 | {{PlacementBg/4}} 3200
 |-
@@ -264,12 +264,34 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | 1040
 | 
-| {{PlacementBg/2}} 600
+| {{PlacementBg/1}} 600
 | 0
 | 2400
 |-
 |-
 |class="bg-down"| 12
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 2513
+| 
+| 
+| 
+| 
+| 0
+| 420
+| 
+| 0
+| 
+| 98
+| 
+| 
+| 
+| -155
+| 150
+| 0
+| 2000
+|-
+|-
+|class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|Virtus.pro}}
 | 2450
 | 
@@ -283,37 +305,59 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 2450
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 13
-|class="bg-down" style="text-align: left;"| {{Team|Shopify Rebellion}}
-| 1940
+|class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
+| 2330
+| 0
+| 
+| 250
+| 
+| 
+| 
+| 
 | 
 | 
 | 
 | 
 | 0
-| 780
+| 280
+| 
+| {{PlacementBg/2}} 600
+| 0
+| 1200
+|-
+|-
+|class="bg-down"| 15
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 1100
+| 
+| 
+| 
+| 
+| 
+| 
 | 
 | 0
 | 
 | 350
 | 
-| 0
-| 560
 | 
+| 
+| -350
+| {{PlacementBg/4}} 300
 | 0
-| 0
-| 250
+| 800
 |-
 |-
-|class="bg-down"| 14
+|class="bg-down"| 16
 |class="bg-down" style="text-align: left;"| {{Team|HEROIC}}
 | 889
 | 0
@@ -335,7 +379,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 15
+|class="bg-down"| 17
 |class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
 | 560
 | 
@@ -357,7 +401,7 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 |-
 |-
-|class="bg-down"| 16
+|class="bg-down"| 18
 |class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
 | 500
 | 
@@ -371,39 +415,17 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 500
 |-
 |-
-|class="bg-down"| 17
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 423
-| 
-| 
-| 
-| 
-| 0
-| 420
-| 
-| 0
-| 
-| 98
-| 
-| 0
-| 0
-| -155
-| 0
-| 0
-| 60
-|-
-|-
-|class="bg-down"| 18
+|class="bg-down"| 19
 |class="bg-down" style="text-align: left;"| {{Team|Perrito Panzon}}
-| 350
+| 270
 | 
 | 
 | 
@@ -415,34 +437,12 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 210
 | 0
 | 0
-| 140
-|-
-|-
-|class="bg-down"| 19
-|class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
-| 250
-| 75
-| 0
-| 600
-| -675
-| 
-| 
-| 
-| 0
-| 
-| 98
-| 
-| 0
-| 0
-| -98
-| 0
-| 0
-| 250
+| 60
 |-
 |-
 |class="bg-down"| 20
@@ -459,8 +459,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | -63
 | 0
 | 0
@@ -481,8 +481,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 175
 | 
-| 0
-| 0
+| 
+| 
 | -52
 | 0
 | 0
@@ -503,8 +503,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -525,8 +525,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 29
 | 0
 | 0
@@ -547,8 +547,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -569,8 +569,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | -21
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -591,8 +591,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -613,8 +613,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -635,8 +635,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -657,8 +657,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | -210
 | 0
 | 0
@@ -679,8 +679,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | -294
 | 0
 | 0
@@ -701,8 +701,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 0
 | {{PlacementBg/4}} 2240
 | 
-| 0
-| 0
+| 
+| 
 | -2450
 | 0
 | 0
@@ -723,8 +723,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 42
 | 
-| 0
-| 0
+| 
+| 
 | -42
 | 0
 | 0
@@ -745,8 +745,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -767,8 +767,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -789,8 +789,8 @@ This is the following scenario where {{Team|Nigma Galaxy}} become the cutoff for
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -829,7 +829,7 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 15605
+| {{PlacementBg/1}} 17155
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -841,17 +841,17 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | {{PlacementBg/1}} 420
 | {{PlacementBg/3}} 2800
 | 
-| {{PlacementBg/1}} 640
-| {{PlacementBg/2}} 4800
+| {{PlacementBg/1}} 480
+| {{PlacementBg/1}} 6400
 | 
 | 0
 | 0
-| 140
+| 250
 |-
 |-
 |class="bg-up"| 2
 |class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/2}} 14100
+| {{PlacementBg/2}} 12500
 | 0
 | 0
 | {{PlacementBg/3}} 2000
@@ -864,7 +864,7 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | {{PlacementBg/1}} 4200
 | 
 | 0
-| {{PlacementBg/1}} 6400
+| {{PlacementBg/2}} 4800
 | 
 | 0
 | 0
@@ -873,7 +873,7 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 |-
 |class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/3}} 12410
+| {{PlacementBg/3}} 10750
 | 0
 | {{PlacementBg/1}} 300
 | {{PlacementBg/2}} 2500
@@ -888,36 +888,14 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 0
 | {{PlacementBg/4}} 3200
 | 
-| {{PlacementBg/2}} 600
 | 0
-| 1200
+| 0
+| 140
 |-
 |-
 |class="bg-up"| 4
-|class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 10375
-| {{PlacementBg/2}} 300
-| 0
-| {{PlacementBg/1}} 3000
-| 
-| {{PlacementBg/1}} 480
-| 1680
-| 
-| 105
-| 0
-| 1680
-| 
-| {{PlacementBg/2}} 640
-| 2240
-| 
-| 0
-| 0
-| 250
-|-
-|-
-|class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Tundra Esports}}
-| 9313
+| {{PlacementBg/4}} 10163
 | 75
 | 0
 | 1200
@@ -932,6 +910,28 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 0
 | {{PlacementBg/3}} 4000
 | 
+| 150
+| 0
+| 1200
+|-
+|-
+|class="bg-up"| 5
+|class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
+| 9985
+| {{PlacementBg/2}} 300
+| 0
+| {{PlacementBg/1}} 3000
+| 
+| {{PlacementBg/1}} 480
+| 1680
+| 
+| 105
+| 0
+| 1680
+| 
+| 0
+| 2240
+| 
 | 0
 | 0
 | 500
@@ -939,7 +939,7 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 |-
 |class="bg-up"| 6
 |class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 7890
+| 8080
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -956,12 +956,34 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 0
 | 0
-| 60
+| 250
 |-
 |-
 |class="bg-up"| 7
+|class="bg-up" style="text-align: left;"| {{Team|Xtreme Gaming}}
+| 6000
+| 75
+| 0
+| 600
+| -675
+| 
+| 
+| 
+| 0
+| 
+| 98
+| 
+| 
+| 
+| -98
+| 0
+| 0
+| {{PlacementBg/1}} 6000
+|-
+|-
+|class="bg-up"| 8
 |class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 6575
+| 5625
 | 0
 | 
 | 250
@@ -973,32 +995,10 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 175
 | 
-| 0
-| 0
-| 
-| 150
-| 0
-| {{PlacementBg/1}} 6000
-|-
-|-
-|class="bg-up"| 8
-|class="bg-up" style="text-align: left;"| {{Team|Team Tidebound}}
-| 5460
 | 
 | 
 | 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 560
-| 
-| {{PlacementBg/4}} 300
+| {{PlacementBg/1}} 600
 | {{PlacementBg/1}} 600
 | {{PlacementBg/3}} 4000
 |-
@@ -1039,8 +1039,8 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 210
 | 150
 | 0
@@ -1064,14 +1064,14 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 0
 | 1040
 | 
-| {{PlacementBg/1}} 600
+| {{PlacementBg/2}} 600
 | 0
 | 2400
 |-
 |-
 |class="bg-down"| 12
 |class="bg-down" style="text-align: left;"| {{Team|Shopify Rebellion}}
-| 2490
+| 3990
 | 
 | 
 | 
@@ -1086,9 +1086,9 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 0
 | 560
 | 
+| {{PlacementBg/4}} 300
 | 0
-| 0
-| 800
+| 2000
 |-
 |-
 |class="bg-down"| 13
@@ -1105,8 +1105,8 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 2450
 | 0
 | 0
@@ -1114,50 +1114,28 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 |-
 |-
 |class="bg-down"| 14
-|class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
-| 2000
-| 75
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 1163
+| 
+| 
+| 
+| 
 | 0
-| 600
-| -675
-| 
-| 
+| 420
 | 
 | 0
 | 
 | 98
 | 
+| 
+| 
+| -155
 | 0
 | 0
-| -98
-| 0
-| 0
-| 2000
+| 800
 |-
 |-
 |class="bg-down"| 15
-|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
-| 1030
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 280
-| 
-| 0
-| 0
-| 500
-|-
-|-
-|class="bg-down"| 16
 |class="bg-down" style="text-align: left;"| {{Team|HEROIC}}
 | 889
 | 0
@@ -1179,31 +1157,56 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 0
 |-
 |-
-|class="bg-down"| 17
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 423
+|class="bg-down"| 16
+|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
+| 590
+| 0
+| 
+| 250
+| 
+| 
+| 
+| 
 | 
 | 
 | 
 | 
 | 0
-| 420
+| 280
 | 
-| 0
-| 
-| 98
-| 
-| 0
-| 0
-| -155
 | 0
 | 0
 | 60
 |-
 |-
+|class="bg-down"| 17
+|class="bg-down" style="text-align: left;"| {{Team|Team Tidebound}}
+| 560
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 560
+| 
+| 0
+| 0
+| 0
+|-
+|-
 |class="bg-down"| 18
-|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
-| 250
+|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+| 500
+| 
+| 
+| 
 | 
 | 
 | 
@@ -1217,10 +1220,7 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 0
 | 0
-| 
-| 0
-| 0
-| 250
+| 500
 |-
 |-
 |class="bg-down"| 19
@@ -1237,8 +1237,8 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | -63
 | 0
 | 0
@@ -1246,7 +1246,7 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 |-
 |-
 |class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+|class="bg-down" style="text-align: left;"| {{Team|Mosquito Clan}}
 | 140
 | 
 | 
@@ -1259,8 +1259,8 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
@@ -1281,8 +1281,8 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 175
 | 
-| 0
-| 0
+| 
+| 
 | -52
 | 0
 | 0
@@ -1290,6 +1290,28 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 |-
 |-
 |class="bg-down"| 22
+|class="bg-down" style="text-align: left;"| CN team 2
+| 60
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 60
+|-
+|-
+|class="bg-down"| 23
 |class="bg-down" style="text-align: left;"| {{Team|ex-9Pandas}}
 | 29
 | 
@@ -1303,15 +1325,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 29
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 23
+|class="bg-down"| 24
 |class="bg-down" style="text-align: left;"| {{Team|Team Waska}}
 | 0
 | {{PlacementBg/4}} 150
@@ -1325,15 +1347,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 24
+|class="bg-down"| 25
 |class="bg-down" style="text-align: left;"| {{Team|Palianytsia}}
 | 0
 | 0
@@ -1347,15 +1369,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | -21
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 25
+|class="bg-down"| 26
 |class="bg-down" style="text-align: left;"| {{Team|Nouns Esports}}
 | 0
 | 0
@@ -1369,15 +1391,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 26
+|class="bg-down"| 27
 |class="bg-down" style="text-align: left;"| {{Team|Azure Ray}}
 | 0
 | 0
@@ -1391,15 +1413,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 27
+|class="bg-down"| 28
 |class="bg-down" style="text-align: left;"| {{Team|Atlantic City}}
 | 0
 | 
@@ -1413,15 +1435,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 28
+|class="bg-down"| 29
 |class="bg-down" style="text-align: left;"| {{Team|M80}}
 | 0
 | 
@@ -1435,15 +1457,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | -210
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 29
+|class="bg-down"| 30
 |class="bg-down" style="text-align: left;"| {{Team|Gaozu}}
 | 0
 | 
@@ -1457,15 +1479,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | -294
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 30
+|class="bg-down"| 31
 |class="bg-down" style="text-align: left;"| {{Team|Chimera Esports}}
 | 0
 | 
@@ -1479,15 +1501,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 0
 | {{PlacementBg/4}} 2240
 | 
-| 0
-| 0
+| 
+| 
 | -2450
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 31
+|class="bg-down"| 32
 |class="bg-down" style="text-align: left;"| {{Team|9Pandas}}
 | 0
 | 
@@ -1501,15 +1523,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 42
 | 
-| 0
-| 0
+| 
+| 
 | -42
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 32
+|class="bg-down"| 33
 |class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
 | 0
 | 
@@ -1523,15 +1545,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 350
 | 
-| 0
-| 0
+| 
+| 
 | -350
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 33
+|class="bg-down"| 34
 |class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
 | 0
 | 
@@ -1545,15 +1567,15 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
+| 
+| 
 | 
 | 0
 | 0
 | 0
 |-
 |-
-|class="bg-down"| 34
+|class="bg-down"| 35
 |class="bg-down" style="text-align: left;"| CN team 1
 | 0
 | 
@@ -1567,30 +1589,8 @@ This is the following scenario where {{Team|Perrito Panzon}} become the cutoff f
 | 
 | 
 | 
-| 0
-| 0
-| 
-| 0
-| 0
-| 0
-|-
-|-
-|class="bg-down"| 35
-|class="bg-down" style="text-align: left;"| CN team 2
-| 0
 | 
 | 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
 | 
 | 0
 | 0

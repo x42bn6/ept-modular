@@ -17,7 +17,7 @@ from tournaments.dreamleague_season_24 import DreamLeagueSeason24Solved
 from tournaments.dreamleague_season_25 import DreamLeagueSeason25Solved
 from tournaments.dreamleague_season_26 import DreamLeagueSeason26
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024Solved
-from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025
+from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025, EslOneRaleigh2025Solved
 from transfer_window import TransferWindow
 from utilities import print_indicators
 
@@ -377,7 +377,7 @@ class FullEpt:
         dl_s25_to_esl_one_ral_2025.add_change("Palianytsia", -21)
         dl_s25_to_esl_one_ral_2025.add_change("AVULUS", -554)
 
-        ept_esl_one_ral_2025, ept_esl_one_ral_2025_gs = EslOneRaleigh2025(metadata).build()
+        ept_esl_one_ral_2025, ept_esl_one_ral_2025_gs = EslOneRaleigh2025Solved(metadata).build()
 
         esl_one_ral_2025_to_dl_s26: TransferWindow = TransferWindow("esl_one_ral_2025_to_dl_s26", team_database)
         esl_one_ral_2025_to_dl_s26.add_change("Xtreme Gaming", -98)
