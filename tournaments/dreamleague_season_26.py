@@ -1,9 +1,12 @@
+from abc import ABC
 from typing import Tuple
 
-from ept import EptPairGroupStage, EptGroupStage, EptTournament, EptTournamentBase, EptStageBase
+from pandas.core.interchange.dataframe_protocol import ColumnNullType
+
+from ept import EptPairGroupStage, EptGroupStage, EptTournament, EptTournamentBase, EptStageBase, EptStage
 from metadata import Metadata
 from stage import PairGroupStage, GroupStage, DoubleElimination_2U2L1D, Tournament, RootUnknownAdvances, Root
-from teams import TeamDatabase, Team
+from teams import TeamDatabase, Team, Region
 
 
 class DreamLeagueSeason26:
@@ -53,7 +56,30 @@ class DreamLeagueSeason26:
         ept_dl_s26_gs1 = EptPairGroupStage(dl_s26_gs1, [600, 300, 150])
         ept_dl_s26_gs2 = EptGroupStage(dl_s26_gs2, [600])
         ept_dl_s26_gs1.bind_next_ept_stage(ept_dl_s26_gs2)
-        ept_dl_s26 = EptTournament(dl_s26,
+
+        # Small optimisation - we know which teams will not be competing, but it's not easy to define this in ept.py.
+        # If we don't do this, then it will try and predict "dead" teams like Nouns Esports as if they could qualify.
+        # We cannot mark teams as "dead" and ignore them, however, as a dead team might finish in the top 10, depending on definition.
+        # Notably, as of pre-DL S26, Virtus.pro are in the top-8 but cannot gain more points.
+        # Remove once we know DL S26 groups.
+        class EptDreamLeagueSeason26(EptTournament, ABC):
+            def get_maximum_points_for_team(self, team: Team) -> int:
+                if not self.tournament.is_team_participating(team):
+                    return 0
+
+                # Only Chinese teams are undetermined; any other region is either invited or qualified
+                if not team in participating_teams + qualified_teams and team.region != Region.CN:
+                    return 0
+
+                max_points: int = self.points[0]
+                next_ept_stage: EptStage = self.first_ept_stage
+                while next_ept_stage is not None:
+                    max_points += next_ept_stage.points[0]
+                    next_ept_stage = next_ept_stage.next_ept_stage
+
+                return max_points
+
+        ept_dl_s26 = EptDreamLeagueSeason26(dl_s26,
                                    ept_dl_s26_gs1,
                                    [6000, 5000, 4000, 3200, 2400, 2000, 1200, 800, 500, 500, 250, 250, 140, 140, 60,
                                     60],
