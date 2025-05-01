@@ -51,8 +51,8 @@ def main():
         Team("HEROIC", Region.SA),
         Team("Team Waska", Region.SA),
         Team("M80", Region.SA),
-        Team("Perrito Panzon", Region.SA),
-        Team("Mosquito Clan", Region.SA),
+        Team("OG.LATAM", Region.SA),
+        Team("Edge (team)", Region.SA),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Azure Ray", Region.CN),
@@ -390,8 +390,9 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("Virtus.pro", 2450)
         esl_one_ral_2025_to_dl_s26.add_change("Moodeng Warriors", -52)
         esl_one_ral_2025_to_dl_s26.add_change("M80", -210)
-        esl_one_ral_2025_to_dl_s26.add_change("Perrito Panzon", 210)
+        esl_one_ral_2025_to_dl_s26.add_change("OG.LATAM", 210)
         esl_one_ral_2025_to_dl_s26.add_change("Yakult Brothers", -350)
+        esl_one_ral_2025_to_dl_s26.add_change("Tundra Esports", -1763)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 

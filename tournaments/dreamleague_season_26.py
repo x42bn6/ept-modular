@@ -25,13 +25,13 @@ class DreamLeagueSeason26:
 
         participating_teams: [Team] = team_database.get_teams_by_names("PARIVISION", "BetBoom Team", "Team Falcons",
                                                                        "Team Liquid")
-        qualified_teams: [Team] = team_database.get_teams_by_names("Perrito Panzon", "Mosquito Clan",
+        qualified_teams: [Team] = team_database.get_teams_by_names("OG.LATAM", "Edge (team)",
                                                                    "Shopify Rebellion",
-                                                                   "Tundra Esports", "Gaimin Gladiators", "AVULUS",
+                                                                   "Gaimin Gladiators", "AVULUS", "NAVI Junior",
                                                                    "Aurora Gaming",
                                                                    "Nigma Galaxy",
                                                                    "BOOM Esports", "Talon Esports")
-        declined_teams: [Team] = team_database.get_teams_by_names("Team Spirit")
+        declined_teams: [Team] = team_database.get_teams_by_names("Team Spirit", "Tundra Esports")
         dl_s26_invited_teams: Root = Root("dl_s26_root", 12, metadata, participating_teams + qualified_teams)
         dl_s26_invited_teams.bind_forward(dl_s26_gs1)
 
