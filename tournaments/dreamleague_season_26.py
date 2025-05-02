@@ -37,7 +37,6 @@ class DreamLeagueSeason26:
 
         cn_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_cn_qualifier",
                                                                 team_database.get_teams_by_names("Yakult Brothers",
-                                                                                                 "Team Tidebound",
                                                                                                  "Xtreme Gaming",
                                                                                                  "CN team 1",
                                                                                                  "CN team 2"),
