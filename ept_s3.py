@@ -60,7 +60,6 @@ def main():
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
         Team("CN team 1", Region.CN, is_pseudo_team=True),
-        Team("CN team 2", Region.CN, is_pseudo_team=True),
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),

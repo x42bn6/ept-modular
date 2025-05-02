@@ -30,17 +30,16 @@ class DreamLeagueSeason26:
                                                                    "Gaimin Gladiators", "AVULUS", "NAVI Junior",
                                                                    "Aurora Gaming",
                                                                    "Nigma Galaxy",
-                                                                   "BOOM Esports", "Talon Esports")
+                                                                   "BOOM Esports", "Talon Esports",
+                                                                   "Xtreme Gaming")
         declined_teams: [Team] = team_database.get_teams_by_names("Team Spirit", "Tundra Esports")
         dl_s26_invited_teams: Root = Root("dl_s26_root", 12, metadata, participating_teams + qualified_teams)
         dl_s26_invited_teams.bind_forward(dl_s26_gs1)
 
         cn_qualifier: RootUnknownAdvances = RootUnknownAdvances(f"dl_s26_cn_qualifier",
                                                                 team_database.get_teams_by_names("Yakult Brothers",
-                                                                                                 "Xtreme Gaming",
-                                                                                                 "CN team 1",
-                                                                                                 "CN team 2"),
-                                                                2, 2,
+                                                                                                 "CN team 1"),
+                                                                1, 1,
                                                                 metadata)
         cn_qualifier.bind_forward(dl_s26_gs1)
         cn_qualifier.build()
