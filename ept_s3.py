@@ -6,7 +6,7 @@ from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
-from constants import BIG_M, DL_S26_TEAMS_PER_REGION, DEBUG_DL_S26
+from constants import BIG_M, DEBUG_DL_S26
 from display import Display
 from display_phases import HasDisplayPhase
 from ept import EptTournamentBase
@@ -17,7 +17,7 @@ from tournaments.dreamleague_season_24 import DreamLeagueSeason24Solved
 from tournaments.dreamleague_season_25 import DreamLeagueSeason25Solved
 from tournaments.dreamleague_season_26 import DreamLeagueSeason26
 from tournaments.esl_one_bangkok_2024 import EslOneBangkok2024Solved
-from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025, EslOneRaleigh2025Solved
+from tournaments.esl_one_raleigh_2025 import EslOneRaleigh2025Solved
 from transfer_window import TransferWindow
 from utilities import print_indicators
 
@@ -59,7 +59,7 @@ def main():
         Team("Gaozu", Region.CN),
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
-        Team("CN team 1", Region.CN, is_pseudo_team=True),
+        Team("Excel Esports", Region.CN),
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
@@ -78,7 +78,8 @@ def main():
 
     def at_least_one_chinese_team_top_n(m: CpModel, r: [IntVar], n: int):
         team_qualified: [BooleanVar] = []
-        for t in team_database.get_teams_by_region(Region.CN):
+        for t in team_database.get_teams_by_names("Xtreme Gaming", "Yakult Brothers", "Excel Esports",
+                                                  "Team Tidebound"):
             team_top_n = m.new_bool_var(f"{t.name}_acl_top_n")
             team_index = team_database.get_team_index(t)
             m.Add(r[team_index] <= 8).only_enforce_if(team_top_n)
@@ -98,7 +99,8 @@ def main():
 
     def no_chinese_team_top_8(m: CpModel, r: [IntVar]):
         team_qualified: [BooleanVar] = []
-        for t in team_database.get_teams_by_region(Region.CN):
+        for t in team_database.get_teams_by_names("Xtreme Gaming", "Yakult Brothers", "Excel Esports",
+                                                  "Team Tidebound"):
             team_top_8 = m.new_bool_var(f"{t.name}_acl_top_8")
             team_index = team_database.get_team_index(t)
             m.Add(r[team_index] <= 8).only_enforce_if(team_top_8)
