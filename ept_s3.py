@@ -59,6 +59,7 @@ def main():
         Team("Gaozu", Region.CN),
         Team("Yakult Brothers", Region.CN),
         Team("Team Tidebound", Region.CN),
+        Team("All Gamers Global", Region.CN),
 
         Team("Talon Esports", Region.SEA),
         Team("BOOM Esports", Region.SEA),
@@ -72,48 +73,12 @@ def main():
     top_8_file = open("top-8.txt", "w")
     optimise_and_write(8, "Top 8", top_8_file, team_database)
 
-    def team_top_n(m: CpModel, r: [IntVar], team_name: str, n: int):
-        m.Add(r[team_database.get_team_index_by_team_name(team_name)] <= n)
-
-    def gaimin_gladiators_top_n(m: CpModel, r: [IntVar], n: int):
-        team_top_n(m, r, "Gaimin Gladiators", n)
-
-    def xtreme_gaming_top_n(m: CpModel, r: [IntVar], n: int):
-        team_top_n(m, r, "Xtreme Gaming", n)
-
-    def team_not_top_n(m: CpModel, r: [IntVar], team_name: str, n: int):
-        m.Add(r[team_database.get_team_index_by_team_name(team_name)] > n)
-
-    def xtreme_gaming_top_8(m: CpModel, r: [IntVar]):
-        xtreme_gaming_top_n(m, r, 8)
-
-    def gaimin_gladiators_not_top_8(m: CpModel, r: [IntVar]):
-        team_not_top_n(m, r, "Gaimin Gladiators", 8)
-
-    top_9_cn_file = open("top-9-cn.txt", "w")
-    optimise_and_write(9, "Top 9 (Chinese team guaranteed)", top_9_cn_file, team_database,
-                       [xtreme_gaming_top_8, gaimin_gladiators_not_top_8])
-
-    def xtreme_gaming_not_top_8(m: CpModel, r: [IntVar]):
-        team_not_top_n(m, r, "Xtreme Gaming", 8)
-
     def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
-        gaimin_gladiators_top_n(m, r, 8)
+        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] <= 8)
 
     top_9_gg_file = open("top-9-gg.txt", "w")
     optimise_and_write(9, "Top 9 (Gaimin Gladiators guaranteed)", top_9_gg_file, team_database,
-                       [xtreme_gaming_not_top_8, gaimin_gladiators_top_8])
-
-    # Note that we have to do top 9 here, because, say, GG could finish in top 8 (9th qualifies) and ACL winner could then finish 9th (10th qualifies)
-    def gaimin_gladiators_top_9(m: CpModel, r: [IntVar]):
-        gaimin_gladiators_top_n(m, r, 9)
-
-    def xtreme_gaming_top_9(m: CpModel, r: [IntVar]):
-        xtreme_gaming_top_n(m, r, 9)
-
-    top_10_file = open("top-10.txt", "w")
-    optimise_and_write(10, "Top 10", top_10_file, team_database,
-                       [gaimin_gladiators_top_9, xtreme_gaming_top_9])
+                       [gaimin_gladiators_top_8])
 
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
@@ -383,6 +348,8 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26.add_change("OG.LATAM", 210)
         esl_one_ral_2025_to_dl_s26.add_change("Yakult Brothers", -350)
         esl_one_ral_2025_to_dl_s26.add_change("Tundra Esports", -1763)
+        esl_one_ral_2025_to_dl_s26.add_change("Team Tidebound", -560)
+        esl_one_ral_2025_to_dl_s26.add_change("All Gamers Global", 560)
 
         ept_dl_s26, ept_dl_s26_gs1, ept_dl_s26_gs2 = DreamLeagueSeason26(metadata).build()
 
