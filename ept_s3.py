@@ -337,7 +337,7 @@ class FullEpt:
         esl_one_ral_2025_to_dl_s26: TransferWindow = TransferWindow("esl_one_ral_2025_to_dl_s26", team_database)
         esl_one_ral_2025_to_dl_s26.add_change("Xtreme Gaming", -98)
         esl_one_ral_2025_to_dl_s26.add_change("9Pandas", -42)
-        esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 29)
+        esl_one_ral_2025_to_dl_s26.add_change("ex-9Pandas", 0)
         esl_one_ral_2025_to_dl_s26.add_change("Gaozu", -294)
         esl_one_ral_2025_to_dl_s26.add_change("BOOM Esports", -155)
         esl_one_ral_2025_to_dl_s26.add_change("Natus Vincere", -63)
