@@ -40,6 +40,7 @@ class DreamLeagueSeason25:
                                    "/dreamleague",
                                    "2025-03-02",
                                    metadata)
+
         dl_s25_gs1.team_can_finish_between("Tundra Esports", 1, 2)
         dl_s25_gs1.team_can_finish_between("BetBoom Team", 3, 4)
         dl_s25_gs1.team_can_finish_between("Team Falcons", 5, 6)
