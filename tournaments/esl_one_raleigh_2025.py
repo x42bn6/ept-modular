@@ -84,7 +84,7 @@ class EslOneRaleigh2025Solved:
     def build(self) -> Tuple[EptTournamentBase, EptStageBase]:
         metadata: Metadata = self.metadata
 
-        esl_one_ral_2025_gs: SolvedEptStage = SolvedEptStage("esl_one_ral_2025_gs", 12, [480], metadata)
+        esl_one_ral_2025_gs: SolvedEptStage = SolvedEptStage("esl_one_ral_2025_gs", 12, [480, 480], metadata)
         esl_one_ral_2025: SolvedEptTournament = SolvedEptTournament("esl_one_ral_2025", esl_one_ral_2025_gs,
                                                                     [6400, 4800, 4000, 3200, 2240, 2240, 1040, 1040,
                                                                      560, 560, 280, 280],
