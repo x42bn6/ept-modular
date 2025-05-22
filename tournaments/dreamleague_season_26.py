@@ -43,8 +43,8 @@ class DreamLeagueSeason26:
                                    "2025-06-01",
                                    metadata)
 
-        dl_s26_gs1.team_can_finish_between("Aurora Gaming", 1, 4)
-        dl_s26_gs1.team_can_finish_between("Nigma Galaxy", 1, 4)
+        dl_s26_gs1.team_can_finish_between("Aurora Gaming", 1, 2)
+        dl_s26_gs1.team_can_finish_between("Nigma Galaxy", 3, 4)
         dl_s26_gs1.team_can_finish_between("BetBoom Team", 5, 8)
         dl_s26_gs1.team_can_finish_between("Team Liquid", 5, 8)
         dl_s26_gs1.team_can_finish_between("Shopify Rebellion", 9, 10)

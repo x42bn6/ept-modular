@@ -29,7 +29,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 20545
+| {{PlacementBg/1}} 20145
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -46,12 +46,34 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | {{PlacementBg/1}} 600
 | 0
-| 2400
+| 2000
 |-
 |-
 |class="bg-up"| 2
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| {{PlacementBg/2}} 13160
+| 0
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
+| 
+| 0
+| {{PlacementBg/3}} 3000
+| 
+| {{PlacementBg/3}} 210
+| 0
+| 1400
+| 
+| 0
+| {{PlacementBg/4}} 3200
+| 
+| 150
+| 0
+| 2400
+|-
+|-
+|class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/2}} 12500
+| {{PlacementBg/3}} 12500
 | 0
 | 0
 | {{PlacementBg/3}} 2000
@@ -71,31 +93,9 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-up"| 3
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/3}} 11960
-| 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
-| 
-| 0
-| {{PlacementBg/3}} 3000
-| 
-| {{PlacementBg/3}} 210
-| 0
-| 1400
-| 
-| 0
-| {{PlacementBg/4}} 3200
-| 
-| 150
-| 0
-| 1200
-|-
-|-
 |class="bg-up"| 4
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 10185
+| {{PlacementBg/4}} 10265
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -112,12 +112,12 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 0
 | 0
-| 60
+| 140
 |-
 |-
 |class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 8630
+| 9030
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -134,7 +134,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 0
 | 0
-| 800
+| 1200
 |-
 |-
 |class="bg-up"| 6
@@ -314,8 +314,8 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 14
-|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 2150
+|class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
+| 950
 | 
 | 
 | 
@@ -323,16 +323,16 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 
 | 
-| 0
-| 
-| 350
 | 
 | 
 | 
-| -350
+| 
+| 
+| 
+| 
 | 150
 | 0
-| 2000
+| 800
 |-
 |-
 |class="bg-down"| 15
@@ -381,7 +381,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |class="bg-down"| 17
 |class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 503
+| 423
 | 
 | 
 | 
@@ -398,12 +398,12 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | -155
 | 0
 | 0
-| 140
+| 60
 |-
 |-
 |class="bg-down"| 18
 |class="bg-down" style="text-align: left;"| {{Team|OG.LATAM}}
-| 270
+| 350
 | 
 | 
 | 
@@ -420,7 +420,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 210
 | 0
 | 0
-| 60
+| 140
 |-
 |-
 |class="bg-down"| 19
@@ -446,7 +446,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
 | 250
 | 
 | 
@@ -455,13 +455,13 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 
 | 
+| 0
+| 
+| 350
 | 
 | 
 | 
-| 
-| 
-| 
-| 
+| -350
 | 0
 | 0
 | 250
@@ -490,28 +490,6 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 22
-|class="bg-down" style="text-align: left;"| {{Team|Edge (team)}}
-| 140
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 140
-|-
-|-
-|class="bg-down"| 23
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -531,6 +509,28 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 | 0
 | 0
+|-
+|-
+|class="bg-down"| 23
+|class="bg-down" style="text-align: left;"| {{Team|Edge (team)}}
+| 60
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 0
+| 60
 |-
 |-
 |class="bg-down"| 24
