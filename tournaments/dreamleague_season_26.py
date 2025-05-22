@@ -43,14 +43,14 @@ class DreamLeagueSeason26:
                                    "2025-06-01",
                                    metadata)
 
-        dl_s26_gs1.team_can_finish_between("Aurora Gaming", 1, 8)
-        dl_s26_gs1.team_can_finish_between("Nigma Galaxy", 1, 8)
-        dl_s26_gs1.team_can_finish_between("BetBoom Team", 1, 14)
-        dl_s26_gs1.team_can_finish_between("Shopify Rebellion", 1, 14)
-        dl_s26_gs1.team_can_finish_between("BOOM Esports", 1, 16)
-        dl_s26_gs1.team_can_finish_between("Team Liquid", 5, 16)
-        dl_s26_gs1.team_can_finish_between("Xtreme Gaming", 5, 16)
-        dl_s26_gs1.team_can_finish_between("OG.LATAM", 11, 16)
+        dl_s26_gs1.team_can_finish_between("Aurora Gaming", 1, 4)
+        dl_s26_gs1.team_can_finish_between("Nigma Galaxy", 1, 4)
+        dl_s26_gs1.team_can_finish_between("BetBoom Team", 5, 8)
+        dl_s26_gs1.team_can_finish_between("Team Liquid", 5, 8)
+        dl_s26_gs1.team_can_finish_between("Shopify Rebellion", 9, 10)
+        dl_s26_gs1.team_can_finish_between("Xtreme Gaming", 11, 15)
+        dl_s26_gs1.team_can_finish_between("BOOM Esports", 11, 15)
+        dl_s26_gs1.team_can_finish_between("OG.LATAM", 12, 16)
 
         dl_s26_gs1.team_can_finish_between("PARIVISION", 1, 2)
         dl_s26_gs1.team_can_finish_between("Talon Esports", 3, 16)
