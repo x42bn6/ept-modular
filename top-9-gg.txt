@@ -50,30 +50,8 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-up"| 2
-|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/2}} 13160
-| 0
-| {{PlacementBg/1}} 300
-| {{PlacementBg/2}} 2500
-| 
-| 0
-| {{PlacementBg/3}} 3000
-| 
-| {{PlacementBg/3}} 210
-| 0
-| 1400
-| 
-| 0
-| {{PlacementBg/4}} 3200
-| 
-| 150
-| 0
-| 2400
-|-
-|-
-|class="bg-up"| 3
 |class="bg-up" style="text-align: left;"| {{Team|Team Spirit}}
-| {{PlacementBg/3}} 12500
+| {{PlacementBg/2}} 12500
 | 0
 | 0
 | {{PlacementBg/3}} 2000
@@ -93,9 +71,53 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
+|class="bg-up"| 3
+|class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
+| {{PlacementBg/3}} 11810
+| 0
+| {{PlacementBg/1}} 300
+| {{PlacementBg/2}} 2500
+| 
+| 0
+| {{PlacementBg/3}} 3000
+| 
+| {{PlacementBg/3}} 210
+| 0
+| 1400
+| 
+| 0
+| {{PlacementBg/4}} 3200
+| 
+| 0
+| 0
+| 1200
+|-
+|-
 |class="bg-up"| 4
+|class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
+| {{PlacementBg/4}} 10380
+| {{PlacementBg/3}} 150
+| 0
+| 1000
+| 
+| 0
+| {{PlacementBg/2}} 3600
+| 
+| 0
+| 0
+| 840
+| 
+| 0
+| 2240
+| 
+| 150
+| 0
+| 2400
+|-
+|-
+|class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| {{PlacementBg/4}} 10265
+| 10265
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -113,28 +135,6 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 | 0
 | 140
-|-
-|-
-|class="bg-up"| 5
-|class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 9030
-| {{PlacementBg/3}} 150
-| 0
-| 1000
-| 
-| 0
-| {{PlacementBg/2}} 3600
-| 
-| 0
-| 0
-| 840
-| 
-| 0
-| 2240
-| 
-| 0
-| 0
-| 1200
 |-
 |-
 |class="bg-up"| 6
@@ -160,8 +160,30 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-up"| 7
+|class="bg-up" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 6000
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 
+| 350
+| 
+| 
+| 
+| -350
+| 0
+| 0
+| {{PlacementBg/1}} 6000
+|-
+|-
+|class="bg-up"| 8
 |class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 6425
+| 5575
 | 0
 | 
 | 250
@@ -176,29 +198,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 
 | 
-| 0
-| 0
-| {{PlacementBg/1}} 6000
-|-
-|-
-|class="bg-up"| 8
-|class="bg-up" style="text-align: left;"| {{Team|Aurora Gaming}}
-| 5600
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| {{PlacementBg/2}} 600
+| 150
 | 0
 | {{PlacementBg/2}} 5000
 |-
@@ -314,8 +314,8 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 14
-|class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
-| 950
+|class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
+| 1400
 | 
 | 
 | 
@@ -330,7 +330,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 
 | 
-| 150
+| {{PlacementBg/2}} 600
 | 0
 | 800
 |-
@@ -358,6 +358,28 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 16
+|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
+| 613
+| 
+| 
+| 
+| 
+| 0
+| 420
+| 
+| 0
+| 
+| 98
+| 
+| 
+| 
+| -155
+| 0
+| 0
+| 250
+|-
+|-
+|class="bg-down"| 17
 |class="bg-down" style="text-align: left;"| {{Team|All Gamers Global}}
 | 560
 | 
@@ -377,28 +399,6 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 | 0
 | 0
-|-
-|-
-|class="bg-down"| 17
-|class="bg-down" style="text-align: left;"| {{Team|BOOM Esports}}
-| 423
-| 
-| 
-| 
-| 
-| 0
-| 420
-| 
-| 0
-| 
-| 98
-| 
-| 
-| 
-| -155
-| 0
-| 0
-| 60
 |-
 |-
 |class="bg-down"| 18
@@ -424,50 +424,28 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 19
-|class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
+|class="bg-down" style="text-align: left;"| {{Team|NAVI Junior}}
 | 250
-| 75
-| 0
-| 600
-| -675
 | 
 | 
 | 
-| 0
-| 
-| 98
 | 
 | 
 | 
-| -98
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
 | 0
 | 0
 | 250
 |-
 |-
 |class="bg-down"| 20
-|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 250
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 0
-| 
-| 350
-| 
-| 
-| 
-| -350
-| 0
-| 0
-| 250
-|-
-|-
-|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|Natus Vincere}}
 | 147
 | 
@@ -489,7 +467,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 |-
 |-
-|class="bg-down"| 22
+|class="bg-down"| 21
 |class="bg-down" style="text-align: left;"| {{Team|Moodeng Warriors}}
 | 123
 | 
@@ -509,6 +487,28 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 0
 | 0
 | 0
+|-
+|-
+|class="bg-down"| 22
+|class="bg-down" style="text-align: left;"| {{Team|Xtreme Gaming}}
+| 60
+| 75
+| 0
+| 600
+| -675
+| 
+| 
+| 
+| 0
+| 
+| 98
+| 
+| 
+| 
+| -98
+| 0
+| 0
+| 60
 |-
 |-
 |class="bg-down"| 23

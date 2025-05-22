@@ -54,7 +54,7 @@ class DreamLeagueSeason26:
 
         dl_s26_gs1.team_can_finish_between("PARIVISION", 1, 2)
         dl_s26_gs1.team_can_finish_between("Talon Esports", 3, 16)
-        dl_s26_gs1.team_can_finish_between("Yakult Brothers", 3, 16)
+        dl_s26_gs1.team_can_finish_between("Yakult Brothers", 3, 8)
         dl_s26_gs1.team_can_finish_between("Gaimin Gladiators", 3, 16)
         dl_s26_gs1.team_can_finish_between("NAVI Junior", 3, 16)
         dl_s26_gs1.team_can_finish_between("Team Falcons", 3, 16)
