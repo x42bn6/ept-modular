@@ -29,7 +29,7 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 |-
 |class="bg-up"| 1
 |class="bg-up" style="text-align: left;"| {{Team|PARIVISION}}
-| {{PlacementBg/1}} 18945
+| {{PlacementBg/1}} 20545
 | {{PlacementBg/1}} 300
 | 0
 | {{PlacementBg/4}} 1600
@@ -46,12 +46,12 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 | 
 | {{PlacementBg/1}} 600
 | 0
-| 800
+| 2400
 |-
 |-
 |class="bg-up"| 2
 |class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/2}} 13160
+| {{PlacementBg/2}} 13960
 | 0
 | {{PlacementBg/1}} 300
 | {{PlacementBg/2}} 2500
@@ -68,7 +68,7 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 | 
 | 150
 | 0
-| 2400
+| {{PlacementBg/4}} 3200
 |-
 |-
 |class="bg-up"| 3
@@ -94,30 +94,8 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 |-
 |-
 |class="bg-up"| 4
-|class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| {{PlacementBg/4}} 11030
-| {{PlacementBg/3}} 150
-| 0
-| 1000
-| 
-| 0
-| {{PlacementBg/2}} 3600
-| 
-| 0
-| 0
-| 840
-| 
-| 0
-| 2240
-| 
-| 0
-| 0
-| {{PlacementBg/4}} 3200
-|-
-|-
-|class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Team Falcons}}
-| 10625
+| {{PlacementBg/4}} 10625
 | {{PlacementBg/2}} 300
 | 0
 | {{PlacementBg/1}} 3000
@@ -135,6 +113,28 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 | 0
 | 0
 | 500
+|-
+|-
+|class="bg-up"| 5
+|class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
+| 9830
+| {{PlacementBg/3}} 150
+| 0
+| 1000
+| 
+| 0
+| {{PlacementBg/2}} 3600
+| 
+| 0
+| 0
+| 840
+| 
+| 0
+| 2240
+| 
+| 0
+| 0
+| 2000
 |-
 |-
 |class="bg-up"| 6
@@ -160,8 +160,8 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 |-
 |-
 |class="bg-up"| 7
-|class="bg-up" style="text-align: left;"| {{Team|Talon Esports}}
-| 6680
+|class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
+| 6425
 | 0
 | 
 | 250
@@ -169,14 +169,14 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 | 
 | 
 | 
+| 0
+| 
+| 175
 | 
 | 
 | 
 | 
 | 0
-| 280
-| 
-| 150
 | 0
 | {{PlacementBg/1}} 6000
 |-
@@ -270,28 +270,6 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 12
-|class="bg-down" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 2425
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
-| 0
-| 
-| 175
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 2000
-|-
-|-
-|class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|Shopify Rebellion}}
 | 2190
 | 
@@ -313,7 +291,7 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 | 500
 |-
 |-
-|class="bg-down"| 14
+|class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
 | 1500
 | 
@@ -333,6 +311,28 @@ This is the following scenario where {{Team|Aurora Gaming}} become the cutoff fo
 | {{PlacementBg/4}} 300
 | 0
 | 1200
+|-
+|-
+|class="bg-down"| 14
+|class="bg-down" style="text-align: left;"| {{Team|Talon Esports}}
+| 1480
+| 0
+| 
+| 250
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 280
+| 
+| 150
+| 0
+| 800
 |-
 |-
 |class="bg-down"| 15
