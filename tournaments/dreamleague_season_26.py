@@ -67,8 +67,8 @@ class DreamLeagueSeason26:
         dl_s26_gs2.team_can_finish_between("Gaimin Gladiators", 1, 8)
         dl_s26_gs2.team_can_finish_between("Talon Esports", 1, 8)
         dl_s26_gs2.team_can_finish_between("Yakult Brothers", 1, 8)
-        dl_s26_gs2.team_can_finish_between("Nigma Galaxy", 1, 8)
-        dl_s26_gs2.team_can_finish_between("Team Liquid", 2, 8)
+        dl_s26_gs2.team_can_finish_between("Nigma Galaxy", 3, 8)
+        dl_s26_gs2.team_can_finish_between("Team Liquid", 3, 8)
 
         dl_s26_gs1.build()
         dl_s26_gs2.build()
