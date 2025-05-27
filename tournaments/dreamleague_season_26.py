@@ -61,7 +61,7 @@ class DreamLeagueSeason26:
         dl_s26_gs1.team_can_finish_between("AVULUS", 13, 14)
         dl_s26_gs1.team_can_finish_between("Edge (team)", 15, 16)
 
-        dl_s26_gs2.team_can_finish_between("PARIVISION", 1, 8)
+        dl_s26_gs2.team_can_finish_between("PARIVISION", 1, 4)
         dl_s26_gs2.team_can_finish_between("BetBoom Team", 1, 8)
         dl_s26_gs2.team_can_finish_between("Aurora Gaming", 1, 8)
         dl_s26_gs2.team_can_finish_between("Gaimin Gladiators", 1, 8)
