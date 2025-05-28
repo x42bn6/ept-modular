@@ -51,7 +51,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |class="bg-up"| 2
 |class="bg-up" style="text-align: left;"| {{Team|BetBoom Team}}
-| {{PlacementBg/2}} 12760
+| {{PlacementBg/2}} 13160
 | 0
 | {{PlacementBg/1}} 300
 | {{PlacementBg/2}} 2500
@@ -68,7 +68,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 150
 | 0
-| 2000
+| 2400
 |-
 |-
 |class="bg-up"| 3
@@ -117,7 +117,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |class="bg-up"| 5
 |class="bg-up" style="text-align: left;"| {{Team|Team Liquid}}
-| 10230
+| 8630
 | {{PlacementBg/3}} 150
 | 0
 | 1000
@@ -134,7 +134,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 
 | 0
 | 0
-| 2400
+| 800
 |-
 |-
 |class="bg-up"| 6
@@ -160,23 +160,23 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-up"| 7
-|class="bg-up" style="text-align: left;"| {{Team|Yakult Brothers}}
-| 6300
+|class="bg-up" style="text-align: left;"| {{Team|Gaimin Gladiators}}
+| 6425
+| 0
 | 
-| 
-| 
+| 250
 | 
 | 
 | 
 | 
 | 0
 | 
-| 350
+| 175
 | 
 | 
 | 
-| -350
-| {{PlacementBg/4}} 300
+| 
+| 0
 | 0
 | {{PlacementBg/1}} 6000
 |-
@@ -270,6 +270,28 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 |-
 |-
 |class="bg-down"| 12
+|class="bg-down" style="text-align: left;"| {{Team|Yakult Brothers}}
+| 2300
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 0
+| 
+| 350
+| 
+| 
+| 
+| -350
+| {{PlacementBg/4}} 300
+| 0
+| 2000
+|-
+|-
+|class="bg-down"| 13
 |class="bg-down" style="text-align: left;"| {{Team|Shopify Rebellion}}
 | 2190
 | 
@@ -291,7 +313,7 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | 500
 |-
 |-
-|class="bg-down"| 13
+|class="bg-down"| 14
 |class="bg-down" style="text-align: left;"| {{Team|Aurora Gaming}}
 | 1800
 | 
@@ -311,28 +333,6 @@ This is the following scenario where {{Team|Talon Esports}} become the cutoff fo
 | {{PlacementBg/2}} 600
 | 0
 | 1200
-|-
-|-
-|class="bg-down"| 14
-|class="bg-down" style="text-align: left;"| {{Team|Gaimin Gladiators}}
-| 1225
-| 0
-| 
-| 250
-| 
-| 
-| 
-| 
-| 0
-| 
-| 175
-| 
-| 
-| 
-| 
-| 0
-| 0
-| 800
 |-
 |-
 |class="bg-down"| 15
