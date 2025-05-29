@@ -63,12 +63,12 @@ class DreamLeagueSeason26:
 
         dl_s26_gs2.team_can_finish_between("PARIVISION", 1, 1)
         dl_s26_gs2.team_can_finish_between("Talon Esports", 2, 3)
-        dl_s26_gs2.team_can_finish_between("BetBoom Team", 2, 5)
-        dl_s26_gs2.team_can_finish_between("Aurora Gaming", 3, 6)
-        dl_s26_gs2.team_can_finish_between("Gaimin Gladiators", 4, 6)
-        dl_s26_gs2.team_can_finish_between("Yakult Brothers", 4, 6)
-        dl_s26_gs2.team_can_finish_between("Nigma Galaxy", 7, 8)
-        dl_s26_gs2.team_can_finish_between("Team Liquid", 7, 8)
+        dl_s26_gs2.team_can_finish_between("BetBoom Team", 2, 3)
+        dl_s26_gs2.team_can_finish_between("Aurora Gaming", 4, 5)
+        dl_s26_gs2.team_can_finish_between("Gaimin Gladiators", 4, 5)
+        dl_s26_gs2.team_can_finish_between("Yakult Brothers", 6, 6)
+        dl_s26_gs2.team_can_finish_between("Nigma Galaxy", 7, 7)
+        dl_s26_gs2.team_can_finish_between("Team Liquid", 8, 8)
 
         dl_s26_gs1.build()
         dl_s26_gs2.build()
