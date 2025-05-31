@@ -70,6 +70,8 @@ class DreamLeagueSeason26:
         dl_s26_gs2.team_can_finish_between("Nigma Galaxy", 7, 7)
         dl_s26_gs2.team_can_finish_between("Team Liquid", 8, 8)
 
+        dl_s26_playoff.lbsf.set_winner("Talon Esports")
+
         dl_s26_gs1.build()
         dl_s26_gs2.build()
         dl_s26_playoff.build()

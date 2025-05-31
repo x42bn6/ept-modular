@@ -73,13 +73,6 @@ def main():
     top_8_file = open("top-8.txt", "w")
     optimise_and_write(8, "Top 8", top_8_file, team_database)
 
-    def gaimin_gladiators_top_8(m: CpModel, r: [IntVar]):
-        m.Add(r[team_database.get_team_index_by_team_name("Gaimin Gladiators")] <= 8)
-
-    top_9_gg_file = open("top-9-gg.txt", "w")
-    optimise_and_write(9, "Top 9 (Gaimin Gladiators guaranteed)", top_9_gg_file, team_database,
-                       [gaimin_gladiators_top_8])
-
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
     if scenarios is None:
