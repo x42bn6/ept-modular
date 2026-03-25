@@ -309,7 +309,7 @@ class EptTournament(EptTournamentBase, HasDisplayPhase, ABC):
 class SolvedEptTournament(EptTournamentBase, HasDisplayPhase, ABC):
     def __init__(self,
                  name: str,
-                 first_ept_stage: SolvedEptStage,
+                 first_ept_stage: SolvedEptStage | None,
                  points: [int],
                  liquipedia_display_name: str,
                  liquipedia_link: str,
