@@ -24,12 +24,17 @@ class DreamLeagueSeason29:
         dl_s29: Tournament = Tournament("dl_s29", dl_s29_gs1, metadata)
 
         # 6 of the top 8 of ESL One Birmingham 2026 will be in the top 6 at the end of the event
-        potential_top_6: [Team] = team_database.get_teams_by_names("Tundra Esports", "Aurora Gaming", "Team Yandex", "Team Spirit", "Xtreme Gaming", "PARIVISION", "Team Falcons", "MOUZ")
+        guaranteed_invites: [Team] = team_database.get_teams_by_names("Tundra Esports", "Aurora Gaming", "Team Yandex", "Team Spirit")
+        for g in guaranteed_invites:
+            team_index: int = team_database.get_team_index(g)
+            model.Add(sum(dl_s29_gs1.indicators[team_index]) == 1)
+
+        potential_top_6: [Team] = team_database.get_teams_by_names("Xtreme Gaming", "PARIVISION", "Team Falcons", "MOUZ")
         potential_top_6_sum: IntVar = 0
         for p6 in potential_top_6:
             team_index: int = team_database.get_team_index(p6)
             potential_top_6_sum += sum(dl_s29_gs1.indicators[team_index])
-        model.Add(potential_top_6_sum == 6)
+        model.Add(potential_top_6_sum == 2)
 
         region_max_slots_guess: Dict[Region, int] = {
             Region.WEU: 4,

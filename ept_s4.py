@@ -88,7 +88,7 @@ def main():
         m.Add(r[team_database.get_team_index_by_team_name("Team Spirit")] > 12)
 
     spirit_not_top_12_file = open("spirit-not-top-12.txt", "w")
-    optimise_and_write(12, "Top 12", spirit_not_top_12_file, team_database, [spirit_not_top_12])
+    #optimise_and_write(12, "Top 12", spirit_not_top_12_file, team_database, [spirit_not_top_12])
 
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
