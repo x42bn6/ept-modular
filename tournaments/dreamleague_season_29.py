@@ -44,7 +44,7 @@ class DreamLeagueSeason29:
             for t in team_database.get_teams_by_region(region):
                 team_index: int = team_database.get_team_index(t)
                 team_sum += sum(dl_s29_gs1.indicators[team_index])
-            model.Add(team_sum == slots)
+            model.Add(team_sum >= 1)
 
         dl_s29_gs1.bind_forward(dl_s29_gs2)
         dl_s29_playoff.bind_backward(dl_s29_gs2)

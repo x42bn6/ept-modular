@@ -45,41 +45,50 @@ def main():
         Team("BetBoom Team", Region.EEU),
         Team("Power Rangers", Region.EEU),
         Team("1w Team", Region.EEU),
-        Team("Runa Team", Region.WEU),
-        Team("EEU Team 1", Region.WEU, is_pseudo_team=True),
-        Team("EEU Team 2", Region.WEU, is_pseudo_team=True),
-        Team("EEU Team 3", Region.WEU, is_pseudo_team=True),
-        Team("EEU Team 4", Region.WEU, is_pseudo_team=True),
+        Team("Runa Team", Region.EEU),
+        Team("EEU Team 1", Region.EEU, is_pseudo_team=True),
+        Team("EEU Team 2", Region.EEU, is_pseudo_team=True),
+        Team("EEU Team 3", Region.EEU, is_pseudo_team=True),
+        Team("EEU Team 4", Region.EEU, is_pseudo_team=True),
 
         Team("GamerLegion", Region.NA),
-        Team("NA Team 1", Region.WEU, is_pseudo_team=True),
+        Team("NA Team 1", Region.NA, is_pseudo_team=True),
 
         Team("HEROIC", Region.SA),
         Team("paiN Gaming", Region.SA),
         Team("Amaru Gaming", Region.SA),
-        Team("SA Team 1", Region.WEU, is_pseudo_team=True),
-        Team("SA Team 2", Region.WEU, is_pseudo_team=True),
+        Team("SA Team 1", Region.SA, is_pseudo_team=True),
+        Team("SA Team 2", Region.SA, is_pseudo_team=True),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Yakult Brothers", Region.CN),
         Team("Vici Gaming", Region.CN),
         Team("Team Tidebound", Region.CN),
-        Team("CN Team 1", Region.WEU, is_pseudo_team=True),
-        Team("CN Team 2", Region.WEU, is_pseudo_team=True),
+        Team("CN Team 1", Region.CN, is_pseudo_team=True),
+        Team("CN Team 2", Region.CN, is_pseudo_team=True),
 
         Team("OG", Region.SEA),
         Team("REKONIX", Region.SEA),
         Team("Execration", Region.SEA),
         Team("Team Nemesis", Region.SEA),
-        Team("SEA Team 1", Region.WEU, is_pseudo_team=True),
-        Team("SEA Team 2", Region.WEU, is_pseudo_team=True),
+        Team("SEA Team 1", Region.SEA, is_pseudo_team=True),
+        Team("SEA Team 2", Region.SEA, is_pseudo_team=True),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
         team_database.add_team(team)
 
-    top_12_file = open("top-12.txt", "w")
-    optimise_and_write(12, "Top 12", top_12_file, team_database)
+    def spirit_top_12(m: CpModel, r: [IntVar]):
+        m.Add(r[team_database.get_team_index_by_team_name("Team Spirit")] <= 12)
+
+    spirit_top_12_file = open("spirit-top-12.txt", "w")
+    optimise_and_write(13, "Top 13", spirit_top_12_file, team_database, [spirit_top_12])
+
+    def spirit_not_top_12(m: CpModel, r: [IntVar]):
+        m.Add(r[team_database.get_team_index_by_team_name("Team Spirit")] > 12)
+
+    spirit_not_top_12_file = open("spirit-not-top-12.txt", "w")
+    optimise_and_write(12, "Top 12", spirit_not_top_12_file, team_database, [spirit_not_top_12])
 
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
