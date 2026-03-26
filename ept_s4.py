@@ -43,7 +43,7 @@ def main():
         Team("Team Spirit", Region.EEU),
         Team("PARIVISION", Region.EEU),
         Team("BetBoom Team", Region.EEU),
-        Team("Power Rangers", Region.EEU),
+        Team("Power Rangers (stack)", Region.EEU),
         Team("1w Team", Region.EEU),
         Team("Runa Team", Region.EEU),
         Team("EEU Team 1", Region.EEU, is_pseudo_team=True),
@@ -311,7 +311,7 @@ class FullEpt:
 
         dl_s27_to_dl_s28: TransferWindow = TransferWindow("dl_s27_to_dl_s28", team_database)
         dl_s27_to_dl_s28.add_change("Aurora Gaming", -90)
-        dl_s27_to_dl_s28.add_change("Power Rangers", -400)
+        dl_s27_to_dl_s28.add_change("Power Rangers (stack)", 400)
         dl_s27_to_dl_s28.add_change("Yakult Brothers", -60)
         dl_s27_to_dl_s28.add_change("Vici Gaming", 280)
         dl_s27_to_dl_s28.add_change("Pasika UA", 200)
