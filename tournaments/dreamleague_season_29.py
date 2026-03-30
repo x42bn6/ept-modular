@@ -24,29 +24,24 @@ class DreamLeagueSeason29:
         dl_s29: Tournament = Tournament("dl_s29", dl_s29_gs1, metadata)
 
         # 6 of the top 8 of ESL One Birmingham 2026 will be in the top 6 at the end of the event
-        guaranteed_invites: [Team] = team_database.get_teams_by_names("Tundra Esports", "Aurora Gaming", "Team Yandex", "Team Spirit")
+        guaranteed_invites: [Team] = team_database.get_teams_by_names("Tundra Esports", "Team Yandex", "Xtreme Gaming", "Aurora Gaming", "PARIVISION", "Team Spirit")
         for g in guaranteed_invites:
             team_index: int = team_database.get_team_index(g)
             model.Add(sum(dl_s29_gs1.indicators[team_index]) == 1)
 
-        potential_top_6: [Team] = team_database.get_teams_by_names("Xtreme Gaming", "PARIVISION", "Team Falcons", "MOUZ")
-        potential_top_6_sum: IntVar = 0
-        for p6 in potential_top_6:
-            team_index: int = team_database.get_team_index(p6)
-            potential_top_6_sum += sum(dl_s29_gs1.indicators[team_index])
-        model.Add(potential_top_6_sum == 2)
-
         region_max_slots_guess: Dict[Region, int] = {
             Region.WEU: 4,
             Region.EEU: 4,
-            Region.CN: 2,
-            Region.SA: 2,
-            Region.SEA: 2,
-            Region.NA: 1
+            Region.CN: 4,
+            Region.SA: 4,
+            Region.SEA: 4,
+            Region.NA: 4
         }
         for region, slots in region_max_slots_guess.items():
             team_sum: IntVar = 0
             for t in team_database.get_teams_by_region(region):
+                if t in guaranteed_invites:
+                    continue
                 team_index: int = team_database.get_team_index(t)
                 team_sum += sum(dl_s29_gs1.indicators[team_index])
             model.Add(team_sum >= 1)
@@ -65,7 +60,7 @@ class DreamLeagueSeason29:
                                    "DreamLeague Season 29",
                                    "DreamLeague/Season 29",
                                    "/dreamleague",
-                                   "2025-05-24",
+                                   "2026-05-24",
                                    metadata)
 
         dl_s29_gs1.build()

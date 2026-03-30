@@ -53,12 +53,17 @@ def main():
 
         Team("GamerLegion", Region.NA),
         Team("NA Team 1", Region.NA, is_pseudo_team=True),
+        Team("NA Team 2", Region.NA, is_pseudo_team=True),
+        Team("NA Team 3", Region.NA, is_pseudo_team=True),
+        Team("NA Team 4", Region.NA, is_pseudo_team=True),
 
         Team("HEROIC", Region.SA),
         Team("paiN Gaming", Region.SA),
         Team("Amaru Gaming", Region.SA),
         Team("SA Team 1", Region.SA, is_pseudo_team=True),
         Team("SA Team 2", Region.SA, is_pseudo_team=True),
+        Team("SA Team 3", Region.SA, is_pseudo_team=True),
+        Team("SA Team 4", Region.SA, is_pseudo_team=True),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Yakult Brothers", Region.CN),
@@ -66,6 +71,8 @@ def main():
         Team("Team Tidebound", Region.CN),
         Team("CN Team 1", Region.CN, is_pseudo_team=True),
         Team("CN Team 2", Region.CN, is_pseudo_team=True),
+        Team("CN Team 3", Region.CN, is_pseudo_team=True),
+        Team("CN Team 4", Region.CN, is_pseudo_team=True),
 
         Team("OG", Region.SEA),
         Team("REKONIX", Region.SEA),
@@ -73,22 +80,15 @@ def main():
         Team("Team Nemesis", Region.SEA),
         Team("SEA Team 1", Region.SEA, is_pseudo_team=True),
         Team("SEA Team 2", Region.SEA, is_pseudo_team=True),
+        Team("SEA Team 3", Region.SEA, is_pseudo_team=True),
+        Team("SEA Team 4", Region.SEA, is_pseudo_team=True),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
         team_database.add_team(team)
 
-    def spirit_top_12(m: CpModel, r: [IntVar]):
-        m.Add(r[team_database.get_team_index_by_team_name("Team Spirit")] <= 12)
-
-    spirit_top_12_file = open("spirit-top-12.txt", "w")
-    optimise_and_write(13, "Top 13", spirit_top_12_file, team_database, [spirit_top_12])
-
-    def spirit_not_top_12(m: CpModel, r: [IntVar]):
-        m.Add(r[team_database.get_team_index_by_team_name("Team Spirit")] > 12)
-
-    spirit_not_top_12_file = open("spirit-not-top-12.txt", "w")
-    #optimise_and_write(12, "Top 12", spirit_not_top_12_file, team_database, [spirit_not_top_12])
+    spirit_top_12_file = open("top-12.txt", "w")
+    optimise_and_write(13, "Top 13", spirit_top_12_file, team_database)
 
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):

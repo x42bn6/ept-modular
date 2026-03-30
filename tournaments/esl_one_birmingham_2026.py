@@ -55,22 +55,22 @@ class EslOneBirmingham2026:
         esl_one_bir_2026_gs.team_can_finish_between("OG", 13, 14)
         esl_one_bir_2026_gs.team_can_finish_between("Nigma Galaxy", 15, 16)
 
-        #esl_one_bir_2026_playoff.ubsf_1.set_winner("Tundra Esports")
-        #esl_one_bir_2026_playoff.ubsf_2.set_winner("Team Spirit")
+        esl_one_bir_2026_playoff.ubsf_1.set_winner("Team Yandex")
+        esl_one_bir_2026_playoff.ubsf_2.set_winner("Tundra Esports")
 
-        #esl_one_bir_2026_playoff.ubf.set_winner("Team Spirit")
+        esl_one_bir_2026_playoff.ubf.set_winner("Tundra Esports")
 
-        #esl_one_bir_2026_playoff.lbr1_1.set_winner("Team Liquid")
-        #esl_one_bir_2026_playoff.lbr1_2.set_winner("BetBoom Team")
+        esl_one_bir_2026_playoff.lbr1_1.set_winner("Xtreme Gaming")
+        esl_one_bir_2026_playoff.lbr1_2.set_winner("PARIVISION")
 
-        #esl_one_bir_2026_playoff.lbqf_1.set_winner("PARIVISION")
-        #esl_one_bir_2026_playoff.lbqf_2.set_winner("BetBoom Team")
+        esl_one_bir_2026_playoff.lbqf_1.set_winner("Xtreme Gaming")
+        esl_one_bir_2026_playoff.lbqf_2.set_winner("PARIVISION")
 
-        #esl_one_bir_2026_playoff.lbsf.set_winner("PARIVISION")
+        esl_one_bir_2026_playoff.lbsf.set_winner("Xtreme Gaming")
 
-        #esl_one_bir_2026_playoff.lbf.set_winner("PARIVISION")
+        esl_one_bir_2026_playoff.lbf.set_winner("Team Yandex")
 
-        #esl_one_bir_2026_playoff.gf.set_winner("PARIVISION")
+        esl_one_bir_2026_playoff.gf.set_winner("Tundra Esports")
 
         esl_one_bir_2026_gs.build()
         esl_one_bir_2026_playoff.build()

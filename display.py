@@ -25,7 +25,7 @@ class Display:
         output += """{{ambox
 |image=Warning.png
 |class=ambox-red
-|text=This is an '''unofficial''' calculation on what the threshold is to '''guarantee''' qualification to the Esports World Cup 2025.  ESL ultimately controls these points, rankings and invites, not Liquipedia.  '''It is also constantly in a draft status''', as it is not a simple optimisation model.
+|text=This is an '''unofficial''' calculation on what the threshold is to '''guarantee''' qualification to the Esports World Cup 2026.  ESL ultimately controls these points, rankings and invites, not Liquipedia.  '''It is also constantly in a draft status''', as it is not a simple optimisation model.
 }}
 """
         output += f"This is the following scenario where {{{{Team|{team_to_optimise.name}}}}} become the cutoff for the <u>top {top_n}</u> with {round(max_points)} points.\n"
