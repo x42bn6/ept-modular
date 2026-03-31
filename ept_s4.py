@@ -16,7 +16,7 @@ from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_27 import DreamLeagueSeason27Solved
 from tournaments.dreamleague_season_28 import DreamLeagueSeason28Solved
 from tournaments.dreamleague_season_29 import DreamLeagueSeason29
-from tournaments.esl_one_birmingham_2026 import EslOneBirmingham2026
+from tournaments.esl_one_birmingham_2026 import EslOneBirmingham2026, EslOneBirmingham2026Solved
 from transfer_window import TransferWindow
 
 
@@ -327,7 +327,7 @@ class FullEpt:
         dl_s28_to_esl_one_bir_2026: TransferWindow = TransferWindow("dl_s28_to_esl_one_bir_2026", team_database)
         dl_s28_to_esl_one_bir_2026.add_change("Amaru Gaming", -90)
 
-        ept_esl_one_bir_2026, ept_esl_one_bir_2026_gs = EslOneBirmingham2026(metadata).build()
+        ept_esl_one_bir_2026, ept_esl_one_bir_2026_gs = EslOneBirmingham2026Solved(metadata).build()
 
         esl_one_bir_2026_to_dl_s29: TransferWindow = TransferWindow("esl_one_bir_2026_to_dl_s29", team_database)
         esl_one_bir_2026_to_dl_s29.add_change("Amaru Gaming", -210)

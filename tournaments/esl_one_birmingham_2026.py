@@ -2,8 +2,8 @@ from typing import Tuple
 
 from ept import EptPairGroupStage, EptTournament, SolvedEptStage, SolvedEptTournament, EptStageBase, EptTournamentBase
 from metadata import Metadata
-from stage import PairGroupStage, DoubleElimination_4U4L2DSL1D, Tournament, Root
-from teams import TeamDatabase, Team
+from stage import PairGroupStage, DoubleElimination_4U4L2DSL1D, Tournament
+from teams import TeamDatabase
 
 
 class EslOneBirmingham2026:
@@ -21,16 +21,19 @@ class EslOneBirmingham2026:
         esl_one_bir_2026: Tournament = Tournament("esl_one_bir_2026", esl_one_bir_2026_gs, metadata)
 
         esl_one_bir_2026_gs.group_a = team_database.get_teams_by_names(
-            "Team Yandex", "Tundra Esports", "MOUZ", "PARIVISION", "GamerLegion", "BetBoom Team", "Yakult Brothers", "REKONIX")
+            "Team Yandex", "Tundra Esports", "MOUZ", "PARIVISION", "GamerLegion", "BetBoom Team", "Yakult Brothers",
+            "REKONIX")
         esl_one_bir_2026_gs.group_b = team_database.get_teams_by_names(
-            "Aurora Gaming", "Team Spirit", "Team Falcons", "Xtreme Gaming", "Virtus.pro", "paiN Gaming", "OG", "Nigma Galaxy")
+            "Aurora Gaming", "Team Spirit", "Team Falcons", "Xtreme Gaming", "Virtus.pro", "paiN Gaming", "OG",
+            "Nigma Galaxy")
 
         esl_one_bir_2026_playoff.bind_backward(esl_one_bir_2026_gs)
         esl_one_bir_2026_gs.bind_forward(esl_one_bir_2026_playoff)
 
         ept_esl_one_bir_2026_gs = EptPairGroupStage(esl_one_bir_2026_gs, [800])
         ept_esl_one_bir_2026 = EptTournament(esl_one_bir_2026, ept_esl_one_bir_2026_gs,
-                                             [8000, 6000, 5000, 4000, 2800, 2800, 1300, 1300, 700, 700, 350, 350, 180, 180, 100, 100],
+                                             [8000, 6000, 5000, 4000, 2800, 2800, 1300, 1300, 700, 700, 350, 350, 180,
+                                              180, 100, 100],
                                              "ESL One Birmingham 2026",
                                              "ESL One/Birmingham/2026",
                                              "/esl_one",
@@ -88,41 +91,49 @@ class EslOneBirmingham2026Solved:
     def build(self) -> Tuple[EptTournamentBase, EptStageBase]:
         metadata: Metadata = self.metadata
 
-        esl_one_bir_2026_gs: SolvedEptStage = SolvedEptStage("esl_one_bir_2026_gs", 12, [640, 640], metadata)
+        esl_one_bir_2026_gs: SolvedEptStage = SolvedEptStage("esl_one_bir_2026_gs", 16, [800, 800], metadata)
         esl_one_bir_2026: SolvedEptTournament = SolvedEptTournament("esl_one_bir_2026", esl_one_bir_2026_gs,
-                                                                    [6400, 4800, 4000, 3200, 2240, 2240, 1040, 1040,
-                                                                     560, 560, 280, 280],
+                                                                    [8000, 6000, 5000, 4000, 2800, 2800, 1300, 1300,
+                                                                     700, 700, 350, 350, 180, 180, 100, 100],
                                                                     "ESL One Birmingham 2026",
                                                                     "ESL One/Birmingham/2026",
                                                                     "/esl_one",
-                                                                    "2026-04-13",
+                                                                    "2026-03-29",
                                                                     metadata)
 
-        esl_one_bir_2026_gs.set_position("PARIVISION", 1)
-        esl_one_bir_2026_gs.set_position("Team Spirit", 3)
-        esl_one_bir_2026_gs.set_position("Team Liquid", 5)
-        esl_one_bir_2026_gs.set_position("Nigma Galaxy", 7)
-        esl_one_bir_2026_gs.set_position("Shopify Rebellion", 9)
-        esl_one_bir_2026_gs.set_position("Talon Esports", 11)
+        esl_one_bir_2026_gs.set_position("Team Yandex", 1)
+        esl_one_bir_2026_gs.set_position("Tundra Esports", 3)
+        esl_one_bir_2026_gs.set_position("MOUZ", 5)
+        esl_one_bir_2026_gs.set_position("PARIVISION", 7)
+        esl_one_bir_2026_gs.set_position("GamerLegion", 9)
+        esl_one_bir_2026_gs.set_position("BetBoom Team", 11)
+        esl_one_bir_2026_gs.set_position("Yakult Brothers", 13)
+        esl_one_bir_2026_gs.set_position("REKONIX", 15)
 
-        esl_one_bir_2026_gs.set_position("Team Falcons", 2)
-        esl_one_bir_2026_gs.set_position("Tundra Esports", 4)
-        esl_one_bir_2026_gs.set_position("BetBoom Team", 6)
-        esl_one_bir_2026_gs.set_position("AVULUS", 8)
-        esl_one_bir_2026_gs.set_position("Team Tidebound", 10)
-        esl_one_bir_2026_gs.set_position("HEROIC", 12)
+        esl_one_bir_2026_gs.set_position("Aurora Gaming", 2)
+        esl_one_bir_2026_gs.set_position("Team Spirit", 4)
+        esl_one_bir_2026_gs.set_position("Team Falcons", 6)
+        esl_one_bir_2026_gs.set_position("Xtreme Gaming", 8)
+        esl_one_bir_2026_gs.set_position("Virtus.pro", 10)
+        esl_one_bir_2026_gs.set_position("paiN Gaming", 12)
+        esl_one_bir_2026_gs.set_position("OG", 14)
+        esl_one_bir_2026_gs.set_position("Nigma Galaxy", 16)
 
-        esl_one_bir_2026.set_position("PARIVISION", 1)
-        esl_one_bir_2026.set_position("Team Spirit", 2)
-        esl_one_bir_2026.set_position("Tundra Esports", 3)
-        esl_one_bir_2026.set_position("BetBoom Team", 4)
-        esl_one_bir_2026.set_position("Team Liquid", 5)
-        esl_one_bir_2026.set_position("Team Falcons", 6)
-        esl_one_bir_2026.set_position("AVULUS", 7)
-        esl_one_bir_2026.set_position("Nigma Galaxy", 8)
-        esl_one_bir_2026.set_position("Shopify Rebellion", 9)
-        esl_one_bir_2026.set_position("Team Tidebound", 10)
-        esl_one_bir_2026.set_position("Talon Esports", 11)
-        esl_one_bir_2026.set_position("HEROIC", 12)
+        esl_one_bir_2026.set_position("Tundra Esports", 1)
+        esl_one_bir_2026.set_position("Team Yandex", 2)
+        esl_one_bir_2026.set_position("Xtreme Gaming", 3)
+        esl_one_bir_2026.set_position("PARIVISION", 4)
+        esl_one_bir_2026.set_position("Team Spirit", 5)
+        esl_one_bir_2026.set_position("Aurora Gaming", 6)
+        esl_one_bir_2026.set_position("MOUZ", 7)
+        esl_one_bir_2026.set_position("Team Falcons", 8)
+        esl_one_bir_2026.set_position("GamerLegion", 9)
+        esl_one_bir_2026.set_position("Virtus.pro", 10)
+        esl_one_bir_2026.set_position("BetBoom Team", 11)
+        esl_one_bir_2026.set_position("paiN Gaming", 12)
+        esl_one_bir_2026.set_position("Yakult Brothers", 13)
+        esl_one_bir_2026.set_position("OG", 14)
+        esl_one_bir_2026.set_position("REKONIX", 15)
+        esl_one_bir_2026.set_position("Nigma Galaxy", 16)
 
         return esl_one_bir_2026, esl_one_bir_2026_gs
