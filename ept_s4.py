@@ -87,7 +87,7 @@ def main():
     for team in teams:
         team_database.add_team(team)
 
-    spirit_top_12_file = open("top-12.txt", "w")
+    spirit_top_12_file = open("top-13.txt", "w")
     optimise_and_write(13, "Top 13", spirit_top_12_file, team_database)
 
 
@@ -330,7 +330,7 @@ class FullEpt:
         ept_esl_one_bir_2026, ept_esl_one_bir_2026_gs = EslOneBirmingham2026(metadata).build()
 
         esl_one_bir_2026_to_dl_s29: TransferWindow = TransferWindow("esl_one_bir_2026_to_dl_s29", team_database)
-        esl_one_bir_2026_to_dl_s29.add_change("Amaru Gaming", -63)
+        esl_one_bir_2026_to_dl_s29.add_change("Amaru Gaming", -210)
         esl_one_bir_2026_to_dl_s29.add_change("1w Team", -60)
 
         ept_dl_s29, ept_dl_s29_gs1, ept_dl_s29_gs2 = DreamLeagueSeason29(metadata).build()
