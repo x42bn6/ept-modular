@@ -25,12 +25,13 @@ class DreamLeagueSeason29:
 
         # 6 of the top 8 of ESL One Birmingham 2026 will be in the top 6 at the end of the event
         guaranteed_invites: [Team] = team_database.get_teams_by_names("Tundra Esports", "Team Yandex", "Xtreme Gaming", "Aurora Gaming", "PARIVISION", "Team Spirit")
-        for g in guaranteed_invites:
+        qualified: [Team] = team_database.get_teams_by_names("Natus Vincere")
+        for g in guaranteed_invites + qualified:
             team_index: int = team_database.get_team_index(g)
             model.Add(sum(dl_s29_gs1.indicators[team_index]) == 1)
 
         region_slots: Dict[Region, int] = {
-            Region.WEU: 3,
+            Region.WEU: 2,
             Region.EEU: 1,
             Region.CN: 1,
             Region.SA: 1,
@@ -40,7 +41,7 @@ class DreamLeagueSeason29:
         for region, slots in region_slots.items():
             team_sum: IntVar = 0
             for t in team_database.get_teams_by_region(region):
-                if t in guaranteed_invites:
+                if t in guaranteed_invites + qualified:
                     continue
                 team_index: int = team_database.get_team_index(t)
                 team_sum += sum(dl_s29_gs1.indicators[team_index])

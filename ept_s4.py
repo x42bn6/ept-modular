@@ -59,7 +59,7 @@ def main():
         Team("HEROIC", Region.SA),
         Team("paiN Gaming", Region.SA),
         Team("Amaru Gaming", Region.SA),
-        Team("ex-paiN Gaming", Region.SA),
+        Team("South America Rejects", Region.SA),
         Team("SA Team 1", Region.SA, is_pseudo_team=True),
         Team("SA Team 2", Region.SA, is_pseudo_team=True),
         Team("SA Team 3", Region.SA, is_pseudo_team=True),
@@ -330,8 +330,9 @@ class FullEpt:
         esl_one_bir_2026_to_dl_s29.add_change("Amaru Gaming", -210)
         esl_one_bir_2026_to_dl_s29.add_change("1w Team", -60)
         esl_one_bir_2026_to_dl_s29.add_change("paiN Gaming", -462)
-        esl_one_bir_2026_to_dl_s29.add_change("ex-paiN Gaming", 462)
+        esl_one_bir_2026_to_dl_s29.add_change("South America Rejects", 462)
         esl_one_bir_2026_to_dl_s29.add_change("Pasika UA", -60)
+        esl_one_bir_2026_to_dl_s29.add_change("Pipsqueak+4", -400)
 
         ept_dl_s29, ept_dl_s29_gs1, ept_dl_s29_gs2 = DreamLeagueSeason29(metadata).build()
 
