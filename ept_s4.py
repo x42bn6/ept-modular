@@ -312,8 +312,6 @@ class FullEpt:
         dl_s27_to_dl_s28.add_change("Yakult Brothers", -60)
         dl_s27_to_dl_s28.add_change("Vici Gaming", 280)
         dl_s27_to_dl_s28.add_change("Pasika UA", 200)
-        dl_s27_to_dl_s28.add_change("Amaru Gaming", 300)
-        dl_s27_to_dl_s28.add_change("1w Team", 200)
         dl_s27_to_dl_s28.add_change("Team Nemesis", -300)
         dl_s27_to_dl_s28.add_change("Passion UA", -200)
         dl_s27_to_dl_s28.add_change("Runa Team", -400)
