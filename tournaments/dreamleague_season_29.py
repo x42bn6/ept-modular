@@ -29,22 +29,22 @@ class DreamLeagueSeason29:
             team_index: int = team_database.get_team_index(g)
             model.Add(sum(dl_s29_gs1.indicators[team_index]) == 1)
 
-        region_max_slots_guess: Dict[Region, int] = {
-            Region.WEU: 4,
-            Region.EEU: 4,
-            Region.CN: 4,
-            Region.SA: 4,
-            Region.SEA: 4,
-            Region.NA: 4
+        region_slots: Dict[Region, int] = {
+            Region.WEU: 3,
+            Region.EEU: 1,
+            Region.CN: 1,
+            Region.SA: 1,
+            Region.SEA: 1,
+            Region.NA: 1
         }
-        for region, slots in region_max_slots_guess.items():
+        for region, slots in region_slots.items():
             team_sum: IntVar = 0
             for t in team_database.get_teams_by_region(region):
                 if t in guaranteed_invites:
                     continue
                 team_index: int = team_database.get_team_index(t)
                 team_sum += sum(dl_s29_gs1.indicators[team_index])
-            model.Add(team_sum >= 1)
+            model.Add(team_sum >= slots)
 
         dl_s29_gs1.bind_forward(dl_s29_gs2)
         dl_s29_playoff.bind_backward(dl_s29_gs2)

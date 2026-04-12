@@ -16,7 +16,7 @@ from teams import Team, Region, TeamDatabase
 from tournaments.dreamleague_season_27 import DreamLeagueSeason27Solved
 from tournaments.dreamleague_season_28 import DreamLeagueSeason28Solved
 from tournaments.dreamleague_season_29 import DreamLeagueSeason29
-from tournaments.esl_one_birmingham_2026 import EslOneBirmingham2026, EslOneBirmingham2026Solved
+from tournaments.esl_one_birmingham_2026 import EslOneBirmingham2026Solved
 from transfer_window import TransferWindow
 
 
@@ -37,6 +37,7 @@ def main():
         Team("WEU Team 2", Region.WEU, is_pseudo_team=True),
         Team("WEU Team 3", Region.WEU, is_pseudo_team=True),
         Team("WEU Team 4", Region.WEU, is_pseudo_team=True),
+        Team("WEU Team 5", Region.WEU, is_pseudo_team=True),
 
         Team("Aurora Gaming", Region.EEU),
         Team("Team Yandex", Region.EEU),
@@ -49,21 +50,19 @@ def main():
         Team("EEU Team 1", Region.EEU, is_pseudo_team=True),
         Team("EEU Team 2", Region.EEU, is_pseudo_team=True),
         Team("EEU Team 3", Region.EEU, is_pseudo_team=True),
-        Team("EEU Team 4", Region.EEU, is_pseudo_team=True),
 
         Team("GamerLegion", Region.NA),
         Team("NA Team 1", Region.NA, is_pseudo_team=True),
         Team("NA Team 2", Region.NA, is_pseudo_team=True),
         Team("NA Team 3", Region.NA, is_pseudo_team=True),
-        Team("NA Team 4", Region.NA, is_pseudo_team=True),
 
         Team("HEROIC", Region.SA),
         Team("paiN Gaming", Region.SA),
         Team("Amaru Gaming", Region.SA),
+        Team("ex-paiN Gaming", Region.SA),
         Team("SA Team 1", Region.SA, is_pseudo_team=True),
         Team("SA Team 2", Region.SA, is_pseudo_team=True),
         Team("SA Team 3", Region.SA, is_pseudo_team=True),
-        Team("SA Team 4", Region.SA, is_pseudo_team=True),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Yakult Brothers", Region.CN),
@@ -72,7 +71,6 @@ def main():
         Team("CN Team 1", Region.CN, is_pseudo_team=True),
         Team("CN Team 2", Region.CN, is_pseudo_team=True),
         Team("CN Team 3", Region.CN, is_pseudo_team=True),
-        Team("CN Team 4", Region.CN, is_pseudo_team=True),
 
         Team("OG", Region.SEA),
         Team("REKONIX", Region.SEA),
@@ -81,7 +79,6 @@ def main():
         Team("SEA Team 1", Region.SEA, is_pseudo_team=True),
         Team("SEA Team 2", Region.SEA, is_pseudo_team=True),
         Team("SEA Team 3", Region.SEA, is_pseudo_team=True),
-        Team("SEA Team 4", Region.SEA, is_pseudo_team=True),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
@@ -221,7 +218,7 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
     return max_cutoff_plus_one, max_objective_value_teams
 
 
-def calculate_theoretical_maximum_for_team(phases, team, team_database):
+def calculate_theoretical_maximum_for_team(phases, team: Team, team_database: TeamDatabase):
     # Calculate theoretical maximum.  If this is less than the current maximum, don't bother solving
     max_possible_points_for_team: int = 0
     for phase in phases:
@@ -332,6 +329,9 @@ class FullEpt:
         esl_one_bir_2026_to_dl_s29: TransferWindow = TransferWindow("esl_one_bir_2026_to_dl_s29", team_database)
         esl_one_bir_2026_to_dl_s29.add_change("Amaru Gaming", -210)
         esl_one_bir_2026_to_dl_s29.add_change("1w Team", -60)
+        esl_one_bir_2026_to_dl_s29.add_change("paiN Gaming", -462)
+        esl_one_bir_2026_to_dl_s29.add_change("ex-paiN Gaming", 462)
+        esl_one_bir_2026_to_dl_s29.add_change("Pasika UA", -60)
 
         ept_dl_s29, ept_dl_s29_gs1, ept_dl_s29_gs2 = DreamLeagueSeason29(metadata).build()
 
