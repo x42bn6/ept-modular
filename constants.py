@@ -19,3 +19,4 @@ DL_S26_TEAMS_PER_REGION: Dict[Region, int] = {
 
 # Print intermediate results
 DEBUG_DL_S26 = False
+DEBUG_DL_S29 = False

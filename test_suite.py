@@ -17,7 +17,8 @@ def main():
     # bracket_4u2l1d()
     # dl_s24_na_qualifier()
     # esl_one_bkk_2024()
-    bracket_4U4L2DSL1D()
+    # bracket_4U4L2DSL1D()
+    bracket_8U8L2DSL1D()
 
 
 def basic_two_group_stage():
@@ -556,6 +557,204 @@ def bracket_4U4L2DSL1D():
         print_single_match(teams, lbqf_2, solver, team_database)
         print_single_match(teams, lbsf, solver, team_database)
         print_single_match(teams, lbf, solver, team_database)
+        print_single_match(teams, gf, solver, team_database)
+
+        if solver.objective_value > max_objective_value:
+            max_objective_value = solver.objective_value
+
+        print(f"Maximum objective value: {max_objective_value}")
+
+
+def bracket_8U8L2DSL1D():
+    teams: [Team] = [
+        Team("Team Liquid", Region.WEU),
+        Team("Tundra Esports", Region.WEU),
+        Team("Gaimin Gladiators", Region.WEU),
+        Team("OG", Region.WEU),
+
+        Team("9Pandas", Region.EEU),
+        Team("Team Spirit", Region.EEU),
+        Team("BetBoom Team", Region.EEU),
+
+        Team("Xtreme Gaming", Region.CN),
+        Team("PSG.LGD", Region.CN),
+        Team("Invictus Gaming", Region.CN),
+        Team("Team Aster", Region.CN),
+
+        Team("Talon Esports", Region.SEA),
+        Team("Execration", Region.SEA),
+        Team("Team SMG", Region.SEA),
+
+        Team("TSM", Region.NA),
+        Team("Shopify Rebellion", Region.NA),
+
+        Team("beastcoast", Region.SA),
+        Team("Evil Geniuses", Region.SA),
+    ]
+    team_database: TeamDatabase = TeamDatabase()
+    for team in teams:
+        team_database.add_team(team)
+
+    max_objective_value = -1
+    for team in [team_database.get_team_by_name("Team Liquid")]:
+        model: CpModel = CpModel()
+        metadata: [Metadata] = Metadata(team_database, model)
+        name: str = "bracket"
+
+        ubqf_1: SingleMatch = SingleMatch(f"{name}_ubqf_1", metadata,
+                                          team_database.get_teams_by_names("Gaimin Gladiators", "Team Spirit"))
+        ubqf_2: SingleMatch = SingleMatch(f"{name}_ubqf_2", metadata,
+                                          team_database.get_teams_by_names("OG", "Team Liquid"))
+        ubqf_3: SingleMatch = SingleMatch(f"{name}_ubqf_3", metadata,
+                                          team_database.get_teams_by_names("9Pandas", "Shopify Rebellion"))
+        ubqf_4: SingleMatch = SingleMatch(f"{name}_ubqf_4", metadata,
+                                          team_database.get_teams_by_names("Tundra Esports", "PSG.LGD"))
+
+        ubsf_1: SingleMatch = SingleMatch(f"{name}_ubsf_1", metadata)
+        ubsf_2: SingleMatch = SingleMatch(f"{name}_ubsf_2", metadata)
+
+        ubf: SingleMatch = SingleMatch(f"{name}_ubf", metadata)
+
+        gf: SingleMatch = SingleMatch(f"{name}_gf", metadata)
+
+        lbr1_1: SingleMatch = SingleMatch(f"{name}_lbr1_1", metadata,
+                                          team_database.get_teams_by_names("Team Spirit", "Team Aster"))
+        lbr1_2: SingleMatch = SingleMatch(f"{name}_lbr1_2", metadata,
+                                          team_database.get_teams_by_names("Team Liquid", "Xtreme Gaming"))
+        lbr1_3: SingleMatch = SingleMatch(f"{name}_lbr1_3", metadata,
+                                          team_database.get_teams_by_names("Shopify Rebellion", "Evil Geniuses"))
+        lbr1_4: SingleMatch = SingleMatch(f"{name}_lbr1_4", metadata,
+                                          team_database.get_teams_by_names("PSG.LGD", "Talon Esports"))
+
+        lbr2_1: SingleMatch = SingleMatch(f"{name}_lbr2_1", metadata)
+        lbr2_2: SingleMatch = SingleMatch(f"{name}_lbr2_2", metadata)
+
+        lbqf_1: SingleMatch = SingleMatch(f"{name}_lbqf_1", metadata)
+        lbqf_2: SingleMatch = SingleMatch(f"{name}_lbqf_2", metadata)
+
+        lbsf: SingleMatch = SingleMatch(f"{name}_lbsf", metadata)
+
+        lbf: SingleMatch = SingleMatch(f"{name}_lbf", metadata)
+
+        ubqf_1.bind_winner(ubsf_1)
+        ubqf_1.bind_loser(lbr1_1)
+        ubqf_2.bind_winner(ubsf_1)
+        ubqf_2.bind_loser(lbr1_2)
+        ubqf_3.bind_winner(ubsf_2)
+        ubqf_3.bind_loser(lbr1_3)
+        ubqf_4.bind_winner(ubsf_2)
+        ubqf_4.bind_loser(lbr1_4)
+
+        ubsf_1.bind_winner(ubf)
+        ubsf_1.bind_loser(lbqf_2)
+        ubsf_2.bind_winner(ubf)
+        ubsf_2.bind_loser(lbqf_1)
+
+        ubf.bind_winner(gf)
+        ubf.bind_loser(lbf)
+
+        lbr1_1.bind_winner(lbr2_1)
+        lbr1_2.bind_winner(lbr2_1)
+        lbr1_3.bind_winner(lbr2_2)
+        lbr1_4.bind_winner(lbr2_2)
+
+        lbr2_1.bind_winner(lbqf_1)
+        lbr2_2.bind_winner(lbqf_2)
+
+        lbqf_1.bind_winner(lbsf)
+        lbqf_2.bind_winner(lbsf)
+
+        lbsf.bind_winner(lbf)
+
+        lbf.bind_winner(gf)
+
+        ubqf_1.build()
+        ubqf_2.build()
+        ubqf_3.build()
+        ubqf_4.build()
+
+        ubsf_1.build()
+        ubsf_2.build()
+
+        ubf.build()
+
+        lbr1_1.build()
+        lbr1_2.build()
+        lbr1_3.build()
+        lbr1_4.build()
+
+        lbr2_1.build()
+        lbr2_2.build()
+
+        lbqf_1.build()
+        lbqf_2.build()
+
+        lbsf.build()
+
+        lbf.build()
+
+        gf.build()
+
+        ubqf_1.set_winner("Gaimin Gladiators")
+        ubqf_2.set_winner("OG")
+        ubqf_3.set_winner("9Pandas")
+        ubqf_4.set_winner("Tundra Esports")
+
+        ubsf_1.set_winner("Gaimin Gladiators")
+        ubsf_2.set_winner("9Pandas")
+
+        ubf.set_winner("Gaimin Gladiators")
+
+        lbr1_1.set_winner("Team Aster")
+        lbr1_2.set_winner("Team Liquid")
+        lbr1_3.set_winner("Evil Geniuses")
+        lbr1_4.set_winner("Talon Esports")
+
+        lbr2_1.set_winner("Team Liquid")
+        lbr2_2.set_winner("Evil Geniuses")
+
+        lbqf_1.set_winner("Team Liquid")
+        lbqf_2.set_winner("Evil Geniuses")
+
+        lbsf.set_winner("Team Liquid")
+
+        lbf.set_winner("Team Liquid")
+
+        gf.set_winner("Gaimin Gladiators")
+
+        print(f"Now optimising for {team.name}")
+
+        solver = cp_model.CpSolver()
+        status = solver.Solve(model)
+        if status != cp_model.OPTIMAL:
+            print(f"Team {team.name} probably cannot finish in top 8")
+            continue
+
+        print_single_match(teams, ubqf_1, solver, team_database)
+        print_single_match(teams, ubqf_2, solver, team_database)
+        print_single_match(teams, ubqf_3, solver, team_database)
+        print_single_match(teams, ubqf_4, solver, team_database)
+
+        print_single_match(teams, ubsf_1, solver, team_database)
+        print_single_match(teams, ubsf_2, solver, team_database)
+
+        print_single_match(teams, ubf, solver, team_database)
+
+        print_single_match(teams, lbr1_1, solver, team_database)
+        print_single_match(teams, lbr1_2, solver, team_database)
+        print_single_match(teams, lbr1_3, solver, team_database)
+        print_single_match(teams, lbr1_4, solver, team_database)
+
+        print_single_match(teams, lbr2_1, solver, team_database)
+        print_single_match(teams, lbr2_2, solver, team_database)
+
+        print_single_match(teams, lbqf_1, solver, team_database)
+        print_single_match(teams, lbqf_2, solver, team_database)
+
+        print_single_match(teams, lbsf, solver, team_database)
+
+        print_single_match(teams, lbf, solver, team_database)
+
         print_single_match(teams, gf, solver, team_database)
 
         if solver.objective_value > max_objective_value:

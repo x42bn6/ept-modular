@@ -6,7 +6,7 @@ from ortools.constraint_solver.pywrapcp import BooleanVar
 from ortools.sat.python import cp_model
 from ortools.sat.python.cp_model import CpModel, CpSolver, IntVar
 
-from constants import BIG_M
+from constants import BIG_M, DEBUG_DL_S29
 from display import Display
 from display_phases import HasDisplayPhase
 from ept import EptTournamentBase
@@ -18,6 +18,7 @@ from tournaments.dreamleague_season_28 import DreamLeagueSeason28Solved
 from tournaments.dreamleague_season_29 import DreamLeagueSeason29
 from tournaments.esl_one_birmingham_2026 import EslOneBirmingham2026Solved
 from transfer_window import TransferWindow
+from utilities import print_indicators
 
 
 def main():
@@ -215,6 +216,43 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
 
         print(f"Maximum objective value: {max_cutoff_plus_one}")
 
+        if DEBUG_DL_S29:
+            print("DreamLeague Season 29 GS")
+            print_indicators(full_ept.ept_dl_s29_gs.stage.indicators, solver, team_database)
+
+            print("DreamLeague Season 29 playoff")
+            playoff = full_ept.ept_dl_s29.first_ept_stage.stage.next_stage
+
+            print_single_match(playoff.ubqf_1, solver, team_database)
+            print_single_match(playoff.ubqf_2, solver, team_database)
+            print_single_match(playoff.ubqf_3, solver, team_database)
+            print_single_match(playoff.ubqf_4, solver, team_database)
+
+            print_single_match(playoff.ubsf_1, solver, team_database)
+            print_single_match(playoff.ubsf_2, solver, team_database)
+
+            print_single_match(playoff.ubf, solver, team_database)
+
+            print_single_match(playoff.lbr1_1, solver, team_database)
+            print_single_match(playoff.lbr1_2, solver, team_database)
+            print_single_match(playoff.lbr1_3, solver, team_database)
+            print_single_match(playoff.lbr1_4, solver, team_database)
+
+            print_single_match(playoff.lbr2_1, solver, team_database)
+            print_single_match(playoff.lbr2_2, solver, team_database)
+
+            print_single_match(playoff.lbqf_1, solver, team_database)
+            print_single_match(playoff.lbqf_2, solver, team_database)
+
+            print_single_match(playoff.lbsf, solver, team_database)
+
+            print_single_match(playoff.lbf, solver, team_database)
+
+            print_single_match(playoff.gf, solver, team_database)
+
+            print("DreamLeague Season 29")
+            print_indicators(full_ept.ept_dl_s29.tournament.indicators, solver, team_database)
+
     return max_cutoff_plus_one, max_objective_value_teams
 
 
@@ -277,10 +315,10 @@ def minimise_cutoff(model, team, team_database, teams, total_points, cutoff: int
     model.Minimize(total_points[team_index])
 
 
-def print_single_match(teams: [Team], match: SingleMatch, solver: CpSolver, team_database: TeamDatabase):
+def print_single_match(match: SingleMatch, solver: CpSolver, team_database: TeamDatabase):
     winner: Team | None = None
     loser: Team | None = None
-    for team in teams:
+    for team in team_database.get_all_teams():
         team_index: int = team_database.get_team_index(team)
         if solver.values(match.indicators[team_index]).iloc[0] == 1 and \
                 solver.values(match.indicators[team_index]).iloc[1] == 0:
@@ -332,7 +370,7 @@ class FullEpt:
         esl_one_bir_2026_to_dl_s29.add_change("Pasika UA", -60)
         esl_one_bir_2026_to_dl_s29.add_change("Pipsqueak+4", -400)
 
-        ept_dl_s29, ept_dl_s29_gs1, ept_dl_s29_gs2 = DreamLeagueSeason29(metadata).build()
+        ept_dl_s29, ept_dl_s29_gs = DreamLeagueSeason29(metadata).build()
 
         self.ept_dl_s27 = ept_dl_s27
 
@@ -350,8 +388,7 @@ class FullEpt:
         self.esl_one_bir_2026_to_dl_s29 = esl_one_bir_2026_to_dl_s29
 
         self.ept_dl_s29 = ept_dl_s29
-        self.ept_dl_s29_gs1 = ept_dl_s29_gs1
-        self.ept_dl_s29_gs2 = ept_dl_s29_gs2
+        self.ept_dl_s29_gs = ept_dl_s29_gs
 
     def get_display_phases(self) -> [HasDisplayPhase]:
         return [
@@ -375,8 +412,7 @@ class FullEpt:
             self.ept_esl_one_bir_2026_gs.get_obtained_points(t_index) +
             self.ept_esl_one_bir_2026.get_obtained_points(t_index) +
             self.esl_one_bir_2026_to_dl_s29.get_change(t_index) +
-            self.ept_dl_s29_gs1.get_obtained_points(t_index) +
-            self.ept_dl_s29_gs2.get_obtained_points(t_index) +
+            self.ept_dl_s29_gs.get_obtained_points(t_index) +
             self.ept_dl_s29.get_obtained_points(t_index)
             for t in teams
             if (t_index := team_database.get_team_index(t)) is not None
