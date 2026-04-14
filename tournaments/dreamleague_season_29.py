@@ -61,7 +61,7 @@ class DreamLeagueSeason29:
                                    [6000, 5000, 4000, 3200, 2400, 2000, 1200, 800, 500, 500, 250, 250, 140, 140, 60,
                                     60],
                                    "DreamLeague Season 29",
-                                   "DreamLeague/Season 29",
+                                   "DreamLeague/29",
                                    "/dreamleague",
                                    "2026-05-24",
                                    metadata)
