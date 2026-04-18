@@ -23,7 +23,7 @@ class DreamLeagueSeason29:
         dl_s29: Tournament = Tournament("dl_s29", dl_s29_gs, metadata)
 
         # We don't know what happened to Falcons.  So 6 of these 7 were invited directly
-        guaranteed_invites: [Team] = team_database.get_teams_by_names("Tundra Esports", "Team Yandex", "Xtreme Gaming",
+        guaranteed_invites: [Team] = team_database.get_teams_by_names("Team Yandex", "Xtreme Gaming",
                                                                       "Aurora Gaming", "PARIVISION", "Team Spirit", "Team Falcons")
         team_sum = 0
         for t in guaranteed_invites:
@@ -115,10 +115,10 @@ class DreamLeagueSeason29:
 
         ept_dl_s29 = EptTournament(dl_s29,
                                    ept_dl_s29_gs,
-                                   [6000, 5000, 4000, 3200, 2400, 2000, 1200, 800, 500, 500, 250, 250, 140, 140, 60,
+                                   [6000, 5000, 4000, 3200, 2200, 2200, 1000, 1000, 500, 500, 250, 250, 140, 140, 60,
                                     60],
                                    "DreamLeague Season 29",
-                                   "DreamLeague/Season 29",
+                                   "DreamLeague/29",
                                    "/dreamleague",
                                    "2026-05-24",
                                    metadata)
