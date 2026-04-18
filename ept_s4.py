@@ -34,11 +34,6 @@ def main():
         Team("Pipsqueak+4", Region.WEU),
         Team("Passion UA", Region.WEU),
         Team("Pasika UA", Region.WEU),
-        Team("WEU Team 1", Region.WEU, is_pseudo_team=True),
-        Team("WEU Team 2", Region.WEU, is_pseudo_team=True),
-        Team("WEU Team 3", Region.WEU, is_pseudo_team=True),
-        Team("WEU Team 4", Region.WEU, is_pseudo_team=True),
-        Team("WEU Team 5", Region.WEU, is_pseudo_team=True),
 
         Team("Aurora Gaming", Region.EEU),
         Team("Team Yandex", Region.EEU),
@@ -48,38 +43,26 @@ def main():
         Team("Power Rangers (stack)", Region.EEU),
         Team("1w Team", Region.EEU),
         Team("Runa Team", Region.EEU),
-        Team("EEU Team 1", Region.EEU, is_pseudo_team=True),
-        Team("EEU Team 2", Region.EEU, is_pseudo_team=True),
-        Team("EEU Team 3", Region.EEU, is_pseudo_team=True),
 
         Team("GamerLegion", Region.NA),
-        Team("NA Team 1", Region.NA, is_pseudo_team=True),
-        Team("NA Team 2", Region.NA, is_pseudo_team=True),
-        Team("NA Team 3", Region.NA, is_pseudo_team=True),
 
         Team("HEROIC", Region.SA),
         Team("paiN Gaming", Region.SA),
         Team("Amaru Gaming", Region.SA),
         Team("South America Rejects", Region.SA),
-        Team("SA Team 1", Region.SA, is_pseudo_team=True),
-        Team("SA Team 2", Region.SA, is_pseudo_team=True),
-        Team("SA Team 3", Region.SA, is_pseudo_team=True),
 
         Team("Xtreme Gaming", Region.CN),
         Team("Yakult Brothers", Region.CN),
         Team("Vici Gaming", Region.CN),
         Team("Team Tidebound", Region.CN),
-        Team("CN Team 1", Region.CN, is_pseudo_team=True),
-        Team("CN Team 2", Region.CN, is_pseudo_team=True),
-        Team("CN Team 3", Region.CN, is_pseudo_team=True),
 
         Team("OG", Region.SEA),
         Team("REKONIX", Region.SEA),
         Team("Execration", Region.SEA),
         Team("Team Nemesis", Region.SEA),
-        Team("SEA Team 1", Region.SEA, is_pseudo_team=True),
-        Team("SEA Team 2", Region.SEA, is_pseudo_team=True),
-        Team("SEA Team 3", Region.SEA, is_pseudo_team=True),
+
+        Team("Div 2 Team 1", Region.OTHER, is_pseudo=True),
+        Team("Div 2 Team 2", Region.OTHER, is_pseudo=True),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
@@ -110,7 +93,7 @@ def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: Te
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
-        if team.is_pseudo_team:
+        if team.is_pseudo:
             if team.region in regions_with_pseudo_teams_solved:
                 continue
             else:
@@ -173,7 +156,7 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
-        if team.is_pseudo_team:
+        if team.is_pseudo:
             if team.region in regions_with_pseudo_teams_solved:
                 continue
             else:

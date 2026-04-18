@@ -95,7 +95,7 @@ def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: Te
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
-        if team.is_pseudo_team:
+        if team.is_pseudo:
             if team.region in regions_with_pseudo_teams_solved:
                 continue
             else:
@@ -158,7 +158,7 @@ def optimise_maximise_cutoff_plus_one(cutoff, max_cutoff_plus_one, max_objective
     # Track pseudo-teams.  All of them are basically the same, so optimising for one is the same as the others.  Skip if done
     regions_with_pseudo_teams_solved: [Region] = []
     for team in team_database.get_all_teams():
-        if team.is_pseudo_team:
+        if team.is_pseudo:
             if team.region in regions_with_pseudo_teams_solved:
                 continue
             else:

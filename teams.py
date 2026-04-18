@@ -8,14 +8,15 @@ class Region(Enum):
     EEU = 4,
     MESWA = 5,
     CN = 6,
-    SEA = 7
+    SEA = 7,
+    OTHER = 8
 
 class Team:
-    def __init__(self, name: str, region: Region, is_pseudo_team: bool = False):
+    def __init__(self, name: str, region: Region, is_pseudo: bool = False):
         self.name = name
         self.ept_relevant = False
         self.region = region
-        self.is_pseudo_team = is_pseudo_team
+        self.is_pseudo = is_pseudo
 
     def make_relevant(self):
         self.ept_relevant = True

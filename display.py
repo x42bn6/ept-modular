@@ -93,7 +93,7 @@ class Display:
             output += "|-\n"
             output += f"|{bg}| {(i + 1)}\n"
             output += f"|{bg} style=\"text-align: left;\"| "
-            if team.is_pseudo_team:
+            if team.is_pseudo:
                 output += team.name
             else:
                 output += f"{{{{Team|{team.name}}}}}"
