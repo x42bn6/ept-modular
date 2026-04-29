@@ -24,7 +24,8 @@ class DreamLeagueSeason29:
 
         # We don't know what happened to Falcons.  So 6 of these 7 were invited directly
         guaranteed_invites: [Team] = team_database.get_teams_by_names("Team Yandex", "Xtreme Gaming",
-                                                                      "Aurora Gaming", "PARIVISION", "Team Spirit", "Team Falcons")
+                                                                      "Aurora Gaming", "PARIVISION", "Team Spirit",
+                                                                      "Team Falcons")
         team_sum = 0
         for t in guaranteed_invites:
             team_index: int = team_database.get_team_index(t)
@@ -40,13 +41,20 @@ class DreamLeagueSeason29:
 
         dreamleague_division_2_season_4: [Team] = team_database.get_teams_by_names("Nigma Galaxy",
                                                                                    "Power Rangers (stack)", "1w Team",
-                                                                                   "South America Rejects",
-                                                                                   "Div 2 Team 1", "Div 2 Team 2")
+                                                                                   "South America Rejects")
+        dreamleague_division_2_season_4_lb: [Team] = team_database.get_teams_by_names("Power Rangers (stack)",
+                                                                                      "South America Rejects")
         team_sum = 0
         for t in dreamleague_division_2_season_4:
             team_index: int = team_database.get_team_index(t)
             team_sum += sum(dl_s29_gs.indicators[team_index])
         model.Add(team_sum == 2)
+
+        team_sum = 0
+        for t in dreamleague_division_2_season_4_lb:
+            team_index: int = team_database.get_team_index(t)
+            team_sum += sum(dl_s29_gs.indicators[team_index])
+        model.Add(team_sum <= 1)
 
         dl_s29_gs.bind_forward(dl_s29_playoff)
         ept_dl_s29_gs = EptPairGroupStage(dl_s29_gs, [600, 300, 150])

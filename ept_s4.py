@@ -60,9 +60,6 @@ def main():
         Team("REKONIX", Region.SEA),
         Team("Execration", Region.SEA),
         Team("Team Nemesis", Region.SEA),
-
-        Team("Div 2 Team 1", Region.OTHER, is_pseudo=True),
-        Team("Div 2 Team 2", Region.OTHER, is_pseudo=True),
     ]
     team_database: TeamDatabase = TeamDatabase()
     for team in teams:
