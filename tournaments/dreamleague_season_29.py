@@ -34,18 +34,10 @@ class DreamLeagueSeason29:
 
         qualified: [Team] = team_database.get_teams_by_names("Natus Vincere", "Virtus.pro", "Team Liquid",
                                                              "BetBoom Team", "GamerLegion", "Vici Gaming",
-                                                             "REKONIX", "HEROIC", "Nigma Galaxy")
+                                                             "REKONIX", "HEROIC", "Nigma Galaxy", "South America Rejects")
         for g in qualified:
             team_index: int = team_database.get_team_index(g)
             model.Add(sum(dl_s29_gs.indicators[team_index]) == 1)
-
-        dreamleague_division_2_season_4: [Team] = team_database.get_teams_by_names("Power Rangers (stack)", "1w Team",
-                                                                                   "South America Rejects")
-        team_sum = 0
-        for t in dreamleague_division_2_season_4:
-            team_index: int = team_database.get_team_index(t)
-            team_sum += sum(dl_s29_gs.indicators[team_index])
-        model.Add(team_sum == 1)
 
         dl_s29_gs.bind_forward(dl_s29_playoff)
         ept_dl_s29_gs = EptPairGroupStage(dl_s29_gs, [600, 300, 150])
