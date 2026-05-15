@@ -18,7 +18,7 @@ class DreamLeagueSeason29:
         dl_s29_gs: PairGroupStage = PairGroupStage("dl_s29_gs", 8, 6, metadata)
         dl_s29_playoff: GroupStage = GroupStage("dl_s29_playoff", 12, 0, metadata)
         dl_s29: Tournament = Tournament("dl_s29", dl_s29_gs, metadata)
-        dl_s29_gs.group_a = team_database.get_teams_by_names("Aurora Gaming", "Ex-HEROIC", "GamerLegion", "Team Falcons", "Team Liquid", "Team Spirit", "Vici Gaming", "Virtus.pro")
+        dl_s29_gs.group_a = team_database.get_teams_by_names("Aurora Gaming", "ex-HEROIC", "GamerLegion", "Team Falcons", "Team Liquid", "Team Spirit", "Vici Gaming", "Virtus.pro")
         dl_s29_gs.group_b = team_database.get_teams_by_names("BetBoom Team", "Natus Vincere", "Nigma Galaxy", "PARIVISION", "PlayTime", "REKONIX", "Tundra Esports", "Xtreme Gaming")
 
         dl_s29_gs.bind_forward(dl_s29_playoff)
@@ -36,11 +36,11 @@ class DreamLeagueSeason29:
 
         dl_s29_gs.team_can_finish_between("Team Falcons", 1, 6)
         dl_s29_gs.team_can_finish_between("Team Spirit", 1, 6)
-        dl_s29_gs.team_can_finish_between("Team Liquid", 1, 14)
-        dl_s29_gs.team_can_finish_between("Vici Gaming", 1, 16)
-        dl_s29_gs.team_can_finish_between("Virtus.pro", 1, 16)
-        dl_s29_gs.team_can_finish_between("Aurora Gaming", 1, 16)
-        dl_s29_gs.team_can_finish_between("Ex-HEROIC", 5, 16)
+        dl_s29_gs.team_can_finish_between("Team Liquid", 3, 14)
+        dl_s29_gs.team_can_finish_between("Vici Gaming", 3, 16)
+        dl_s29_gs.team_can_finish_between("Virtus.pro", 3, 16)
+        dl_s29_gs.team_can_finish_between("Aurora Gaming", 3, 16)
+        dl_s29_gs.team_can_finish_between("ex-HEROIC", 5, 16)
         dl_s29_gs.team_can_finish_between("GamerLegion", 7, 16)
 
         dl_s29_gs.team_can_finish_between("PARIVISION", 1, 16)
@@ -67,7 +67,7 @@ class DreamLeagueSeason29:
         dl_s29_gs: PairGroupStage = PairGroupStage("dl_s29_gs", 8, 6, metadata)
         dl_s29_playoff: DoubleElimination_8U8L2DSL1D = DoubleElimination_8U8L2DSL1D("dl_s29_playoff", metadata)
         dl_s29: Tournament = Tournament("dl_s29", dl_s29_gs, metadata)
-        dl_s29_gs.group_a = team_database.get_teams_by_names("Aurora Gaming", "Ex-HEROIC", "GamerLegion", "Team Falcons", "Team Liquid", "Team Spirit", "Vici Gaming", "Virtus.pro")
+        dl_s29_gs.group_a = team_database.get_teams_by_names("Aurora Gaming", "ex-HEROIC", "GamerLegion", "Team Falcons", "Team Liquid", "Team Spirit", "Vici Gaming", "Virtus.pro")
         dl_s29_gs.group_b = team_database.get_teams_by_names("BetBoom Team", "Natus Vincere", "Nigma Galaxy", "PARIVISION", "PlayTime", "REKONIX", "Tundra Esports", "Xtreme Gaming")
 
         dl_s29_playoff.bind_backward(dl_s29_gs)

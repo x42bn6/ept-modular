@@ -47,7 +47,7 @@ def main():
         Team("GamerLegion", Region.NA),
 
         Team("HEROIC", Region.SA),
-        Team("Ex-HEROIC", Region.SA),
+        Team("ex-HEROIC", Region.SA),
         Team("paiN Gaming", Region.SA),
         Team("Amaru Gaming", Region.SA),
         Team("PlayTime", Region.SA),
@@ -351,7 +351,7 @@ class FullEpt:
         esl_one_bir_2026_to_dl_s29.add_change("Pasika UA", -60)
         esl_one_bir_2026_to_dl_s29.add_change("Pipsqueak+4", -400)
         esl_one_bir_2026_to_dl_s29.add_change("HEROIC", -300)
-        esl_one_bir_2026_to_dl_s29.add_change("Ex-HEROIC", 300)
+        esl_one_bir_2026_to_dl_s29.add_change("ex-HEROIC", 300)
 
         ept_dl_s29, ept_dl_s29_gs = DreamLeagueSeason29(metadata).build()
 
