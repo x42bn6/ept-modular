@@ -34,13 +34,29 @@ class DreamLeagueSeason29:
                                    "2026-05-24",
                                    metadata)
 
+        dl_s29_gs.team_can_finish_between("Team Falcons", 1, 6)
+        dl_s29_gs.team_can_finish_between("Team Spirit", 1, 6)
+        dl_s29_gs.team_can_finish_between("Team Liquid", 1, 14)
+        dl_s29_gs.team_can_finish_between("Vici Gaming", 1, 16)
+        dl_s29_gs.team_can_finish_between("Virtus.pro", 1, 16)
+        dl_s29_gs.team_can_finish_between("Aurora Gaming", 1, 16)
+        dl_s29_gs.team_can_finish_between("Ex-HEROIC", 5, 16)
+        dl_s29_gs.team_can_finish_between("GamerLegion", 7, 16)
+
+        dl_s29_gs.team_can_finish_between("PARIVISION", 1, 16)
+        dl_s29_gs.team_can_finish_between("Natus Vincere", 1, 16)
+        dl_s29_gs.team_can_finish_between("BetBoom Team", 1, 16)
+        dl_s29_gs.team_can_finish_between("PlayTime", 1, 16)
+        dl_s29_gs.team_can_finish_between("Xtreme Gaming", 1, 16)
+        dl_s29_gs.team_can_finish_between("Nigma Galaxy", 1, 16)
+        dl_s29_gs.team_can_finish_between("REKONIX", 1, 16)
+        dl_s29_gs.team_can_finish_between("Tundra Esports", 1, 16)
+
         dl_s29_gs.build()
         dl_s29_playoff.build()
         dl_s29.build()
         ept_dl_s29_gs.build()
         ept_dl_s29.build()
-
-        dl_s29_gs.team_can_finish_between("GamerLegion", 5, 16)
 
         return ept_dl_s29, ept_dl_s29_gs
 
