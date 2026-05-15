@@ -40,6 +40,8 @@ class DreamLeagueSeason29:
         ept_dl_s29_gs.build()
         ept_dl_s29.build()
 
+        dl_s29_gs.team_can_finish_between("GamerLegion", 5, 16)
+
         return ept_dl_s29, ept_dl_s29_gs
 
     def build_with_bracket(self) -> Tuple[EptTournamentBase, EptStageBase]:
