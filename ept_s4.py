@@ -66,17 +66,8 @@ def main():
     for team in teams:
         team_database.add_team(team)
 
-    def vg_top_13(model: CpModel, ranks: [IntVar]):
-        model.add(ranks[team_database.get_team_index_by_team_name("Vici Gaming")] <= 13)
-
-    def vg_not_top_13(model: CpModel, ranks: [IntVar]):
-        model.add(ranks[team_database.get_team_index_by_team_name("Vici Gaming")] > 13)
-
     top_13_file = open("scenarios/2025-2026/top-13.txt", "w")
-    optimise_and_write(13, "Top 13", top_13_file, team_database, [vg_not_top_13])
-
-    vg_top_14_file = open("scenarios/2025-2026/vg-top-14.txt", "w")
-    optimise_and_write(14, "Top 14 (VG not guaranteed)", vg_top_14_file, team_database, [vg_top_13])
+    optimise_and_write(13, "Top 13", top_13_file, team_database)
 
 
 def optimise_and_write(cutoff: int, header: str, file: TextIO, team_database: TeamDatabase, scenarios=None):
