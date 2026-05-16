@@ -70,7 +70,7 @@ def main():
     for team in teams:
         team_database.add_team(team)
 
-    top_8_file = open("top-8.txt", "w")
+    top_8_file = open("scenarios/2024-2025/top-8.txt", "w")
     optimise_and_write(8, "Top 8", top_8_file, team_database)
 
 
